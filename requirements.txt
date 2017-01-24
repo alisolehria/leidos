@@ -1,0 +1,10 @@
+Pillow
+django-crispy-forms
+django-datetime-widget
+django-countries
+mysqlclient
+reportlab
+pytz
+olefile
+setuptools
+wheel

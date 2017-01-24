@@ -1,0 +1,293 @@
+{% load staticfiles %}
+{% load countries %}
+<!DOCTYPE html>
+<html lang="en" xmlns:border-radius="http://www.w3.org/1999/xhtml">
+  <head>
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ title }}</title>
+
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+     <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
+
+
+  </head>
+  <body>
+    <div class="col-sm-1"></div>     <div class="col-sm-10"><div class="container-fluid" style="background-color:#dbdbdb;">
+  <div class="row">
+          <div>
+          <img src="{% static 'img/leidos_logo_2013.jpg' %}" alt="" width="100%" > </a>  </li>
+        </h1>
+        
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+     
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'projectManager:myprojects' %}">My Projects</a></li>
+      <li><a href="{% url 'projectManager:projectlist' %}">Projects List</a></li>
+        <li><a href="{% url 'projectManager:projectlist' %}">Matchmaking</a></li>
+    </ul>
+  </div>
+          <div class="container-heading">
+              {{ title }}
+          </div>
+</nav>
+
+
+   <div class="container-fluid">
+   <div class="pull-right"><a href = {% url 'accounts:logoutUser' %} class="btn btn-danger btn-md"> <span class="glyphicon glyphicon-log-out"></span>Sign out</a></div>
+  <br><br>
+       <div class="row">
+    <div class="col-md-2">
+
+<div id="alert">
+<script> jQuery(document).ready(function (){jQuery("#alert").load('{% url "projectManager:alertTab" %}');})
+         </script>
+              <script>
+jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('{% url "projectManager:alertTab" %}');
+   },10000)
+       });</script>
+        </div>
+           </div>
+
+
+
+
+          <div class="col-md-8">
+
+        {% for alert in alertList %}
+        <div class="container container-alert" id="{{ alert.alertID }}">
+           {% if alert.alertType == 'Project' %}
+
+
+               {{ alert.info }}: <a target="_blank" href="{% url 'projectManager:projectprofile' alert.project.projectID %}"> {{ alert.project.projectName }}</a> Status Changed
+               <br>
+               Alert Date: {{ alert.alertDate }}
+               <br>
+               Project Status: {{ alert.project.status }}
+
+                <br>
+               <div class="pull-right">
+               {% for alertStatus in alert.staffalerts_set.all %}
+                   {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
+                       <form action="{% url 'projectManager:alerts' %}" method="post">
+                       {% csrf_token %}
+                     <button class="btn btn-success btn-md" value="{{ alert.alertID }}" name="unseen">Mark as Seen</button>
+                       </form>
+                        <br>
+                       {% endif %}
+            {% endfor %}
+
+               </div>
+
+ <br>
+            {% endif %}
+
+             {% if alert.alertType == 'Staff' %}
+
+                You have been added to the Project: <a target="_blank" href="{% url 'projectManager:projectprofile' alert.project.projectID %}">Project Name: {{ alert.project.projectName }}</a>
+                <br>
+                 Alert Date: {{ alert.alertDate }}
+               <br>
+               <div class="pull-right">
+                {% for alertStatus in alert.staffalerts_set.all %}
+                   {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
+                        <form action="{% url 'projectManager:alerts' %}" method="post">
+                         {% csrf_token %}
+                     <button class="btn btn-success btn-md" value="{{ alert.alertID }}" name="unseen">Mark as Seen</button>
+                        </form>
+                        <br>
+                       {% endif %}
+
+            {% endfor %}
+
+               </div>
+
+ <br>
+            {% endif %}
+         {% if alert.alertType == 'Edit Project' %}
+
+                Project: <a target="_blank" href="{% url 'projectManager:projectprofile' alert.project.projectID %}"> {{ alert.project.projectName }}</a> has been edited.
+                <br>
+                 Alert Date: {{ alert.alertDate }}
+               <br>
+             {{ alert.info }}
+             <br>
+               <div class="pull-right">
+                {% for alertStatus in alert.staffalerts_set.all %}
+                   {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
+                        <form action="{% url 'projectManager:alerts' %}" method="post">
+                         {% csrf_token %}
+                     <button class="btn btn-success btn-md" value="{{ alert.alertID }}" name="unseen">Mark as Seen</button>
+                        </form>
+                        <br>
+                       {% endif %}
+
+            {% endfor %}
+
+               </div>
+
+ <br>
+            {% endif %}
+
+             {% if alert.alertType == 'Leave' %}
+
+                Your leave request Status has changed.
+                <br>
+                 Alert Date: {{ alert.alertDate }}
+               <br>
+                 Leave Start Date: {{ alert.holiday.startDate }}
+                 <br>
+                Leave End Date:   {{ alert.holiday.endDate }}
+                 <br>
+                 Status: {{ alert.holiday.status }}
+                  <br>
+              Type: {{ alert.holiday.type }}
+            <br>
+                    <div class="pull-right">
+                {% for alertStatus in alert.staffalerts_set.all %}
+                   {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
+                        <form action="{% url 'projectManager:alerts' %}" method="post">
+                         {% csrf_token %}
+                       <button class="btn btn-success btn-md" value="{{ alert.alertID }}" name="unseen">Mark as Seen</button>
+                        </form>
+                        <br>
+                       {% endif %}
+            {% endfor %}
+
+               </div>
+                    <br>
+
+            {% endif %}
+     {% if alert.alertType == 'Edit Staff' %}
+
+                {{ alert.info }}
+                <br>
+                 Alert Date: {{ alert.alertDate }}
+               <br>
+
+
+
+               <div class="pull-right">
+                {% for alertStatus in alert.staffalerts_set.all %}
+                   {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
+                        <form action="{% url 'projectManager:alerts' %}" method="post">
+                         {% csrf_token %}
+                       <button class="btn btn-success btn-md" value="{{ alert.alertID }}" name="unseen">Mark as Seen</button>
+                        </form>
+                        <br>
+                       {% endif %}
+            {% endfor %}
+
+               </div>
+            <br>
+
+            {% endif %}
+   {% if alert.alertType == 'Project Request' %}
+
+                Request to be added to Project: <a target="_blank" href="{% url 'projectManager:projectprofile' alert.project.projectID %}">{{ alert.project.projectName }}</a> from <a target="_blank" href="{% url 'projectManager:staffprofile' alert.fromStaff.staffID %}">{{ alert.fromStaff.user.first_name }} {{ alert.fromStaff.user.last_name}}</a>
+                <br>
+                 Alert Date: {{ alert.alertDate }}
+               <br>
+
+
+
+               <div class="pull-right">
+                {% for alertStatus in alert.staffalerts_set.all %}
+                   {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
+                        <form action="{% url 'projectManager:alerts' %}" method="post">
+                         {% csrf_token %}
+                      <input type="number" value="{{ alert.project.projectID }}" name = "projectNum" hidden>
+                            <input type="number" value="{{ alert.alertID }}" name = "seen" hidden>
+                             <button class="btn btn-danger btn-md" value="{{ alert.fromStaff.staffID}}" name="reject"> <span class="glyphicon glyphicon-thumbs-down"></span> Decline</button>
+              <button class="btn btn-success btn-md" value="{{ alert.fromStaff.staffID}}" name="accept"> <span class="glyphicon glyphicon-thumbs-up"></span> Approve</button>
+                        </form>
+                        <br>
+                       {% endif %}
+            {% endfor %}
+
+               </div>
+            <br>
+
+            {% endif %}
+
+            </div>
+             <br>
+        {% endfor %}
+
+
+
+<br>
+
+        <br>
+        <br>
+
+
+
+
+      <grammarly>
+        <div class="_9b5ef6-textarea_btn _9b5ef6-not_focused">
+          <div class="_9b5ef6-transform_wrap">
+            <div class="_9b5ef6-status">
+
+            </div>
+          </div>
+        </div>
+      </grammarly>
+    </div>
+  </div>
+</div>
+
+    </div>
+  <div class="container-footer">
+    <br><br>
+    <div class="row">
+        <div class="col-sm-2">
+
+    <img src={% static 'img/leidos.png' %} alt="leidosLogo" class="img-rounded img-responsive img-footer">
+
+</div>
+        <div class="col-sm-2">
+
+    <h8>Leidos Inc.
+        <br>
+        2017 Leidos inc.©
+        <br>
+     Reston, Virginia
+</h8>
+              </div>
+
+
+  <div class="col-sm-2 pull-right">
+
+    <img src={% static 'img/Logo.jpg' %} alt="syntaxLogo" class="img-rounded img-responsive img-footer-syntax">
+
+</div>
+         <div class="col-sm-2 pull-right">
+
+    <h8>Developed By Syntax Inc.©
+        <br>
+        Dubai, United Arab Emirates
+        <br>
+
+</h8>
+              </div>
+
+        </div>
+
+             <br><br>
+
+
+
+</div>
+    </div>
+</body>
+</html>
