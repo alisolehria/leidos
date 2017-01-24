@@ -85,11 +85,15 @@ LOGIN_URL = '/'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'leidos',
-        'USER': 'root',
+        'NAME': 'abbasali_leidos',
+        'USER': 'abbasali_root',
         'PASSWORD': 'pass123',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'HOST': '192.185.83.157',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
+
     }
 }
 

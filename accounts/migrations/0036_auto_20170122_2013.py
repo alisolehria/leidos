@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='holidays',
             name='type',
-            field=models.CharField(choices=[(b'Sick', b'Sick'), (b'Emergency', b'Emergency'), (b'Vacation', b'Vacation')], default=django.utils.timezone.now, max_length=30),
+            field=models.CharField(choices=[(b'Sick', b'Sick'), (b'Emergency', b'Emergency'), (b'Vacation', b'Vacation')], max_length=30),
             preserve_default=False,
         ),
     ]
