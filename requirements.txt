@@ -12,7 +12,6 @@ pip==9.0.1
 pytz==2016.10
 reportlab==3.3.0
 requests==2.12.1
-request-ouathlib==0.7.0
 setuptools==20.10.1
 six==1.10.0
 tweepy==3.5.0
