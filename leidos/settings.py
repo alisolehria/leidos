@@ -77,10 +77,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'leidos.wsgi.application'
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
+#localhost db
 
 DATABASES = {
     'default': {
@@ -92,6 +94,20 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+# pythonanywhere db
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'alisolehria$default',
+#         'USER': 'alisolehria',
+#         'PASSWORD': 'leidos123',
+#         'HOST': 'alisolehria.mysql.pythonanywhere-services.com',  # Or an IP Address that your DB is hosted on
+#
+#     }
+# }
+
 
 
 # Password validation
@@ -132,6 +148,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# pythonanywhere
+# PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+# STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

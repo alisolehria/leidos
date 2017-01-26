@@ -81,7 +81,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
     <form action="{% url 'projectManager:addstaff' title.projectID %}" method="post" name="staff">
     {% csrf_token %}
 <span class="counter pull-right"></span>
-      <table class="table table-responsive table-bordered listTable results">
+      <table class="table table-responsive table-scrollx table-bordered listTable results">
         <thead>
           <tr>
 

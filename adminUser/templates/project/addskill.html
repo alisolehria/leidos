@@ -6,7 +6,7 @@
   <head>
 
     <title>{{ title }}</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
@@ -31,7 +31,7 @@
       <li><a href="{% url 'adminUser:stafflist' %}">Staff List</a> </li>
       <li><a href="{% url 'adminUser:addproject' %}">Add Project</a></li>
       <li><a href="{% url 'adminUser:projectlist' %}">Projects List</a></li>
-        <li><a href="{% url 'adminUser:projectlist' %}">Matchmaking</a></li>
+        <li><a href="{% url 'adminUser:projectlist' %}">Match-Making</a></li>
     </ul>
   </div>
            <div class="container-heading">
@@ -87,7 +87,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
      <form action="{% url 'adminUser:addpskill' title.projectID %}" method="post">
     <br><br>
     <h4>Please select a skill, and add its corresponding value of hours</h4>
-              <table class="table table-responsive table-bordered listTable results">
+              <table class="table table-responsive table-bordered table-scrollx listTable results">
               <thead>
               <tr>
                   <th class="success">Skill ID</th>

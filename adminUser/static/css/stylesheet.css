@@ -5841,7 +5841,12 @@ button.close {
     overflow-y:scroll;
     height:300px;
     display: block;
+}
 
+.table-scrollx {
+    overflow-x: scroll;
+    height:auto;
+    display: block;
 
 }
 

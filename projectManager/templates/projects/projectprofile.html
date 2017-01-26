@@ -95,9 +95,13 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
          <td class="profile">City: {{ info.location.city }}</td>
       </tr>
      <tr>
-        <td class="profile">Description: {{ info.description}}</td>
-          <td class="profile">Status: {{ info.status }}</td>
+        <td colspan="2" class="profile">Description: {{ info.description}}</td>
+
       </tr>
+    <tr>
+         <td class="profile">Status: {{ info.status }}</td>
+        <td>    </td>
+    </tr>
 
 
     </tbody>
@@ -123,7 +127,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
     <input type="text" class="search form-control" placeholder="Search Staff">
 </div>
 <span class="counter pull-right"></span>
-  <table class="table table-responsive table-bordered listTable results">
+  <table class="table table-responsive table-bordered table-scrollx listTable results">
         <thead>
           <tr>
 

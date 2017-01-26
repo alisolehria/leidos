@@ -165,7 +165,6 @@ class alerts(models.Model):
     )
     alertType = models.CharField(max_length=30, choices=TYPE)
     alertDate = models.DateField()
-    seenDate = models.DateField(blank=True,null=True)
     staff = models.ManyToManyField(profile, blank=True,through='staffAlerts')
     project = models.ForeignKey('projects',blank=True,null=True)
     holiday = models.ForeignKey('holidays',blank=True,null=True)
@@ -186,4 +185,5 @@ class staffAlerts(models.Model):
         ('Seen', 'Seen'),
         ('Unseen', 'Unseen'),
     )
+    seenDate = models.DateField(blank=True, null=True)
     status = models.CharField(max_length=30, choices=STATUS,default='Unseen')

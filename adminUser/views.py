@@ -594,7 +594,7 @@ def alert_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Project', alertDate=datetime.date.today(),
                                           project=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.projectManager, status="Unseen")
-            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID))
+            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID) & Q(alertType='Project'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Project Status Changed")
@@ -607,7 +607,7 @@ def alert_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Project', alertDate=datetime.date.today(),
                                           project=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.projectManager, status="Unseen")
-            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID))
+            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID) & Q(alertType='Project'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Project Status Changed")
@@ -624,7 +624,7 @@ def alert_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
                                           holiday=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.staffID, status="Unseen")
-            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID))
+            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID) & Q(alertType='Leave'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Leave Status Changed")
@@ -637,7 +637,7 @@ def alert_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
                                           holiday=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.staffID, status="Unseen")
-            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID))
+            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID)&Q(alertType='Leave'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Leave Status Changed")
@@ -670,7 +670,7 @@ def requests_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Project', alertDate=datetime.date.today(),
                                           project=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.projectManager, status="Unseen")
-            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID))
+            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID)&Q(alertType='Project'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Project Status Changed")
@@ -683,7 +683,7 @@ def requests_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Project', alertDate=datetime.date.today(),
                                           project=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.projectManager, status="Unseen")
-            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID))
+            alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID)&Q(alertType='Project'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Project Status Changed")
@@ -696,7 +696,7 @@ def requests_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
                                           holiday=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.staffID, status="Unseen")
-            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID))
+            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID) & Q(alertType='Leave'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Leave Status Changed")
@@ -709,7 +709,7 @@ def requests_View(request):
             alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
                                           holiday=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.staffID, status="Unseen")
-            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID))
+            alertobj = alerts.objects.get(Q(holiday=info) & Q(fromStaff=info.staffID.staffID)&Q(alertType='Leave'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Leave Status Changed")

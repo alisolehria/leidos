@@ -4,7 +4,7 @@
   <head>
 
     <title>{{ title }}</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
       <script src="{% static "js/search.js" %}"></script>
@@ -28,7 +28,7 @@
       <li><a href="{% url 'adminUser:stafflist' %}">Staff List</a> </li>
       <li><a href="{% url 'adminUser:addproject' %}">Add Project</a></li>
       <li class="active"><a href="{% url 'adminUser:projectlist' %}">Projects List</a></li>
-        <li><a href="{% url 'adminUser:projectlist' %}">Matchmaking</a></li>
+        <li><a href="{% url 'adminUser:projectlist' %}">Match-Making</a></li>
     </ul>
   </div>
 
@@ -75,7 +75,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
     <input type="text" class="search form-control" placeholder="Search">
 </div>
 <span class="counter pull-right"></span>
-      <table class="table table-responsive table-bordered listTable results">
+      <table class="table table-responsive table-bordered listTable table-scrollx results">
         <thead>
           <tr>
 
