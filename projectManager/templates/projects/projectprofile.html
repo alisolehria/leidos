@@ -187,6 +187,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
               <tr>
                   <th class="success">Skill Name</th>
                   <th class="success">Hours Required</th>
+                   <th class="success">Start Date</th>
+                  <th class="success">End Date</th>
               </tr>
                 <tr class="warning no-results">
       <td colspan="2" class="warning"><i class="fa fa-warning"></i> No result</td>
@@ -201,6 +203,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
             <td class="danger">{{ skills}}</td>
 
             <td class = "danger">{{ hrs }}</td>
+                 <td class = "danger">{{ hrs.startDate }}</td>
+            <td class = "danger">{{ hrs.endDate }}</td>
 
   {% endfor %}
 

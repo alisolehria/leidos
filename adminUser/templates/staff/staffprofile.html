@@ -151,7 +151,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
               <thead>
               <tr>
                   <th class="success">Skill Name</th>
-                  <th class="success">Hours Available</th>
+                  <th class="success">Hours Available per Month</th>
+                  <th class="success">Hours Left This Month</th>
 
               </tr>
                 <tr class="warning no-result">
@@ -168,6 +169,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td class="danger">{{ skills}}</td>
 
             <td class = "danger">{{ hrs }}</td>
+            <td class = "danger">{{ hrs.hoursLeft }}</td>
 
   {% endfor %}
 

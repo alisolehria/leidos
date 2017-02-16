@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts
+from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts, staffWithProjects
 from .models import location
 from django.http import HttpResponse
 import datetime
@@ -416,7 +416,7 @@ def addpstaff_View(request, project_id):
 
     title = projects.objects.get(projectID=project_id)
     # exclude project managers and admins also staff which have holidays during the project
-    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin").exclude(holidays__endDate__gt=title.startDate)
+    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin")
 
     number = title.numberOfStaff - profile.objects.filter(projects=project_id).count()
 
@@ -425,7 +425,7 @@ def addpstaff_View(request, project_id):
         alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
                                       project=title)
         for id in staff:
-            title.staffID.add(id)
+            staffWithProjects.objects.create(projects_ID=title,profile_ID=profile.objects.get(staffID=id),status="Working")
             staffAlerts.objects.create(alertID=alert, staffID=profile.objects.get(staffID=id), status="Unseen")
         messages.success(request, "Staff added succesfully!")
         alert = alerts.objects.create(fromStaff=query, alertType='Edit Project', alertDate=datetime.date.today(),
@@ -785,3 +785,39 @@ def report_View(request,project_id):
     p.showPage()
     p.save()
     return response
+
+@login_required
+def matchmaking_View(request):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Admin":  # check if admin
+        return HttpResponse(status=201)
+
+    title = "Matchmaking"
+
+    project = projects.objects.get(projectID=14)
+    # exlude PMS and Admins
+    staffList = profile.objects.filter(Q(designation="Employee") | Q(designation="Contractor"))
+    # exclude already in project
+    staffList = staffList.exclude(projects__projectID__exact=project.projectID)
+    # holidays during the project
+    staffList = staffList.exclude(Q(holidays__startDate__gte=project.startDate)&Q(holidays__endDate__lte=project.endDate))
+    months = project.endDate.month - project.startDate.month
+    if(months<0):
+        months = months + 12
+    #match skills
+    count = 0
+    for staff in staffList:
+        for skill in staff.skills_set.all():
+            for projSkill in project.skills_set.all():
+                if skill == projSkill:
+                    count = count +1
+                    print(count)
+        if count is 0:
+            staffList = staffList.exclude(staffID=staff.staffID)
+        count = 0
+
+
+    return render(request,'project/matchmaking.html',{"title":title,"staffList":staffList})

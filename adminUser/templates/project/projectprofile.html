@@ -115,10 +115,11 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 &nbsp;&nbsp;&nbsp;&nbsp;
                    {% if info.status == "On Going" or info.status == "Approved" %}
                          <button class="btn btn-danger btn-md" value="{{ info.projectID }}" name="discontinue"> <span class="glyphicon glyphicon-remove-sign"></span> Discontinue</button>
-                   {% endif %}
+
                          <a href="{% url 'adminUser:editproject' info.projectID %}" class="btn btn-info btn-md">
           <span class="glyphicon glyphicon-edit"></span> Edit Info
         </a>
+                     {% endif %}
                        {% if info.status == "Pending Approval" %}
           <button class="btn btn-danger btn-md" value="{{ info.projectID }}" name="decline"> <span class="glyphicon glyphicon-thumbs-down"></span> Decline</button>
 
@@ -152,6 +153,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <th>Staff ID</th>
             <th>First Name</th>
             <th>Last Name</th>
+              <th>Email</th>
               <th>DOB</th>
               <th>Designation</th>
               <th>Work Status</th>
@@ -168,6 +170,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
                 <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>
+                <td>{{ staff.user.email }}</td>
             <td>{{ staff.dateOfBirth }}</td>
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
@@ -180,11 +183,13 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
         </tbody>
       </table>
             <br>
+     {% if info.status == "On Going" or info.status == "Approved" %}
      <div class="pull-right">
     <a href="{% url 'adminUser:addpstaff' info.projectID %}" class="btn btn-success btn-md">
           <span class="glyphicon glyphicon-plus"></span> Add staff
         </a>
      </div>
+    {% endif %}
         <br>
         <br>
 <br>
@@ -201,6 +206,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
               <tr>
                   <th class="success">Skill Name</th>
                   <th class="success">Hours Required</th>
+                  <th class="success">Start Date</th>
+                  <th class="success">End Date</th>
               </tr>
                 <tr class="warning no-results">
       <td colspan="2" class="warning"><i class="fa fa-warning"></i> No result</td>
@@ -215,17 +222,22 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td class="danger">{{ skills}}</td>
 
             <td class = "danger">{{ hrs }}</td>
+            <td class = "danger">{{ hrs.startDate }}</td>
+            <td class = "danger">{{ hrs.endDate }}</td>
+
 
   {% endfor %}
 
         </tbody>
       </table>
        <br>
+     {% if info.status == "On Going" or info.status == "Approved" %}
      <div class="pull-right">
     <a href="{% url 'adminUser:addpskill' info.projectID %}" class="btn btn-success btn-md">
           <span class="glyphicon glyphicon-plus"></span> Add Skills
         </a>
      </div>
+    {% endif %}
         <br>
         <br>
 <br>

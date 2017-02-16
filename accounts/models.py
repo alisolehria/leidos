@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from adminUser.models import location
+import datetime
+
 
 class profile(models.Model):
 #this is profile table in db linked to users table
@@ -12,6 +14,7 @@ class profile(models.Model):
     #profilePicture = models.ImageField(upload_to='\images')
     dateOfBirth = models.DateField()
     nationality = models.CharField(max_length=200)
+    contact = models.CharField(max_length=12)
     preferredLocation = models.ForeignKey('adminUser.location')
     GENDER = (
         ('Male', 'Male'),
@@ -55,7 +58,7 @@ class projects(models.Model):
         db_table = 'projects'
 
     projectID = models.AutoField(primary_key=True)
-    staffID = models.ManyToManyField(profile)
+    staffID = models.ManyToManyField(profile,through="staffWithProjects")
     projectName = models.CharField(max_length=200)
     projectManager = models.ForeignKey('profile',related_name='+')
     TYPE = (
@@ -84,6 +87,20 @@ class projects(models.Model):
     def __str__(self):
         return str(self.projectName)
 
+class staffWithProjects(models.Model):
+
+    class Meta:
+        db_table = "staffWithProjects"
+
+    projects_ID = models.ForeignKey(projects)
+    profile_ID = models.ForeignKey(profile)
+    STATUS = (
+        ('Working', 'Working'),
+        ('Not Working', 'Not Working'),
+    )
+    status = models.CharField(max_length=30, choices=STATUS,blank=True,null=True)
+
+
 
 class skills(models.Model):
 
@@ -106,6 +123,8 @@ class projectsWithSkills(models.Model):
     projectID = models.ForeignKey(projects)
     skillID = models.ForeignKey(skills)
     hoursRequired = models.IntegerField()
+    startDate = models.DateField(default=datetime.date.today())
+    endDate = models.DateField(default=datetime.date.today())
 
     def __str__(self):
         return str(self.hoursRequired)
@@ -118,6 +137,8 @@ class staffWithSkills(models.Model):
     staffID = models.ForeignKey(profile)
     skillID = models.ForeignKey(skills)
     hoursAvailable = models.IntegerField()
+    hoursLeft = models.IntegerField()
+
 
     def __str__(self):
         return str(self.hoursAvailable)

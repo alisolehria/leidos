@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts
+from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts,staffWithProjects
 from adminUser.models import location
 from django.http import HttpResponse
 from django.db.models import Q
@@ -342,7 +342,8 @@ def addpstaff_View(request, project_id):
         alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
                                       project=title)
         for id in staff:
-            title.staffID.add(id)
+            staffWithProjects.objects.create(projects_ID=title, profile_ID=profile.objects.get(staffID=id),
+                                             status="Working")
             staffAlerts.objects.create(alertID=alert, staffID=profile.objects.get(staffID=id), status="Unseen")
 
         messages.success(request, "Staff added succesfully!")

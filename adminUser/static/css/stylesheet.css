@@ -5872,6 +5872,23 @@ button.close {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.pass-form {
+  width: 450px;
+  padding: 40px 30px;
+  background: #eee;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 .log-btn {
   background: black;
   dispaly: inline-block;

@@ -57,6 +57,8 @@ class UserProfileForm(forms.ModelForm):
     dateOfBirth = forms.DateField(label="Date of Birth:",widget=DateTimeWidget(options=dateTimeOptions,bootstrap_version=3))
     nationality = LazyTypedChoiceField(choices=countries,label="Nationality:")
     preferredLocation= forms.ModelChoiceField(queryset=location.objects.all(),label="Location: ")
+    contact = forms.RegexField(regex=r'^d{12,12}$',
+                                error_message = ("Phone number must be entered in the format: '999999999999'. 12 digits allowed."),label="Phone Number: ")
     gender = forms.ChoiceField(label="Gender:",choices=profile.GENDER)
     designation = forms.ChoiceField(label="Designation:",choices=profile.DESIGNATIONS)
 
@@ -66,6 +68,7 @@ class UserProfileForm(forms.ModelForm):
             'dateOfBirth',
             'nationality',
             'gender',
+            'contact',
             'preferredLocation',
             'designation'
         ]
@@ -79,7 +82,9 @@ class UserProfileForm(forms.ModelForm):
                 HTML("""
                 <br><br><br>
             """),
-            'gender')
+                Div(
+            'gender',
+                'contact'))
         ),
         Fieldset(
             'Work Information:',
@@ -305,7 +310,7 @@ class HolidaysForm(forms.ModelForm):
                                 widget=DateTimeWidget(options=dateTimeOptions, bootstrap_version=3))
     endDate = forms.DateField(label="End Date:",
                               widget=DateTimeWidget(options=dateTimeOptions, bootstrap_version=3))
-    type = forms.ChoiceField(label="Project Type:", choices=holidays.TYPE)
+    type = forms.ChoiceField(label="Vacation Type:", choices=holidays.TYPE)
 
     class Meta:
         model = holidays
