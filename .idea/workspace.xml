@@ -2,78 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4814679b-cb3f-41cc-a32b-df750d31d594" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/templates/registration/password_reset_complete.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/templates/registration/password_reset_confirm.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/templates/registration/password_reset_done.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/templates/registration/password_reset_email.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/templates/registration/password_reset_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/templates/registration/password_reset_subject.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0002_auto_20161225_1939.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0003_profile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0004_previousworkplaces.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0005_auto_20161226_0102.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0006_profile_salary.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0007_projects.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0008_projects_location.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0009_auto_20161227_0137.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0010_auto_20161227_1603.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0011_auto_20161227_1615.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0012_holidays.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0013_alerts.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0014_auto_20170104_0004.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0015_auto_20170104_0006.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0016_auto_20170104_0020.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0017_remove_alerts_fromstaff.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0018_alerts_fromstaff.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0019_remove_alerts_fromstaff.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0020_alerts_fromstaff.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0021_auto_20170104_0028.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0022_delete_alerts.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0023_alerts.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0024_auto_20170107_2256.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0025_auto_20170107_2300.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0026_remove_alerts_status.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0027_auto_20170107_2308.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0028_auto_20170107_2309.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0029_auto_20170117_2258.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0030_projects_types.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0031_remove_projects_types.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0032_projects_type.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0033_auto_20170117_2306.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0034_auto_20170121_1554.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0035_holidays_type.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0036_auto_20170122_2013.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0037_auto_20170122_2020.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0038_auto_20170122_2021.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0039_auto_20170122_2024.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0040_auto_20170122_2035.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0041_auto_20170122_2035.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/accounts/migrations/0042_auto_20170122_2127.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/adminUser/migrations/0002_delete_location.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/adminUser/migrations/0003_location.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/migrations/0002_auto_20170216_0025.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/migrations/0003_staffwithskills_hoursleft.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/migrations/0004_auto_20170216_0119.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/admin.py" afterPath="$PROJECT_DIR$/accounts/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/models.py" afterPath="$PROJECT_DIR$/accounts/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/templates/registration/login.html" afterPath="$PROJECT_DIR$/accounts/templates/registration/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/urls.py" afterPath="$PROJECT_DIR$/accounts/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/forms.py" afterPath="$PROJECT_DIR$/adminUser/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/adminUser/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/static/css/stylesheet.css" afterPath="$PROJECT_DIR$/adminUser/static/css/stylesheet.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/profile/dashboard.html" afterPath="$PROJECT_DIR$/adminUser/templates/profile/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addproject.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addproject.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addskill.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addskill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/urls.py" afterPath="$PROJECT_DIR$/adminUser/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/views.py" afterPath="$PROJECT_DIR$/adminUser/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leidos/settings.py" afterPath="$PROJECT_DIR$/leidos/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leidos/urls.py" afterPath="$PROJECT_DIR$/leidos/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" afterPath="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/views.py" afterPath="$PROJECT_DIR$/projectManager/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -101,62 +33,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminUser/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="27" column="11" lean-forward="false" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projectprofile.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="206" column="55" lean-forward="false" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projectprofile.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminUser/templates/project/projectprofile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3808">
-              <caret line="224" column="11" lean-forward="false" selection-start-line="224" selection-start-column="11" selection-end-line="225" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stafflist.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/stafflist.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="72" column="58" lean-forward="false" selection-start-line="72" selection-start-column="58" selection-end-line="72" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/accounts/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2091">
-              <caret line="126" column="61" lean-forward="false" selection-start-line="126" selection-start-column="61" selection-end-line="126" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -402,10 +279,6 @@
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="staff" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -417,33 +290,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="adminUser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adminUser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="accounts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -458,6 +305,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="accounts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -481,19 +332,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static\img" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\profile" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\alerts" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\common" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\project" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\employee\templates\eprofile" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\employee" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\common" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\staff" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static\img" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\profile" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\alerts" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\common" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.leidos">
@@ -963,7 +814,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485469552161</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Scroll Horizontal added to tables&#10;Mobile compatibility full">
+      <created>1487234817664</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1487234817664</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -987,11 +845,11 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3184569" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3184569" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28150573" sideWeight="0.5060514" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22258593" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22258593" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252595" sideWeight="0.49676377" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25531915" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1361,18 +1219,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="86" column="26" lean-forward="false" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1405,6 +1256,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1432,16 +1284,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="11" lean-forward="false" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/stafflist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
@@ -1460,9 +1302,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="206" column="55" lean-forward="false" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
+        <state relative-caret-position="187">
+          <caret line="197" column="0" lean-forward="true" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
