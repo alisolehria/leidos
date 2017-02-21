@@ -361,3 +361,6 @@ class HolidaysForm(forms.ModelForm):
     helper.form_class = 'form-horizontal'
     helper.label_class = 'col-xs-2'
     helper.field_class = 'col-lg-4'
+
+
+

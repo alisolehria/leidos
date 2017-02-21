@@ -20,4 +20,5 @@ admin.site.register(models.staffWithSkills)
 admin.site.register(models.holidays)
 admin.site.register(models.alerts)
 admin.site.register(models.staffAlerts)
+admin.site.register(models.staffWithProjects)
 

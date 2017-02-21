@@ -101,7 +101,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
             <form class="form-inline" action="{% url 'employee:alerts' %}" method="post">
              <div class="form-group">
-                 You have been added to the Project:
+                 You have been {{ alert.info }} Project:
                     {% csrf_token %}
   <button type="submit" name="project"  value="{{ alert.project.projectID}}" class="btn-link">{{ alert.project.projectName }}</button>
             </form>

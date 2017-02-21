@@ -106,10 +106,23 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
      </div>
     <br><br>
            <div class="pull-right">
+
     <a href="{% url 'adminUser:editprofile' info.staffID %}" class="btn btn-info btn-md">
+
           <span class="glyphicon glyphicon-edit"></span> Edit Profile
         </a>
-        </div>
+              </div>
+    {% if info.workStatus == "Working" %}
+                   <div class="pull-left">
+                       <form method="post" action="{% url 'adminUser:staffprofile' info.staffID %}">
+                           {% csrf_token %}
+                   <button class="btn btn-danger btn-md" value="{{ info.staffID }}" name="remove"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+                      </form>
+                   </div>
+    {% endif %}
+
+
+    <br>
         <br>
   <div class="container">
   <h3>Skill Level</h3>

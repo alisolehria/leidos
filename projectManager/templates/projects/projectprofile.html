@@ -119,7 +119,16 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
                     </form>
           </div>
           <br>
-    <h3>Staff Working on this Project</h3>
+    <h3>Staff on this Project</h3>
+           <div class="col-sm-offset-5">
+    <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#current">Current</a></li>
+  <li><a data-toggle="tab" href="#past">Past</a></li>
+</ul>
+    </div>
+    <div class="tab-content">
+        <div id="current" class="tab-pane fade in active">
+        <br>
      <div class="input-group pull-right">
            <span class="input-group-addon">
         <i class="glyphicon glyphicon-search"></i>
@@ -131,13 +140,15 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
         <thead>
           <tr>
 
-            <th>Staff ID</th>
+             <th>Staff ID</th>
             <th>First Name</th>
             <th>Last Name</th>
-              <th>DOB</th>
+
               <th>Designation</th>
-              <th>Work Status</th>
               <th>Skill Level</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+
 
           </tr>
         <tr class="warning no-result">
@@ -145,15 +156,31 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
     </tr>
         </thead>
         <tbody>
-        {% for staff in info.staffID.all %}
+        {% for staff in current %}
             <tr>
-                <td><a href="{% url 'projectManager:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
-            <td>{{ staff.user.first_name }}</td>
-            <td>{{ staff.user.last_name }}</td>
-            <td>{{ staff.dateOfBirth }}</td>
-            <td>{{ staff.designation }}</td>
-            <td>{{ staff.workStatus }}</td>
-            <td>{{ staff.skillLevel }}</td>
+                <td><a href="{% url 'projectManager:staffprofile' staff.profile_ID.staffID %}">{{ staff.profile_ID.staffID }}</a></td>
+            <td>{{staff.profile_ID.user.first_name }}</td>
+            <td>{{staff.profile_ID.user.last_name }}</td>
+
+            <td>{{ staff.profile_ID.designation }}</td>
+            <td>{{ staff.profile_ID.skillLevel }}</td>
+              <td>
+                {{ staff.startDate }}
+
+
+            </td>
+             <td>
+                 {{ staff.endDate }}
+             </td>
+{% if staff.profile_ID.staffID != user.staffID and info.status != "Completed" and info.status != "Discontinued"%}
+ <form action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
+    {% csrf_token %}
+     <td><button class="btn btn-danger btn-sm" value="{{ staff.profile_ID.staffID }}" name="remove"> <span class="glyphicon glyphicon-remove-sign"></span> Remove</button></td>
+
+
+
+                   </form>
+{% endif %}
             </tr>
 
 
@@ -161,6 +188,57 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
         </tbody>
       </table>
+         </div>
+
+     <div id="past" class="tab-pane fade in">
+       <br>
+     <div class="input-group pull-right">
+           <span class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+    </span>
+    <input type="text" class="search form-control" placeholder="Search Staff">
+</div>
+<span class="counter pull-right"></span>
+  <table class="table table-responsive table-bordered listTable table-scrollx results">
+        <thead>
+          <tr>
+
+            <th>Staff ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+
+              <th>Designation</th>
+              <th>Skill Level</th>
+
+
+          </tr>
+        <tr class="warning no-result">
+      <td colspan="7"><i class="fa fa-warning"></i> No result</td>
+    </tr>
+        </thead>
+        <tbody>
+        {% for staff in past %}
+
+            <tr>
+                <td><a href="{% url 'adminUser:staffprofile' staff.profile_ID.staffID %}">{{ staff.profile_ID.staffID }}</a></td>
+            <td>{{ staff.profile_ID.user.first_name }}</td>
+            <td>{{ staff.profile_ID.user.last_name }}</td>
+
+            <td>{{ staff.profile_ID.designation }}</td>
+            <td>{{ staff.profile_ID.skillLevel }}</td>
+
+
+
+            </tr>
+
+
+        {% endfor %}
+
+        </tbody>
+      </table>
+        </div>
+    </div>
+
             <br>
   <div class="pull-right">
                 {% if info.projectManager == user %}

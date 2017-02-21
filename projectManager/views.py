@@ -32,10 +32,11 @@ def profile_View(request):
         return HttpResponse(status=201)
 
     info = profile.objects.get(user=username)
-
-    ongoing = info.projects_set.filter(status="On Going").count()
-    upcoming = info.projects_set.filter(status="Approved")
-    completed = info.projects_set.filter(status="Completed").count()
+    time = datetime.date.today()
+    ongoing = info.staffwithprojects_set.filter(
+        Q(startDate__lte=time) & Q(endDate__gte=time) & Q(status="Working")).count()
+    upcoming = info.staffwithprojects_set.filter(Q(startDate__gt=time) & Q(status="Working")).count()
+    completed = info.staffwithprojects_set.filter(Q(endDate__lt=time) & Q(status="Working")).count()
 
     # this part takes skills and skill hours available and puts them in a dict
     skillset = []
@@ -64,10 +65,11 @@ def upcomingprojectsget_View(request, staff_id):
     if query.designation != "Project Manager":  # check if admin
         return HttpResponse(status=201)
     #upcoming projects of specific user
+    time = datetime.date.today()
     info = profile.objects.get(staffID=staff_id)
     title = "Upcoming Projects of " + info.user.first_name + " " + info.user.last_name
-    list = info.projects_set.filter(status="Approved")
-    return render(request,'projects/projectlist.html',{"list":list,"title":title})
+    list = info.staffwithprojects_set.filter(Q(startDate__gt=time) & Q(status="Working"))
+    return render(request,'projects/myprojects.html',{"list":list,"title":title})
 
 
 @login_required()
@@ -78,10 +80,11 @@ def currentprojectsget_View(request, staff_id):
     if query.designation != "Project Manager":  # check if admin
         return HttpResponse(status=201)
     #get ongoing project of specific user
+    time = datetime.date.today()
     info = profile.objects.get(staffID=staff_id)
     title = "On Going Projects of " + info.user.first_name + " " + info.user.last_name
-    list =  info.projects_set.filter(status="On Going")
-    return render(request,'projects/projectlist.html',{"list":list,"title":title})
+    list =  info.staffwithprojects_set.filter(Q(startDate__lte=time) & Q(endDate__gte=time) & Q(status="Working"))
+    return render(request,'projects/myprojects.html',{"list":list,"title":title})
 
 @login_required()
 def completedprojectsget_View(request, staff_id):
@@ -91,10 +94,11 @@ def completedprojectsget_View(request, staff_id):
     if query.designation != "Project Manager":  # check if admin
         return HttpResponse(status=201)
     #completed projects of specific user
+    time = datetime.date.today()
     info = profile.objects.get(staffID=staff_id)
     title = "Completed Projects of " + info.user.first_name + " " + info.user.last_name
-    list = info.projects_set.filter(status="Completed")
-    return render(request,'projects/projectlist.html',{"list":list,"title":title})
+    list = info.staffwithprojects_set.filter(Q(endDate__lt=time) & Q(status="Working"))
+    return render(request,'projects/myprojects.html',{"list":list,"title":title})
 
 @login_required()
 def projectlist_View(request):
@@ -121,6 +125,10 @@ def projectprofile_View(request, project_id):
     skillset = []
     skills = info.skills_set.all()
     skillset = list(skills)
+    past = staffWithProjects.objects.filter(projects_ID=project_id)
+    past = past.exclude(status="Working")
+    current = staffWithProjects.objects.filter(projects_ID=project_id)
+    current = current.exclude(status="Not Working")
 
     skillhrset = []
     skillhrs = info.projectswithskills_set.all()
@@ -149,8 +157,18 @@ def projectprofile_View(request, project_id):
         staffAlerts.objects.create(alertID=alertAdmin, staffID=profile.objects.get(staffID = 1), status="Unseen")
         messages.success(request, "Project Status Changed")
         return projectlist_View(request)
+    elif "remove" in request.POST:
+        id = request.POST.getlist("remove")
+        proj = staffWithProjects.objects.filter(profile_ID=id[0])
+        proj = proj.filter(projects_ID=project_id)
+        proj.update(status="Not Working")
+        alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
+                                      project=info, info="removed from")
+        staffAlerts.objects.create(alertID=alert, staffID=profile.objects.get(staffID=id[0]), status="Unseen",
+                                   )
+        messages.success(request, "Staff Removed")
 
-    return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query})
+    return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current})
 
 @login_required()
 def myprojects_View(request):
@@ -162,7 +180,8 @@ def myprojects_View(request):
     #completed projects of specific user
     info = profile.objects.get(staffID=query.staffID)
     title = "My Projects"
-    list = info.projects_set.all()
+    list = info.staffwithprojects_set.all()
+    print(list.count())
     return render(request,'projects/myprojects.html',{"list":list,"title":title})
 
 @login_required()
@@ -176,10 +195,10 @@ def staffprofile_View(request, staff_id):
     title = staff_id
     info = profile.objects.get(staffID = staff_id)
 
-
-    ongoing = info.projects_set.filter(status="On Going").count()
-    upcoming = info.projects_set.filter(status="Approved").count()
-    completed = info.projects_set.filter(status="Completed").count()
+    time = datetime.date.today()
+    ongoing = info.staffwithprojects_set.filter(Q(startDate__lte=time) & Q(endDate__gte=time)).count()
+    upcoming = info.staffwithprojects_set.filter(startDate__gt=time).count()
+    completed = info.staffwithprojects_set.filter(endDate__lt=time).count()
 
 
     #this part takes skills and skill hours available and puts them in a dict
@@ -271,7 +290,9 @@ def requestproject_View(request):
         project.projectManager= query
         project.status = "Pending Approval"
         project.save()
-        project.staffID.add(query)
+        proj = projects.objects.get(projectID=project.projectID)
+        staffWithProjects.objects.create(projects_ID=proj, profile_ID=query,
+                                         status="Working",startDate=proj.startDate,endDate=proj.endDate)
         alert = alerts.objects.create(fromStaff=query,alertType='Project',alertDate=datetime.date.today(),project=project)
         staffAlerts.objects.create(alertID=alert,staffID=admin,status="Unseen")
         messages.success(request, "Project requested succesfully!")
@@ -291,7 +312,8 @@ def addpskill_View(request, project_id):
         return HttpResponse(status=201)
 
     title = projects.objects.get(projectID=project_id)
-
+    endDate = str(title.endDate.strftime('%Y-%m-%d'))
+    startDate = str(title.startDate.strftime('%Y-%m-%d'))
     if title.projectManager != query:
         return HttpResponse(status=201)  # check if user is pm of that project
 
@@ -301,11 +323,13 @@ def addpskill_View(request, project_id):
     if request.POST and ('continue' in request.POST or 'save' in request.POST):
         skill = request.POST.getlist('skillselec')
         hrs = request.POST.getlist('hours')
+        start = request.POST.getlist('sdate')
+        end = request.POST.getlist('edate')
         hrs = filter(lambda x: x != "", hrs)
         count = len(skill)
         x = 0
         while x < count:
-            projectsWithSkills.objects.create(projectID_id=project_id, skillID_id=skill[x], hoursRequired=hrs[x])
+            projectsWithSkills.objects.create(projectID_id=project_id, skillID_id=skill[x], hoursRequired=hrs[x],startDate=start[x],endDate=end[x])
             x = x + 1
         messages.success(request, "Skill added succesfully!")
         alert = alerts.objects.create(fromStaff=query, alertType='Edit Project', alertDate=datetime.date.today(),
@@ -316,7 +340,7 @@ def addpskill_View(request, project_id):
         elif 'save' in request.POST:
             return projectprofile_View(request, project_id)
 
-    return render(request, 'projects/addskill.html', {"title":title, "skillset":skillset})
+    return render(request, 'projects/addskill.html', {"title":title, "skillset":skillset,"startDate":startDate,"endDate":endDate})
 
 @login_required
 def addpstaff_View(request, project_id):
@@ -333,27 +357,38 @@ def addpstaff_View(request, project_id):
         return HttpResponse(status=201) #check if user is pm of that project
 
     # exclude project managers and admins also staff which have holidays during the project
-    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin").exclude(holidays__endDate__gt=title.startDate)
+    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin")
 
     number = title.numberOfStaff - profile.objects.filter(projects=project_id).count()
-
+    skill = title.projectswithskills_set.all()
     if request.POST and 'add' in request.POST:
         staff = request.POST.getlist('selectStaff')
+        date = request.POST.getlist('selectDate')
+        if date == []:
+            staffWithProjects.objects.create(projects_ID=title, profile_ID=profile.objects.get(staffID=staff[0]),
+                                             status="Working", startDate=title.startDate, endDate=title.endDate)
+        else:
+            sDate = []
+            eDate = []
+            for sk in date:
+                dates = title.projectswithskills_set.get(skillID=sk)
+                sDate.append(dates.startDate)
+                eDate.append(dates.endDate)
+            startDate = min(sDate)
+            endDate = max(eDate)
+            staffWithProjects.objects.create(projects_ID=title, profile_ID=profile.objects.get(staffID=staff[0]),
+                                             status="Working", startDate=startDate, endDate=endDate)
         alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
-                                      project=title)
-        for id in staff:
-            staffWithProjects.objects.create(projects_ID=title, profile_ID=profile.objects.get(staffID=id),
-                                             status="Working")
-            staffAlerts.objects.create(alertID=alert, staffID=profile.objects.get(staffID=id), status="Unseen")
-
+                                      project=title,info="added to")
+        staffAlerts.objects.create(alertID=alert, staffID=profile.objects.get(staffID=staff[0]), status="Unseen")
         messages.success(request, "Staff added succesfully!")
         alert = alerts.objects.create(fromStaff=query, alertType='Edit Project', alertDate=datetime.date.today(),
                                       project=title, info="Added Staff to Project")
         staffAlerts.objects.create(alertID=alert, staffID=admin, status="Unseen")
-        return projectprofile_View(request,project_id)
 
 
-    return render(request, 'projects/addstaff.html',{"title":title,"list":list,"number":number})
+
+    return render(request, 'projects/addstaff.html',{"title":title,"list":list,"number":number,"skill":skill})
 
 @login_required
 def holiday_View(request):

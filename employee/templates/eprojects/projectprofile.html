@@ -128,9 +128,10 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
             <th>Staff ID</th>
             <th>First Name</th>
             <th>Last Name</th>
-              <th>DOB</th>
               <th>Designation</th>
               <th>Skill Level</th>
+              <th>Start Date</th>
+              <th>End Date</th>
 
           </tr>
         <tr class="warning no-result">
@@ -147,9 +148,28 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>
-            <td>{{ staff.dateOfBirth }}</td>
             <td>{{ staff.designation }}</td>
             <td>{{ staff.skillLevel }}</td>
+              <td>
+                {% for proj in staff.staffwithprojects_set.all %}
+                    {% if proj.projects_ID_id == info.projectID %}
+                        {{ proj.startDate }}
+                    {% endif %}
+
+                    {% endfor %}
+
+
+            </td>
+             <td>
+                {% for proj in staff.staffwithprojects_set.all %}
+                    {% if proj.projects_ID_id == info.projectID %}
+                        {{ proj.endDate }}
+                    {% endif %}
+
+                    {% endfor %}
+
+
+            </td>
             </tr>
 
 

@@ -27,7 +27,7 @@ urlpatterns = [
         url(r'alerts/$', views.alert_View, name='alerts'),
         url(r'alerttab/$', views.alerttab_View, name='alertTab'),
         url(r'requests/$', views.requests_View, name='requests'),
-        url(r'requestholiday/$', views.holiday_View, name='holidayrequest'),
+        url(r'reports/$', views.allreports_View, name='allreports'),
         url(r'matchmaking/$', views.matchmaking_View, name='matchmaking'),
         url(r'report/(?P<project_id>[0-9]+)/$', views.report_View, name='report'),
 ]

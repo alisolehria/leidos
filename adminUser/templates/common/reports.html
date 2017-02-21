@@ -1,15 +1,17 @@
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
 
     <title>{{ title }}</title>
-
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-      <script src="{% static "js/search.js" %}"></script>
-     <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
 
-     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
+      {{ form.media }}
+
 
   </head>
   <body>
@@ -18,15 +20,15 @@
           <div>
           <img src={% static 'img/leidos_logo_2013.jpg' %} alt="leidosLogo" width="100%"> </a>  </li>
         </h1>
-        
+
       <center><nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-     
+
     </div>
     <ul class="nav navbar-nav">
       <li><a href="{% url 'adminUser:addstaff' %}">Add Staff</a></li>
-      <li class="active"><a href="{% url 'adminUser:stafflist' %}">Staff List</a> </li>
+      <li><a href="{% url 'adminUser:stafflist' %}">Staff List</a> </li>
       <li><a href="{% url 'adminUser:addproject' %}">Add Project</a></li>
       <li><a href="{% url 'adminUser:projectlist' %}">Projects List</a></li>
         <li><a href="{% url 'adminUser:projectlist' %}">Match-Making</a></li>
@@ -39,16 +41,16 @@
 </nav>
 </div>
 
+
 </div>
-
-
-       <div class="container-fluid">
+<div class="container-fluid">
 </div>
      <div class="pull-right"><a href = {% url 'accounts:logoutUser' %} class="btn btn-danger btn-md"> <span class="glyphicon glyphicon-log-out"></span>Sign out</a></div>
 <br>
         <br>
   <div class="row">
     <div class="col-md-2">
+
 
 <div id="refresh">
 <script> jQuery(document).ready(function (){jQuery("#refresh").load('{% url "adminUser:alertTab" %}');})
@@ -60,8 +62,18 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
         </div>
 
     </div>
+
     <div class="col-md-10">
-      <div class="input-group pull-right">
+    <div class="col-sm-offset-5">
+    <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#staff">Staff</a></li>
+  <li><a data-toggle="tab" href="#projects">Projects</a></li>
+</ul>
+    </div>
+    <div class="tab-content">
+        <div id="staff" class="tab-pane fade in active">
+        <br>
+             <div class="input-group pull-right">
            <span class="input-group-addon">
         <i class="glyphicon glyphicon-search"></i>
     </span>
@@ -69,11 +81,11 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 </div>
 <span class="counter pull-right"></span>
 
-    {% csrf_token %}
+
       <table class="table table-responsive table-bordered table-scrollx listTable results" id="list">
         <thead>
           <tr>
-            
+
             <th>Staff ID</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -99,7 +111,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
-            <td><input type="checkbox" name="option{{ staff.staffID }}" value="{{ staff.staffID }}" id="{{ forloop.counter }}"></td>
+            <td> <a href="{% url 'adminUser:report' staff.staffID %}"><img src={% static 'img/pdf.png' %} alt="pdf"></a></td>
             </tr>
 
 
@@ -107,59 +119,60 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
         </tbody>
       </table>
+</div>
 
-<br>
-    <div id="checkbox_list">
-        <button onclick="opentabs('checkbox_list')" class="btn btn-primary btn-md pull-right">Open Profile(s)</button>
-    </div>
-    <script>
-      function check() {
-
-
-
-                    for (var i = 1; i <= {{ skillset.count }}; i++) {
-                              var checkbox = document.getElementById("selectskill" + i); // get element
-                        if(checkbox.checked){
-                               document.getElementById("inputhours"+i).required = true;
-                                document.getElementById("submitskill").disabled = false;
-                                document.getElementById("inputhours"+i).disabled = false;
-    }
-                    else{
-                            document.getElementById("inputhours"+i).required = false;
-                            document.getElementById("inputhours"+i).disabled = true;
-                             document.getElementById("inputhours"+i).value = "";
-
-                        }
-                        var checkinputs = document.querySelectorAll('input[type=checkbox]');
-
-                    }
-                    var textinputs = document.querySelectorAll('input[type=checkbox]');
-                    var empty = [].filter.call( textinputs, function( check ) {
-                                        return !check.checked
-                        });
-
-                        if (textinputs.length == empty.length) {
-                                            document.getElementById("submitskill").disabled = true;
-}
-}
-
-            setInterval(check, 1);
-
-        </script>
-
+        <div id="projects" class="tab-pane fade">
         <br>
-        <br>
-      <br>
+             <div class="input-group pull-right">
+           <span class="input-group-addon">
+        <i class="glyphicon glyphicon-search"></i>
+    </span>
+    <input type="text" class="search form-control" placeholder="Search">
+</div>
+<span class="counter pull-right"></span>
+      <table class="table table-responsive table-bordered listTable table-scrollx results">
+        <thead>
+          <tr>
 
-      <grammarly>
-        <div class="_9b5ef6-textarea_btn _9b5ef6-not_focused">
-          <div class="_9b5ef6-transform_wrap">
-            <div class="_9b5ef6-status">
+            <th>Project ID</th>
+            <th>Project Name</th>
+              <th>Project Manager</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Budget</th>
 
-            </div>
-          </div>
+          </tr>
+        <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr>
+        </thead>
+        <tbody>
+        {% for projects in projs %}
+            <tr>
+                <td><a href="{% url 'adminUser:projectprofile' projects.projectID %}">{{ projects.projectID}}</a></td>
+            <td>{{ projects.projectName}}</td>
+                <td><a href="{% url 'adminUser:staffprofile' projects.projectManager.staffID %}">{{ projects.projectManager.user.first_name}} {{ projects.projectManager.user.last_name }}</a></td>
+            <td>{{ projects.startDate}}</td>
+            <td>{{ projects.endDate}}</td>
+            <td>{{ projects.location.country}}</td>
+            <td>{{ projects.status}}</td>
+            <td>{{ projects.budget}} AED</td>
+
+            <td><a href="{% url 'adminUser:report' projects.projectID %}"><img src={% static 'img/pdf.png' %} alt="pdf"></a></td>
+            </tr>
+
+
+        {% endfor %}
+        </tbody>
+      </table>
         </div>
-      </grammarly>
+</div>
+        <br>
+        <br>
+
+
 
     </div>
 
@@ -208,6 +221,6 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
 </div>
 
-    </div>
+
 </body>
 </html>

@@ -99,6 +99,9 @@ class staffWithProjects(models.Model):
         ('Not Working', 'Not Working'),
     )
     status = models.CharField(max_length=30, choices=STATUS,blank=True,null=True)
+    startDate = models.DateField(blank=True,null=True)
+    endDate = models.DateField(blank=True,null=True)
+
 
 
 
@@ -123,8 +126,8 @@ class projectsWithSkills(models.Model):
     projectID = models.ForeignKey(projects)
     skillID = models.ForeignKey(skills)
     hoursRequired = models.IntegerField()
-    startDate = models.DateField(default=datetime.date.today())
-    endDate = models.DateField(default=datetime.date.today())
+    startDate = models.DateField()
+    endDate = models.DateField()
 
     def __str__(self):
         return str(self.hoursRequired)

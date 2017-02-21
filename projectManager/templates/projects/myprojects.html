@@ -90,15 +90,15 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
         <tbody>
         {% for projects in list %}
             <tr>
-                <td><a href="{% url 'projectManager:projectprofile' projects.projectID %}">{{ projects.projectID}}</a></td>
-            <td>{{ projects.projectName}}</td>
-                <td><a href="{% url 'projectManager:staffprofile' projects.projectManager.staffID %}">{{ projects.projectManager.user.first_name}} {{ projects.projectManager.user.last_name }}</a></td>
-            <td>{{ projects.description}}</td>
-            <td>{{ projects.startDate}}</td>
-            <td>{{ projects.endDate}}</td>
-            <td>{{ projects.location.country}}</td>
-            <td>{{ projects.status}}</td>
-            <td><input type="checkbox" name="selectProject" value="{{ projects.projectID }}"></td>
+                <td><a href="{% url 'projectManager:projectprofile' projects.projects_ID.projectID %}">{{ projects.projects_ID.projectID}}</a></td>
+            <td>{{ projects.projects_ID.projectName}}</td>
+                <td><a href="{% url 'projectManager:staffprofile' projects.projects_ID.projectManager.staffID %}">{{ projects.projects_ID.projectManager.user.first_name}} {{ projects.projects_ID.projectManager.user.last_name }}</a></td>
+            <td>{{ projects.projects_ID.description}}</td>
+            <td>{{ projects.projects_ID.startDate}}</td>
+            <td>{{ projects.projects_ID.endDate}}</td>
+            <td>{{ projects.projects_ID.location.country}}</td>
+            <td>{{ projects.projects_ID.status}}</td>
+            <td><input type="checkbox" name="selectProject" value="{{ projects.projects_ID.projectID }}"></td>
             </tr>
 
 

@@ -92,19 +92,19 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
             <tr>
                 <td><form action="{% url 'employee:myprojects' %}" method="post">
                     {% csrf_token %}
-  <button type="submit" name="project"  value="{{ projects.projectID}}" class="btn-link">{{ projects.projectID}}</button>
+  <button type="submit" name="project"  value="{{ projects.projects_ID.projectID}}" class="btn-link">{{ projects.projects_ID.projectID}}</button>
             </form></td>
-            <td>{{ projects.projectName}}</td>
+            <td>{{ projects.projects_ID.projectName}}</td>
                  <td><form action="{% url 'employee:myprojects' %}" method="post">
                      {% csrf_token %}
-  <button type="submit" name="staff" value="{{ projects.projectManager.staffID}}" class="btn-link">{{ projects.projectManager.user.first_name}} {{ projects.projectManager.user.last_name }}</button>
+  <button type="submit" name="staff" value="{{ projects.projects_ID.projectManager.staffID}}" class="btn-link">{{ projects.projects_ID.projectManager.user.first_name}} {{ projects.projects_ID.projectManager.user.last_name }}</button>
             </form></td>
-            <td>{{ projects.description}}</td>
+            <td>{{ projects.projects_ID.description}}</td>
             <td>{{ projects.startDate}}</td>
             <td>{{ projects.endDate}}</td>
-            <td>{{ projects.location.country}}</td>
-            <td>{{ projects.status}}</td>
-            <td><input type="checkbox" name="selectProject" value="{{ projects.projectID }}"></td>
+            <td>{{ projects.projects_ID.location.country}}</td>
+            <td>{{ projects.projects_ID.status}}</td>
+            <td><input type="checkbox" name="selectProject" value="{{ projects.projects_ID.projectID }}"></td>
             </tr>
 
 

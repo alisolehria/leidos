@@ -9,6 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
       {{ form.media }}
 
@@ -93,6 +98,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
                   <th class="success">Skill ID</th>
                   <th class="success">Skill Name</th>
                   <th class="success">Hours Required</th>
+                  <th class="success">Start Date</th>
+                  <th class="success">End Date</th>
               </tr>
                 <tr class="warning no-result">
       <td colspan="4" class="warning"><i class="fa fa-warning"></i> No result</td>
@@ -104,6 +111,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
             {% csrf_token %}
 
+
+
             {% for skills in skillset%}
 
             <tr>
@@ -112,6 +121,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
             <td class = "danger">{{ skills.skillName }}</td>
             <td class = "danger col-xs-2"><input type="number" class="form-control" name="hours" min="1" id="inputhours{{ forloop.counter }}" disabled></td>
+                <td class="danger col-xs-2"><input type="text" name="sdate" id="datepicker{{ forloop.counter }}" disabled></td>
+            <td class="danger col-xs-2"><input type="text" name="edate" id="datepicker1{{ forloop.counter }}" disabled></td>
              <td class = "danger"><input type="checkbox" value="{{ skills.skillID }}" name="skillselec" id="selectskill{{ forloop.counter }}"></td>
 
 
@@ -122,23 +133,46 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
         </tbody>
       </table>
+
         <script>
             function check() {
 
 
 
                     for (var i = 1; i <= {{ skillset.count }}; i++) {
+                          $( function() {
+    $( "#datepicker"+i ).datepicker({
+    dateFormat: "yy-mm-dd",
+        minDate: "{{ startDate }}",
+        maxDate: "{{ endDate }}"
+    });
+     $( "#datepicker1"+i ).datepicker({
+dateFormat: "yy-mm-dd",
+          minDate: "{{ startDate }}",
+         maxDate: "{{ endDate }}"
+     });
+  } );
                               var checkbox = document.getElementById("selectskill" + i); // get element
                         if(checkbox.checked){
                                document.getElementById("inputhours"+i).required = true;
+                               document.getElementById("datepicker"+i).required = true;
+                               document.getElementById("datepicker1"+i).required = true;
                                 document.getElementById("submitskill").disabled = false;
                                 document.getElementById("saveskill").disabled = false;
                                 document.getElementById("inputhours"+i).disabled = false;
+                                  document.getElementById("datepicker"+i).disabled = false;
+                               document.getElementById("datepicker1"+i).disabled = false;
     }
                     else{
                             document.getElementById("inputhours"+i).required = false;
                             document.getElementById("inputhours"+i).disabled = true;
                              document.getElementById("inputhours"+i).value = "";
+                             document.getElementById("datepicker"+i).required = false;
+                            document.getElementById("datepicker"+i).disabled = true;
+                             document.getElementById("datepicker"+i).value = "";
+                             document.getElementById("datepicker1"+i).required = false;
+                            document.getElementById("datepicker1"+i).disabled = true;
+                             document.getElementById("datepicker1"+i).value = "";
 
                         }
                         var checkinputs = document.querySelectorAll('input[type=checkbox]');

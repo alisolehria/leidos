@@ -33,9 +33,10 @@ def profile_View(request):
 
     info = profile.objects.get(user=username)
 
-    ongoing = info.projects_set.filter(status="On Going").count()
-    upcoming = info.projects_set.filter(status="Approved")
-    completed = info.projects_set.filter(status="Completed").count()
+    time = datetime.date.today()
+    ongoing = info.staffwithprojects_set.filter(Q(startDate__lte=time) & Q(endDate__gte=time) & Q(status="Working")).count()
+    upcoming = info.staffwithprojects_set.filter(Q(startDate__gt=time) & Q(status="Working")).count()
+    completed = info.staffwithprojects_set.filter(Q(endDate__lt=time) & Q(status="Working")).count()
 
     # this part takes skills and skill hours available and puts them in a dict
     skillset = []
@@ -66,7 +67,7 @@ def myprojects_View(request):
     #completed projects of specific user
     info = profile.objects.get(staffID=query.staffID)
     title = "My Projects"
-    list = info.projects_set.all()
+    list = info.staffwithprojects_set.exclude(status="Not Working")
     if request.POST:
         if 'project' in request.POST:
             project = request.POST.getlist('project')
@@ -104,10 +105,10 @@ def upcomingprojectsget_View(request):
     if query.designation != "Employee":  # check if admin
         return HttpResponse(status=201)
     #upcoming projects of specific user
-
+    time = datetime.date.today()
     title = "Upcoming Projects of " + query.user.first_name + " " + query.user.last_name
-    list = query.projects_set.filter(status="Approved")
-    return render(request,'eprojects/projectlist.html',{"list":list,"title":title})
+    list = query.staffwithprojects_set.filter(Q(startDate__gt=time) & Q(status="Working"))
+    return render(request,'eprojects/myprojects.html',{"list":list,"title":title})
 
 
 @login_required()
@@ -118,10 +119,10 @@ def currentprojectsget_View(request):
     if query.designation != "Employee":  # check if admin
         return HttpResponse(status=201)
     #get ongoing project of specific user
-
+    time = datetime.date.today()
     title = "On Going Projects of " + query.user.first_name + " " + query.user.last_name
-    list =  query.projects_set.filter(status="On Going")
-    return render(request,'eprojects/projectlist.html',{"list":list,"title":title})
+    list =  query.staffwithprojects_set.filter(Q(startDate__lte=time) & Q(endDate__gte=time) & Q(status="Working"))
+    return render(request,'eprojects/myprojects.html',{"list":list,"title":title})
 
 @login_required()
 def completedprojectsget_View(request):
@@ -131,10 +132,10 @@ def completedprojectsget_View(request):
     if query.designation != "Employee":  # check if admin
         return HttpResponse(status=201)
     #completed projects of specific user
-
+    time = datetime.date.today()
     title = "Completed Projects of " + query.user.first_name + " " + query.user.last_name
-    list = query.projects_set.filter(status="Completed")
-    return render(request,'eprojects/projectlist.html',{"list":list,"title":title})
+    list = query.staffwithprojects_set.filter(Q(endDate__lt=time) & Q(status="Working"))
+    return render(request,'eprojects/myprojects.html',{"list":list,"title":title})
 
 @login_required()
 def projectprofile_View(request, project_id=None):

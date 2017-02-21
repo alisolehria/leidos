@@ -71,16 +71,18 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
     </div>
     <div class="col-md-10">
+    <h4>Please first select the time you want to add the staff member for in the project. Each skill corresponds to its start date to end date.</h4>
+    <h4>If you dont select any time, the staff will be added for complete length of the project.</h4>
+     <br>
       <div class="input-group pull-right">
            <span class="input-group-addon">
         <i class="glyphicon glyphicon-search"></i>
     </span>
     <input type="text" class="search form-control" placeholder="Search">
 </div>
-    <form action="{% url 'adminUser:addpstaff' title.projectID %}" method="post" name="staff">
-    {% csrf_token %}
+<div class="message"></div>
 <span class="counter pull-right"></span>
-      <table class="table table-responsive table-bordered listTable results">
+      <table class="table table-responsive table-bordered table-scrollx listTable results">
         <thead>
           <tr>
 
@@ -88,9 +90,11 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <th>First Name</th>
             <th>Last Name</th>
               <th>DOB</th>
+              <th>Email</th>
               <th>Designation</th>
               <th>Work Status</th>
               <th>Skill Level</th>
+              <th>Time</th>
 
           </tr>
         <tr class="warning no-result">
@@ -99,15 +103,33 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
         </thead>
         <tbody>
         {% for staff in list %}
-            <tr>
+            <tr id="row{{ forloop.counter }}">
                 <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>
             <td>{{ staff.dateOfBirth }}</td>
+                <td>{{ staff.user.email }}</td>
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
-            <td><input type="checkbox" name="selectStaff" value="{{ staff.staffID }}"></td>
+      <td>
+                   <button class="btn btn-primary btn-md" id="show{{ forloop.counter }}">Select</button>
+
+                </td>
+                <tr class="skillsrow" id="skillrow{{ forloop.counter }}" hidden>
+                  <form action="{% url 'adminUser:addpstaff' title.projectID %}" method="post" name="staff">
+    {% csrf_token %}
+                   <input type="text" value="{{ staff.staffID}}" name="selectStaff" hidden>
+                {% for sk in skill %}
+                    <td><input type="checkbox" name ="selectDate" value="{{ sk.skillID.skillID }}"> {{ sk.skillID.skillName }}</td>
+
+                    {% endfor %}
+
+                    <td><input class="btn btn-success btn-md" type="submit" value="Add Staff"  name="add"/></td>
+                   </form>
+                </tr>
+
+
             </tr>
 
 
@@ -116,31 +138,24 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
         </tbody>
       </table>
 <br>
-    <div class="pull-right">
-         <input class="btn btn-danger btn-md" type="submit" value="Remove Staff" id="removestaff" disabled/>
-        <input class="btn btn-success btn-md" type="submit" value="Add Staff" id="submitstaff" name="add" disabled/>
+
 
     <SCRIPT>
 
-var limit = 3;
-$('input[type=checkbox]').on('change', function (e) {
-        document.getElementById("submitstaff").disabled = false;
-    if ($('input[type=checkbox]:checked').length > {{ number}}) {
-        $(this).prop('checked', false);
-        alert("Total Number of staff cannot exceed {{ title.numberOfStaff }}");
-    }
-    if ($('input[type=checkbox]:checked').length == 0) {
-          document.getElementById("submitstaff").disabled = true;
-    }
-});
+        $(".skillsrow").each(function(index){
+           $('#show'+index).click(function () {
+                $('#skillrow'+index).toggle()
+            });})
+
+
 </SCRIPT>
 
-    </div>
+
 
         </a>
         <br>
         <br>
-      </form>
+
       <grammarly>
         <div class="_9b5ef6-textarea_btn _9b5ef6-not_focused">
           <div class="_9b5ef6-transform_wrap">
