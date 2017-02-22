@@ -137,8 +137,11 @@ def staffprofile_View(request, staff_id):
         projs = info.staffwithprojects_set.all()
         for project in projs:
             project.status="Not Working"
+            project.save()
         info.workStatus="Not Employeed"
-        info.user.is_active=False
+        info.user.is_active=0
+        info.save()
+        info.user.save()
         messages.success(request, "Employee Blocked")
 
     return render(request,'staff/staffprofile.html',{"info":info,"title":title,"ongoing":ongoing,"upcoming":upcoming,"completed":completed,"skillwithhrs":skillwithhrs})
@@ -354,7 +357,7 @@ def addskill_View(request, staff_id):
         count = len(skill)
         x = 0
         while x < count:
-            staffWithSkills.objects.create(staffID_id=staff_id,skillID_id=skill[x],hoursAvailable=hrs[x])
+            staffWithSkills.objects.create(staffID_id=staff_id,skillID_id=skill[x],hoursAvailable=hrs[x],hoursLeft=hrs[x])
             x = x + 1
         alert = alerts.objects.create(fromStaff=query, alertType='Edit Staff', alertDate=datetime.date.today(),
                                       info="Skill added to your profile")

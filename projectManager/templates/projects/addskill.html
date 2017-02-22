@@ -111,11 +111,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
             <tr>
 
-            <td class="danger">{{ skills.skillID}}</td>
+
+           <td class="danger">{{ skills.skillID}}</td>
 
             <td class = "danger">{{ skills.skillName }}</td>
-                <td class = "danger col-xs-2"><input type="number" class="form-control" name="hours" min="1" id="inputhours{{ forloop.counter }}" disabled></td>
-                 <td class="danger col-xs-2"><input type="text" name="sdate" id="datepicker{{ forloop.counter }}" disabled></td>
+            <td class = "danger col-xs-2"><input type="number" class="form-control" name="hours" min="1" id="inputhours{{ forloop.counter }}" disabled></td>
+                <td class="danger col-xs-2"><input type="text" name="sdate" id="datepicker{{ forloop.counter }}" disabled></td>
             <td class="danger col-xs-2"><input type="text" name="edate" id="datepicker1{{ forloop.counter }}" disabled></td>
              <td class = "danger"><input type="checkbox" value="{{ skills.skillID }}" name="skillselec" id="selectskill{{ forloop.counter }}"></td>
 
@@ -132,15 +133,15 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
 
 
-                    for (var i = 1; i <= {{ skillset.count }}; i++) {
+                     for (var i = 1; i <= {{ skillset.count }}; i++) {
                           $( function() {
     $( "#datepicker"+i ).datepicker({
-          dateFormat: "yy-mm-dd",
+    dateFormat: "yy-mm-dd",
         minDate: "{{ startDate }}",
         maxDate: "{{ endDate }}"
     });
      $( "#datepicker1"+i ).datepicker({
-           dateFormat: "yy-mm-dd",
+dateFormat: "yy-mm-dd",
           minDate: "{{ startDate }}",
          maxDate: "{{ endDate }}"
      });

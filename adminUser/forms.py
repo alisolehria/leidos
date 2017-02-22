@@ -8,7 +8,7 @@ from datetimewidget.widgets import DateTimeWidget
 from django_countries.fields import LazyTypedChoiceField, countries
 import datetime
 from django.contrib.auth.models import User
-
+from django.core.validators import RegexValidator
 
 
 class UserForm(forms.ModelForm):
@@ -57,8 +57,9 @@ class UserProfileForm(forms.ModelForm):
     dateOfBirth = forms.DateField(label="Date of Birth:",widget=DateTimeWidget(options=dateTimeOptions,bootstrap_version=3))
     nationality = LazyTypedChoiceField(choices=countries,label="Nationality:")
     preferredLocation= forms.ModelChoiceField(queryset=location.objects.all(),label="Location: ")
-    contact = forms.RegexField(regex=r'^d{12,12}$',
-                                error_message = ("Phone number must be entered in the format: '999999999999'. 12 digits allowed."),label="Phone Number: ")
+    phone_regex = RegexValidator(regex=r'^\d{12,12}$',
+                                 message="Phone number must be entered in the format: '971501234567'. Only 12 digits allowed.")
+    contact = forms.CharField(validators=[phone_regex],label="Phone Number: ")
     gender = forms.ChoiceField(label="Gender:",choices=profile.GENDER)
     designation = forms.ChoiceField(label="Designation:",choices=profile.DESIGNATIONS)
 
