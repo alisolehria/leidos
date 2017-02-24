@@ -211,3 +211,12 @@ class staffAlerts(models.Model):
     )
     seenDate = models.DateField(blank=True, null=True)
     status = models.CharField(max_length=30, choices=STATUS,default='Unseen')
+
+class staffProjectSkill(models.Model):
+    class Meta:
+        db_table = "staffProjectSkill"
+
+    projectID = models.ForeignKey(projects)
+    staffID = models.ForeignKey(profile)
+    skillID = models.ForeignKey(skills)
+    hours = models.IntegerField()

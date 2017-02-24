@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts, staffWithProjects
+from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts, staffWithProjects, staffProjectSkill
 from .models import location
 from django.http import HttpResponse
 import datetime
@@ -13,7 +13,8 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import os.path
-import json
+from django.core.exceptions import ObjectDoesNotExist
+
 
 
 @login_required
@@ -260,8 +261,23 @@ def projectprofile_View(request, project_id):
         elif "remove" in request.POST:
             id = request.POST.getlist("remove")
             proj = staffWithProjects.objects.filter(profile_ID=id[0])
+            st = profile.objects.get(staffID=id[0])
             proj = proj.filter(projects_ID=project_id)
             proj.update(status="Not Working")
+            try:
+                skill = staffProjectSkill.objects.filter(Q(projectID_id=info.projectID)&Q(staffID_id=st))
+                for sk in skill:
+                    pskill = info.projectswithskills_set.get(skillID=sk.skillID)
+                    final = pskill.hoursRequired + sk.hours
+                    pskill.hoursRequired=final
+                    sskill = st.staffwithskills_set.get(skillID=sk.skillID)
+                    final = sskill.hoursLeft + sk.hours
+                    sskill.hoursLeft=final
+                    pskill.save()
+                    sskill.save()
+            except ObjectDoesNotExist:
+                messages.success(request, "No effect to one or many skills")
+
             alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
                                           project=info,info="removed from")
             staffAlerts.objects.create(alertID=alert, staffID=profile.objects.get(staffID=id[0]), status="Unseen",
@@ -463,6 +479,7 @@ def addpstaff_View(request, project_id):
     if request.POST and 'add' in request.POST:
         staff = request.POST.getlist('selectStaff')
         date = request.POST.getlist('selectDate')
+        st = profile.objects.get(staffID=staff[0])
         if date == []:
             staffWithProjects.objects.create(projects_ID=title, profile_ID=profile.objects.get(staffID=staff[0]),
                                              status="Working",startDate=title.startDate,endDate=title.endDate)
@@ -473,6 +490,44 @@ def addpstaff_View(request, project_id):
                 dates = title.projectswithskills_set.get(skillID=sk)
                 sDate.append(dates.startDate)
                 eDate.append(dates.endDate)
+                months = dates.endDate.month - dates.startDate.month
+                if months == 0:
+                    months =1
+                try:
+                    stSkill = st.staffwithskills_set.get(skillID=sk)
+                    initial = stSkill.hoursLeft
+                    if dates.hoursRequired > 0 and stSkill.hoursLeft > 0:
+                        if months == 1:
+                            stSkill.hoursLeft = stSkill.hoursLeft - dates.hoursRequired
+                            if stSkill.hoursLeft < 0:
+                                dates.hoursRequired = abs(stSkill.hoursLeft)
+                                stSkill.hoursLeft = 0
+                            else:
+                                dates.hoursRequired = 0
+                        else:
+                            if stSkill.hoursLeft < dates.hoursRequired:
+                                months = months -1
+                                hrsAvail = (stSkill.hoursAvailable * months) + stSkill.hoursLeft
+                                if hrsAvail >= dates.hoursRequired:
+                                    hrsReq = dates.hoursRequired
+                                    dates.hoursRequired = dates.hoursRequired - stSkill.hoursLeft
+                                    stSkill.hoursLeft = stSkill.hoursLeft - hrsReq
+                                else:
+                                    dates.hoursRequired = dates.hoursRequired - stSkill.hoursLeft
+                                    stSkill.hoursLeft = stSkill.hoursLeft - hrsAvail
+                                dates.hoursRequired = dates.hoursRequired - (stSkill.hoursAvailable * months)
+                                if dates.hoursRequired < 0:
+                                    dates.hoursRequired = 0
+                            else:
+                                stSkill.hoursLeft = stSkill.hoursLeft - dates.hoursRequired
+                                dates.hoursRequired = 0
+                        final = initial - stSkill.hoursLeft
+                        staffProjectSkill.objects.create(projectID=title,staffID=st,skillID=skills.objects.get(skillID=sk),hours=final)
+                        stSkill.save()
+                        dates.save()
+                except ObjectDoesNotExist:
+                    messages.success(request, "Added but the staff member doesnt have one or many skills selected!")
+
             startDate = min(sDate)
             endDate = max(eDate)
             staffWithProjects.objects.create(projects_ID=title, profile_ID=profile.objects.get(staffID=staff[0]),
@@ -484,6 +539,7 @@ def addpstaff_View(request, project_id):
         alert = alerts.objects.create(fromStaff=query, alertType='Edit Project', alertDate=datetime.date.today(),
                                       project=title, info="Added Staff to Project")
         staffAlerts.objects.create(alertID=alert, staffID=title.projectManager, status="Unseen")
+        return projectprofile_View(request,title.projectID)
 
     return render(request, 'project/addstaff.html',{"title":title,"list":list,"number":number,"skill":skill})
 

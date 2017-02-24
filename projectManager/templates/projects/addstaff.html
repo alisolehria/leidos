@@ -105,7 +105,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
         <tbody>
         {% for staff in list %}
             <tr>
-                <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
+                <td><a href="{% url 'projectManager:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>
             <td>{{ staff.dateOfBirth }}</td>
