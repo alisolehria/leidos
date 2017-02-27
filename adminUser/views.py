@@ -471,7 +471,7 @@ def addpstaff_View(request, project_id):
 
     title = projects.objects.get(projectID=project_id)
     # exclude project managers and admins also staff which have holidays during the project
-    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin")
+    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin").exclude(workStatus="Not Employeed")
 
     number = title.numberOfStaff - profile.objects.filter(projects=project_id).count()
     skill = title.projectswithskills_set.all()
@@ -884,7 +884,7 @@ def report_View(request,project_id):
     return response
 
 @login_required
-def matchmaking_View(request):
+def matchmakingSelect_View(request):
 
     username = request.user
     query = profile.objects.get(user = username) #get username
@@ -893,28 +893,68 @@ def matchmaking_View(request):
         return HttpResponse(status=201)
 
     title = "Matchmaking"
+    allProjects = projects.objects.all()
 
-    project = projects.objects.get(projectID=14)
+    return render(request, 'project/matchmaking.html', {"title": title,"allProjects":allProjects})
+
+
+@login_required
+def matchmaking_View(request,project_id):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Admin":  # check if admin
+        return HttpResponse(status=201)
+
+    title = "Matchmaking"
+    allProjects = projects.objects.all()
+    project = projects.objects.get(projectID=project_id)
     # exlude PMS and Admins
     staffList = profile.objects.filter(Q(designation="Employee") | Q(designation="Contractor"))
     # exclude already in project
     staffList = staffList.exclude(projects__projectID__exact=project.projectID)
     # holidays during the project
-    staffList = staffList.exclude(Q(holidays__startDate__gte=project.startDate)&Q(holidays__endDate__lte=project.endDate))
     months = project.endDate.month - project.startDate.month
     if(months<0):
         months = months + 12
+    if months == 0:
+        months =1
+    full = []
+    fsome = []
+    partial = []
+    some = []
     #match skills
+    fullCount = 0
     count = 0
+
     for staff in staffList:
-        for skill in staff.skills_set.all():
-            for projSkill in project.skills_set.all():
-                if skill == projSkill:
-                    count = count +1
-                    print(count)
-        if count is 0:
-            staffList = staffList.exclude(staffID=staff.staffID)
+        totalSkills = project.projectswithskills_set.count()
+        for skill in staff.staffwithskills_set.all():
+            for projSkill in project.projectswithskills_set.all():
+                months = projSkill.endDate.month - projSkill.startDate.month
+                if months == 0:
+                    months = 1
+                pTime = months * projSkill.hoursRequired
+                if skill.skillID == projSkill.skillID:
+                    months = months -1
+                    sTime = skill.hoursLeft + (skill.hoursAvailable * months)
+                    if sTime >= pTime: #check time
+                        fullCount = fullCount + 1
+                        count = count +1
+                    else:
+                        count = count + 1
+        if totalSkills is not 0:
+            if fullCount is totalSkills:
+                full.append(staff)
+            elif count is totalSkills and fullCount is not totalSkills and fullCount is not 0:
+                fsome.append(staff)
+            elif count is totalSkills and fullCount is 0:
+                partial.append(staff)
+            elif count is not 0:
+                some.append(staff)
         count = 0
+        fullCount = 0
 
 
-    return render(request,'project/matchmaking.html',{"title":title,"staffList":staffList})
+    return render(request,'project/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project})

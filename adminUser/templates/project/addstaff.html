@@ -143,8 +143,8 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
     <SCRIPT>
 
         $(".skillsrow").each(function(index){
-           $('#show'+index).click(function () {
-                $('#skillrow'+index).toggle()
+           $('#show'+(index+1)).click(function () {
+                $('#skillrow'+(index+1)).toggle()
             });})
 
 

@@ -64,18 +64,223 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
 
     <div class="col-md-10">
+    <label for="sel">Select a project from below and the table will display the most relevant employee for the project:</label>
+    <br>
+     <div class="col-lg-offset-3 col-md-6">
 
-        {% for staff in staffList %}
+  <select class="form-control" id="sel">
+    {% for proj in allProjects %}
 
-           <a href="{% url "adminUser:staffprofile" staff.staffID %}">{{ staff.user.first_name }} {{ staff.user.last_name }}</a>
-            <br>
+       <option value="{{ proj.projectID }}">{{ proj.projectID }}: {{ proj.projectName }}</option>
+    {% endfor %}
 
+</select>
+     <br>
+     <div class="col-md-offset-5">
+
+      <button class="btn btn-primary btn-md" id="match" type="button">
+          <span class="glyphicon glyphicon-refresh"></span> Match
+      </button>
+
+</div>
+     <script>
+        $(function() {
+
+
+    $('#match').on('click', function() {
+        var select_value = $('#sel').val();
+        location.href="admin/matchmaking/"+select_value;
+
+    });
+});
+     </script>
+     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% if project != Null %}
+        <h3>Project: <a href="{% url "adminUser:projectprofile" project.projectID %}">{{ project.projectName }}</a></h3>
+
+        <br>
+
+        <h4>Below is the list of staff where each staff matches all the required skills and has hours available for complete skill.</h4>
+    <br>
+       <table class="table table-responsive table-bordered table-scrollx listTable results">
+        <thead>
+          <tr>
+
+            <th>Staff ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+              <th>DOB</th>
+              <th>Email</th>
+              <th>Designation</th>
+              <th>Work Status</th>
+              <th>Skill Level</th>
+
+
+          </tr>
+        </thead>
+
+     <tbody>
+
+        {% for staff in full %}
+            <tr>
+             <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
+            <td>{{ staff.user.first_name }}</td>
+            <td>{{ staff.user.last_name }}</td>
+            <td>{{ staff.dateOfBirth }}</td>
+                <td>{{ staff.user.email }}</td>
+            <td>{{ staff.designation }}</td>
+            <td>{{ staff.workStatus }}</td>
+            <td>{{ staff.skillLevel }}</td>
+
+</tr>
         {% endfor %}
+         </tbody>
+      </table>
         <br>
         <br>
 
+     <h4>Below is the list of staff where each staff matches all the required skills and has complete hours available for only some skills.</h4>
+
+     <table class="table table-responsive table-bordered table-scrollx listTable results">
+        <thead>
+          <tr>
+
+            <th>Staff ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+              <th>DOB</th>
+              <th>Email</th>
+              <th>Designation</th>
+              <th>Work Status</th>
+              <th>Skill Level</th>
 
 
+          </tr>
+        </thead>
+
+     <tbody>
+        {% for staff in fsome %}
+    <tr>
+               <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
+            <td>{{ staff.user.first_name }}</td>
+            <td>{{ staff.user.last_name }}</td>
+            <td>{{ staff.dateOfBirth }}</td>
+                <td>{{ staff.user.email }}</td>
+            <td>{{ staff.designation }}</td>
+            <td>{{ staff.workStatus }}</td>
+            <td>{{ staff.skillLevel }}</td>
+            <br>
+</tr>
+        {% endfor %}
+        </tbody>
+      </table>
+        <br>
+        <br>
+ <h4>Below is the list of staff where each staff matches all the required skills but is not available for any of the skill for full time.</h4>
+
+         <table class="table table-responsive table-bordered table-scrollx listTable results">
+        <thead>
+          <tr>
+
+            <th>Staff ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+              <th>DOB</th>
+              <th>Email</th>
+              <th>Designation</th>
+              <th>Work Status</th>
+              <th>Skill Level</th>
+
+
+          </tr>
+        </thead>
+
+     <tbody>
+      <br>
+        {% for staff in partial %}
+    <tr>
+               <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
+            <td>{{ staff.user.first_name }}</td>
+            <td>{{ staff.user.last_name }}</td>
+            <td>{{ staff.dateOfBirth }}</td>
+                <td>{{ staff.user.email }}</td>
+            <td>{{ staff.designation }}</td>
+            <td>{{ staff.workStatus }}</td>
+            <td>{{ staff.skillLevel }}</td>
+            <br>
+</tr>
+        {% endfor %}
+      </tbody>
+      </table>
+        <br>
+    <br>
+ <h4>Below is the list of staff where each staff matches only some skills.</h4>
+      <br>
+       <table class="table table-responsive table-bordered table-scrollx listTable results">
+        <thead>
+          <tr>
+
+            <th>Staff ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+              <th>DOB</th>
+              <th>Email</th>
+              <th>Designation</th>
+              <th>Work Status</th>
+              <th>Skill Level</th>
+              <th>Matched Skills</th>
+
+
+          </tr>
+        </thead>
+
+     <tbody>
+
+        {% for staff in some %}
+    <tr>
+              <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
+            <td>{{ staff.user.first_name }}</td>
+            <td>{{ staff.user.last_name }}</td>
+            <td>{{ staff.dateOfBirth }}</td>
+                <td>{{ staff.user.email }}</td>
+            <td>{{ staff.designation }}</td>
+            <td>{{ staff.workStatus }}</td>
+            <td>{{ staff.skillLevel }}</td>
+            <td>
+            <button class="btn btn-primary btn-md" id="show{{ forloop.counter }}">Show</button>
+            </td>
+            <tr class="skillsrow" id="skillrow{{ forloop.counter }}" hidden>
+            {% for sskill in staff.staffwithskills_set.all %}
+                {% for pskill in project.projectswithskills_set.all %}
+                    {% if sskill.skillID == pskill.skillID %}
+                            <td>{{ sskill.skillID.skillName }}</td>
+
+                    {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </tr>
+            </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+        <br>
+    <br>
+{% endif %}
+
+
+<SCRIPT>
+
+        $(".skillsrow").each(function(index){
+           $('#show'+(index+1)).click(function () {
+                $('#skillrow'+(index+1)).toggle()
+            });})
+
+
+</SCRIPT>
 
 
   </div>

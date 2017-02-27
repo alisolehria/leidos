@@ -28,6 +28,7 @@ urlpatterns = [
         url(r'alerttab/$', views.alerttab_View, name='alertTab'),
         url(r'requests/$', views.requests_View, name='requests'),
         url(r'reports/$', views.allreports_View, name='allreports'),
-        url(r'matchmaking/$', views.matchmaking_View, name='matchmaking'),
+        url(r'matchmaking/$', views.matchmakingSelect_View, name='matchmaking'),
         url(r'report/(?P<project_id>[0-9]+)/$', views.report_View, name='report'),
+        url(r'matchmaking/(?P<project_id>[0-9]+)/$', views.matchmaking_View, name='matchmakingProject'),
 ]

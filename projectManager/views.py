@@ -372,7 +372,7 @@ def addpstaff_View(request, project_id):
         return HttpResponse(status=201) #check if user is pm of that project
 
     # exclude project managers and admins also staff which have holidays during the project
-    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin")
+    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin").exclude(workStatus="Not Employeed")
 
     number = title.numberOfStaff - profile.objects.filter(projects=project_id).count()
     skill = title.projectswithskills_set.all()
