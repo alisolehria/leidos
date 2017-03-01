@@ -89,7 +89,9 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
     $('#match').on('click', function() {
         var select_value = $('#sel').val();
-        location.href="admin/matchmaking/"+select_value;
+        var url = window.location.origin;
+        url = url + "/admin/matchmaking/" + select_value;
+        window.location.href = url;
 
     });
 });

@@ -141,6 +141,8 @@ class staffWithSkills(models.Model):
     skillID = models.ForeignKey(skills)
     hoursAvailable = models.IntegerField()
     hoursLeft = models.IntegerField()
+    month = models.IntegerField()
+    year = models.IntegerField()
 
 
     def __str__(self):
@@ -220,3 +222,4 @@ class staffProjectSkill(models.Model):
     staffID = models.ForeignKey(profile)
     skillID = models.ForeignKey(skills)
     hours = models.IntegerField()
+    month = models.IntegerField()

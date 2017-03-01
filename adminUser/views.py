@@ -117,21 +117,20 @@ def staffprofile_View(request, staff_id):
     completed = info.staffwithprojects_set.filter(Q(endDate__lt=time) & Q(status="Working")).count()
 
 
-    #this part takes skills and skill hours available and puts them in a dict
-    skillset = []
-    skills = info.skills_set.all()
-    skillset = list(skills)
 
-    skillhrset = []
+    skillids = info.staffwithskills_set.values_list('skillID',flat =True)
+    skillNames=[]
+    skillids = list(set(skillids))
+    for id in skillids:
+        skillNames.append(skills.objects.get(skillID=id))
+
+
     skillhrs = info.staffwithskills_set.all()
-    skillhrset = list(skillhrs)
 
-    skillwithhrs = {}
 
-    i = 0
-    while i < len(skillset):
-        skillwithhrs.update({skillset[i]:skillhrset[i]})
-        i=i+1
+
+
+
 
     if request.POST and "remove" in request.POST:
         id = request.POST.getlist("remove")
@@ -145,7 +144,7 @@ def staffprofile_View(request, staff_id):
         info.user.save()
         messages.success(request, "Employee Blocked")
 
-    return render(request,'staff/staffprofile.html',{"info":info,"title":title,"ongoing":ongoing,"upcoming":upcoming,"completed":completed,"skillwithhrs":skillwithhrs})
+    return render(request,'staff/staffprofile.html',{"info":info,"title":title,"ongoing":ongoing,"upcoming":upcoming,"completed":completed,"skillhrs":skillhrs,"skillNames":skillNames})
 
 @login_required()
 def currentprojectsget_View(request, staff_id):
@@ -270,7 +269,7 @@ def projectprofile_View(request, project_id):
                     pskill = info.projectswithskills_set.get(skillID=sk.skillID)
                     final = pskill.hoursRequired + sk.hours
                     pskill.hoursRequired=final
-                    sskill = st.staffwithskills_set.get(skillID=sk.skillID)
+                    sskill = st.staffwithskills_set.get(Q(skillID=sk.skillID)&Q(month=sk.month))
                     final = sskill.hoursLeft + sk.hours
                     sskill.hoursLeft=final
                     pskill.save()
@@ -371,9 +370,12 @@ def addskill_View(request, staff_id):
         hrs = request.POST.getlist('hours')
         hrs= filter(lambda x: x != "", hrs)
         count = len(skill)
+
         x = 0
+        month = 1
         while x < count:
-            staffWithSkills.objects.create(staffID_id=staff_id,skillID_id=skill[x],hoursAvailable=hrs[x],hoursLeft=hrs[x])
+            for month in range(1,13):
+                staffWithSkills.objects.create(staffID_id=staff_id,skillID_id=skill[x],hoursAvailable=hrs[x],hoursLeft=hrs[x],month=month,year=2017)
             x = x + 1
         alert = alerts.objects.create(fromStaff=query, alertType='Edit Staff', alertDate=datetime.date.today(),
                                       info="Skill added to your profile")
@@ -490,41 +492,44 @@ def addpstaff_View(request, project_id):
                 dates = title.projectswithskills_set.get(skillID=sk)
                 sDate.append(dates.startDate)
                 eDate.append(dates.endDate)
-                months = dates.endDate.month - dates.startDate.month
-                if months == 0:
-                    months =1
+                sMonth = dates.startDate.month
+                eMonth = dates.endDate.month
+
                 try:
-                    stSkill = st.staffwithskills_set.get(skillID=sk)
-                    initial = stSkill.hoursLeft
-                    if dates.hoursRequired > 0 and stSkill.hoursLeft > 0:
-                        if months == 1:
-                            stSkill.hoursLeft = stSkill.hoursLeft - dates.hoursRequired
-                            if stSkill.hoursLeft < 0:
-                                dates.hoursRequired = abs(stSkill.hoursLeft)
-                                stSkill.hoursLeft = 0
-                            else:
+                    if dates.hoursRequired > 0:
+                        stSkill = st.staffwithskills_set.filter(skillID=sk)
+                        if sMonth is eMonth:
+                            hrs = stSkill.get(month=sMonth)
+                            initial = hrs.hoursLeft
+                            if hrs.hoursLeft >= dates.hoursRequired:
+                                hrs.hoursLeft = hrs.hoursLeft - dates.hoursRequired
                                 dates.hoursRequired = 0
+                            else:
+                                dates.hoursRequired = dates.hoursRequired - hrs.hoursLeft
+                                hrs.hoursLeft = 0
+                            final = initial - hrs.hoursLeft
+                            staffProjectSkill.objects.create(projectID=title, staffID=st,
+                                                             skillID=skills.objects.get(skillID=sk), hours=final,month=sMonth)
+                            hrs.save()
+                            dates.save()
                         else:
-                            if stSkill.hoursLeft < dates.hoursRequired:
-                                months = months -1
-                                hrsAvail = (stSkill.hoursAvailable * months) + stSkill.hoursLeft
-                                if hrsAvail >= dates.hoursRequired:
-                                    hrsReq = dates.hoursRequired
-                                    dates.hoursRequired = dates.hoursRequired - stSkill.hoursLeft
-                                    stSkill.hoursLeft = stSkill.hoursLeft - hrsReq
-                                else:
-                                    dates.hoursRequired = dates.hoursRequired - stSkill.hoursLeft
-                                    stSkill.hoursLeft = stSkill.hoursLeft - hrsAvail
-                                dates.hoursRequired = dates.hoursRequired - (stSkill.hoursAvailable * months)
-                                if dates.hoursRequired < 0:
-                                    dates.hoursRequired = 0
-                            else:
-                                stSkill.hoursLeft = stSkill.hoursLeft - dates.hoursRequired
-                                dates.hoursRequired = 0
-                        final = initial - stSkill.hoursLeft
-                        staffProjectSkill.objects.create(projectID=title,staffID=st,skillID=skills.objects.get(skillID=sk),hours=final)
-                        stSkill.save()
-                        dates.save()
+                            for month in range(sMonth,eMonth+1):
+                                if dates.hoursRequired > 0:
+                                    hrs = stSkill.get(month = month)
+                                    initial = hrs.hoursLeft
+                                    if hrs.hoursLeft >= dates.hoursRequired:
+                                        hrs.hoursLeft = hrs.hoursLeft - dates.hoursRequired
+                                        dates.hoursRequired = 0
+                                    else:
+                                        dates.hoursRequired = dates.hoursRequired - hrs.hoursLeft
+                                        hrs.hoursLeft = 0
+                                    final = initial - hrs.hoursLeft
+                                    staffProjectSkill.objects.create(projectID=title, staffID=st,
+                                                                         skillID=skills.objects.get(skillID=sk),
+                                                                         hours=final, month=month)
+                                    hrs.save()
+                                    dates.save()
+
                 except ObjectDoesNotExist:
                     messages.success(request, "Added but the staff member doesnt have one or many skills selected!")
 
@@ -927,24 +932,45 @@ def matchmaking_View(request,project_id):
     #match skills
     fullCount = 0
     count = 0
+    all = 0
+    somem = 0
 
     for staff in staffList:
         totalSkills = project.projectswithskills_set.count()
-        for skill in staff.staffwithskills_set.all():
-            for projSkill in project.projectswithskills_set.all():
-                months = projSkill.endDate.month - projSkill.startDate.month
-                if months == 0:
-                    months = 1
-                pTime = months * projSkill.hoursRequired
-                if skill.skillID == projSkill.skillID:
-                    months = months -1
-                    sTime = skill.hoursLeft + (skill.hoursAvailable * months)
-                    if sTime >= pTime: #check time
-                        fullCount = fullCount + 1
-                        count = count +1
-                    else:
+        for projSkill in project.projectswithskills_set.all():
+                sMonth = projSkill.startDate.month
+                eMonth = projSkill.endDate.month
+                if sMonth == eMonth:
+                    try:
+                        hrs = staff.staffwithskills_set.get(Q(skillID=projSkill.skillID)&Q(month=sMonth))
+                        if hrs.hoursLeft > projSkill.hoursRequired:
+                            fullCount = fullCount +1
+                            count = count +1
+                        else:
+                            count = count + 1
+                    except ObjectDoesNotExist:
+                        messages.success(request, "Added but the staff member doesnt have one or many skills selected!")
+                else:
+                    required = projSkill.hoursRequired
+                    for month in range(sMonth,eMonth+1):
+                        try:
+                            hrs = staff.staffwithskills_set.get(Q(skillID=projSkill.skillID) & Q(month=month))
+                            if hrs.hoursLeft >= required:
+                                all = 1
+                                somem = 0
+                                break
+                            elif hrs.hoursLeft < required and hrs.hoursLeft is not 0:
+                                required = required - hrs.hoursLeft
+                                somem = 1
+                        except ObjectDoesNotExist:
+                                print("Not found")
+                                test = 2
+                    if all is 1:
+                        fullCount =fullCount+1
                         count = count + 1
-        if totalSkills is not 0:
+                    elif somem is 1:
+                        count = count +1
+        if totalSkills is not 0 and count is not 0:
             if fullCount is totalSkills:
                 full.append(staff)
             elif count is totalSkills and fullCount is not totalSkills and fullCount is not 0:
