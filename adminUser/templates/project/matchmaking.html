@@ -64,6 +64,18 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
 
     <div class="col-md-10">
+    {% if project != Null %}
+    <div class="col-sm-offset-2">
+    <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#complete">Complete Match ({{ full|length }})</a></li>
+  <li><a data-toggle="tab" href="#high">High Match ({{ fsome|length }})</a></li>
+  <li><a data-toggle="tab" href="#medium">Medium Match ({{ partial|length }})</a></li>
+  <li><a data-toggle="tab" href="#low">Low Match ({{ some|length }})</a></li>
+</ul>
+</div>
+    {% endif %}
+    <br>
+
     <label for="sel">Select a project from below and the table will display the most relevant employee for the project:</label>
     <br>
      <div class="col-lg-offset-3 col-md-6">
@@ -105,7 +117,9 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
         <h3>Project: <a href="{% url "adminUser:projectprofile" project.projectID %}">{{ project.projectName }}</a></h3>
 
         <br>
-
+  <div class="tab-content">
+    <div id="complete" class="tab-pane fade in active">
+    {% if full %}
         <h4>Below is the list of staff where each staff matches all the required skills and has hours available for complete skill.</h4>
     <br>
        <table class="table table-responsive table-bordered table-scrollx listTable results">
@@ -144,7 +158,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
       </table>
         <br>
         <br>
-
+        {% else %}
+        <h4>No Match</h4>
+        {% endif %}
+    </div>
+        <div id="high" class="tab-pane fade">
+        {% if fsome %}
      <h4>Below is the list of staff where each staff matches all the required skills and has complete hours available for only some skills.</h4>
 
      <table class="table table-responsive table-bordered table-scrollx listTable results">
@@ -182,6 +201,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
       </table>
         <br>
         <br>
+        {% else %}
+        <h4>No Match</h4>
+        {% endif %}
+        </div>
+        <div id="medium" class="tab-pane fade">
+        {% if partial %}
  <h4>Below is the list of staff where each staff matches all the required skills but is not available for any of the skill for full time.</h4>
 
          <table class="table table-responsive table-bordered table-scrollx listTable results">
@@ -220,6 +245,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
       </table>
         <br>
     <br>
+        {% else %}
+        <h4>No Match</h4>
+        {% endif %}
+        </div>
+        <div id="low" class="tab-pane fade">
+        {% if some %}
  <h4>Below is the list of staff where each staff matches only some skills.</h4>
       <br>
        <table class="table table-responsive table-bordered table-scrollx listTable results">
@@ -271,6 +302,11 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
       </table>
         <br>
     <br>
+        {% else %}
+        <h4>No Match</h4>
+        {% endif %}
+        </div>
+         </div>
 {% endif %}
 
 

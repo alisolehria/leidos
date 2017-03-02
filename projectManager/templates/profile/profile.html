@@ -130,34 +130,54 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
               <thead>
               <tr>
                   <th class="success">Skill Name</th>
-                  <th class="success">Hours Available</th>
+                  <th class="success">Hours Left</th>
 
               </tr>
                 <tr class="warning no-result">
       <td colspan="4" class="warning"><i class="fa fa-warning"></i> No result</td>
     </tr>
               </thead>
-        <tbody>
+     <tbody>
+ {% for name in skillNames %}
+<tr>
+            <td class="danger">{{ name.skillName}}</td>
+
+<td class="danger"><button class="btn btn-primary btn-md" id="show{{ forloop.counter }}">Show</button></td>
+             </tr>
+
+            {% for skill in skillhrs %}
 
 
-            {% for skills,hrs in skillwithhrs.items  %}
+                    {% if skill.skillID.skillName == name.skillName %}
+<tr class="skillsrow"  id="skillrow{{ forloop.parentloop.counter }}{{ forloop.counter }}" hidden>
+                        <td class="danger">{{ skill.month }}
+</td>
+                        <td class="danger">{{ skill.hoursLeft }}</td>
 
-            <tr>
+ </tr>
+                {% endif %}
 
-            <td class="danger">{{ skills}}</td>
-
-            <td class = "danger">{{ hrs }}</td>
-
-  {% endfor %}
+                {% endfor %}
 
 
-            </tr>
+        {% endfor %}
 
 
 
 
         </tbody>
       </table>
+           <SCRIPT>
+
+        $(".skillsrow").each(function(index){
+           $('#show'+(index+1)).click(function () {
+               for(i=1;i<={{ skillhrs.count }};i++) {
+                   $('#skillrow' +(index+1)+(i)).toggle();
+               }
+            });})
+
+
+</SCRIPT>
 </div>
 
 

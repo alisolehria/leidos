@@ -949,7 +949,7 @@ def matchmaking_View(request,project_id):
                         else:
                             count = count + 1
                     except ObjectDoesNotExist:
-                        messages.success(request, "Added but the staff member doesnt have one or many skills selected!")
+                        None
                 else:
                     required = projSkill.hoursRequired
                     for month in range(sMonth,eMonth+1):
@@ -963,8 +963,8 @@ def matchmaking_View(request,project_id):
                                 required = required - hrs.hoursLeft
                                 somem = 1
                         except ObjectDoesNotExist:
-                                print("Not found")
-                                test = 2
+                                somem = 0
+                                all = 0
                     if all is 1:
                         fullCount =fullCount+1
                         count = count + 1

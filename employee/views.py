@@ -38,24 +38,19 @@ def profile_View(request):
     upcoming = info.staffwithprojects_set.filter(Q(startDate__gt=time) & Q(status="Working")).count()
     completed = info.staffwithprojects_set.filter(Q(endDate__lt=time) & Q(status="Working")).count()
 
-    # this part takes skills and skill hours available and puts them in a dict
-    skillset = []
-    skills = info.skills_set.all()
-    skillset = list(skills)
+    skillids = info.staffwithskills_set.values_list('skillID',flat =True)
+    skillNames=[]
+    skillids = list(set(skillids))
+    for id in skillids:
+        skillNames.append(skills.objects.get(skillID=id))
 
-    skillhrset = []
+
     skillhrs = info.staffwithskills_set.all()
-    skillhrset = list(skillhrs)
-
-    skillwithhrs = {}
     time = datetime.date.today()  # get todays date
-    i = 0
-    while i < len(skillset):
-        skillwithhrs.update({skillset[i]: skillhrset[i]})
-        i = i + 1
 
 
-    return render(request, 'eprofile/profile.html',{"title":username,"info":query,"ongoing":ongoing,"upcoming":upcoming,"completed":completed,"skillwithhrs":skillwithhrs,"time":time})
+
+    return render(request, 'eprofile/profile.html',{"title":username,"info":query,"ongoing":ongoing,"upcoming":upcoming,"completed":completed,"skillhrs":skillhrs,"skillNames":skillNames,"time":time})
 
 @login_required()
 def myprojects_View(request):
