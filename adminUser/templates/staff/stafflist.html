@@ -99,7 +99,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
-            <td><input type="checkbox" name="option{{ staff.staffID }}" value="{{ staff.staffID }}" id="{{ forloop.counter }}"></td>
+
             </tr>
 
 
@@ -109,43 +109,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
       </table>
 
 <br>
-    <div id="checkbox_list">
-        <button onclick="opentabs('checkbox_list')" class="btn btn-primary btn-md pull-right">Open Profile(s)</button>
-    </div>
-    <script>
-      function check() {
 
-
-
-                    for (var i = 1; i <= {{ skillset.count }}; i++) {
-                              var checkbox = document.getElementById("selectskill" + i); // get element
-                        if(checkbox.checked){
-                               document.getElementById("inputhours"+i).required = true;
-                                document.getElementById("submitskill").disabled = false;
-                                document.getElementById("inputhours"+i).disabled = false;
-    }
-                    else{
-                            document.getElementById("inputhours"+i).required = false;
-                            document.getElementById("inputhours"+i).disabled = true;
-                             document.getElementById("inputhours"+i).value = "";
-
-                        }
-                        var checkinputs = document.querySelectorAll('input[type=checkbox]');
-
-                    }
-                    var textinputs = document.querySelectorAll('input[type=checkbox]');
-                    var empty = [].filter.call( textinputs, function( check ) {
-                                        return !check.checked
-                        });
-
-                        if (textinputs.length == empty.length) {
-                                            document.getElementById("submitskill").disabled = true;
-}
-}
-
-            setInterval(check, 1);
-
-        </script>
 
         <br>
         <br>

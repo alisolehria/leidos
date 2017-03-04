@@ -5508,7 +5508,9 @@ button.close {
     position: relative
 }
 
-
+.right-circle{
+    text-align: right;
+}
 
 .carousel-inner {
     position: relative;

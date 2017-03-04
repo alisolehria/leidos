@@ -126,10 +126,27 @@ def staffprofile_View(request, staff_id):
 
 
     skillhrs = info.staffwithskills_set.all()
+    month =  datetime.datetime.now().strftime("%m")
+    nextMonth = int(month) + 1
+    nNextMonth = int(month) + 2
+
+    month = month.lstrip('0')
+    nextMonth = str(nextMonth).lstrip('0')
+    nNextMonth = str(nNextMonth).lstrip('0')
 
 
+    skillList = skillhrs.filter(Q(month=nextMonth)|Q(month=month)|Q(month=nNextMonth))
 
+    hrsAvailable = 0
+    hrsLeft = 0
+    for sk in skillList:
+        hrsAvailable = hrsAvailable + sk.hoursAvailable
+        hrsLeft = hrsLeft + sk.hoursLeft
 
+    try:
+        percentage = float(hrsLeft)/float(hrsAvailable) * 100
+    except ZeroDivisionError:
+        percentage = 100
 
 
     if request.POST and "remove" in request.POST:
@@ -144,7 +161,7 @@ def staffprofile_View(request, staff_id):
         info.user.save()
         messages.success(request, "Employee Blocked")
 
-    return render(request,'staff/staffprofile.html',{"info":info,"title":title,"ongoing":ongoing,"upcoming":upcoming,"completed":completed,"skillhrs":skillhrs,"skillNames":skillNames})
+    return render(request,'staff/staffprofile.html',{"info":info,"title":title,"ongoing":ongoing,"upcoming":upcoming,"completed":completed,"skillhrs":skillhrs,"skillNames":skillNames,"percentage":percentage})
 
 @login_required()
 def currentprojectsget_View(request, staff_id):

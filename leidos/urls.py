@@ -16,3 +16,5 @@ urlpatterns = [
         auth_views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
 ]
+handler403 = 'accounts.views.permission_denied'
+handler500 = 'accounts.views.not_found'

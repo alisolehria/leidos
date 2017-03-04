@@ -105,7 +105,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ projects.status}}</td>
             <td>{{ projects.budget}} AED</td>
 
-            <td><input type="checkbox" name="selectProject" value="{{ projects.projectID }}" id="pick"{{ forloop.counter }}></td>
+
             </tr>
 
 
@@ -114,19 +114,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
       </table>
 <br>
 
-    <script>
-function check() {
-                    for (var i = 1; i <= {{ list.count }}; i++) {
 
-                 var checkbox = document.getElementById("pick" + i); // get element
-                         if(checkbox.checked){
-                    window.open("{% url 'adminUser:projectprofile' 6 %}")
-                         }
-                    }
-}
-   setInterval(check, 1);
-
-    </script>
 
 
         <br>
