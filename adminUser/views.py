@@ -951,12 +951,15 @@ def matchmaking_View(request,project_id):
     count = 0
     all = 0
     somem = 0
-
+    continueFor = False
+    holidayID = []
     for staff in staffList:
         totalSkills = project.projectswithskills_set.count()
         for projSkill in project.projectswithskills_set.all():
                 sMonth = projSkill.startDate.month
                 eMonth = projSkill.endDate.month
+                sDate = projSkill.startDate
+                eDate = projSkill.endDate
                 if sMonth == eMonth:
                     try:
                         hrs = staff.staffwithskills_set.get(Q(skillID=projSkill.skillID)&Q(month=sMonth))
@@ -972,6 +975,19 @@ def matchmaking_View(request,project_id):
                     for month in range(sMonth,eMonth+1):
                         try:
                             hrs = staff.staffwithskills_set.get(Q(skillID=projSkill.skillID) & Q(month=month))
+                            try:
+                                hol = staff.holidays_set.filter(Q(startDate__gte=sDate)&Q(endDate__lte=eDate))
+                                for holiday in hol:
+                                    for mon in range(holiday.startDate.month,holiday.endDate.month+1):
+                                        if mon is month:
+                                            continueFor = True
+                                            holidayID.append(holiday.holidayID)
+                            except ObjectDoesNotExist:
+                                None
+
+                            if continueFor is True:
+                                continueFor = False
+                                continue
                             if hrs.hoursLeft >= required:
                                 all = 1
                                 somem = 0
@@ -1000,4 +1016,4 @@ def matchmaking_View(request,project_id):
         fullCount = 0
 
 
-    return render(request,'project/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project})
+    return render(request,'project/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID})

@@ -31,7 +31,7 @@
       <li><a href="{% url 'adminUser:stafflist' %}">Staff List</a> </li>
       <li><a href="{% url 'adminUser:addproject' %}">Add Project</a></li>
       <li><a href="{% url 'adminUser:projectlist' %}">Projects List</a></li>
-        <li class="active"><a href="{% url 'adminUser:projectlist' %}">Match-Making</a></li>
+        <li class="active"><a href="{% url 'adminUser:matchmaking' %}">Match-Making</a></li>
     </ul>
   </div>
            <div class="container-heading">
@@ -151,11 +151,20 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
+                {% for hol in staff.holidays_set.all %}
+                {% if hol.holidayID in holidayID %}
+                    <td> <span class="glyphicon glyphicon-plane" title="Start Date: {{ hol.startDate }} End Date: {{ hol.endDate }}"></span></td>
 
+                {% endif %}
+
+                {% endfor %}
+            <input type="text" value="{{ staff.staffID}}" name="selectStaff"  hidden >
+       <td><input class="btn btn-success btn-md" type="submit" value="Add Staff"  name="add"/></td>
 </tr>
         {% endfor %}
          </tbody>
       </table>
+
         <br>
         <br>
         {% else %}
@@ -194,6 +203,13 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
+              {% for hol in staff.holidays_set.all %}
+                {% if hol.holidayID in holidayID %}
+                   <td> <span class="glyphicon glyphicon-plane" title="Start Date: {{ hol.startDate }} End Date: {{ hol.endDate }}"></span></td>
+                {% endif %}
+
+                {% endfor %}
+         <td><input class="btn btn-success btn-md" type="submit" value="Add Staff"  name="add"/></td>
             <br>
 </tr>
         {% endfor %}
@@ -238,6 +254,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
+           {% for hol in staff.holidays_set.all %}
+                {% if hol.holidayID in holidayID %}
+                <td> <span class="glyphicon glyphicon-plane" title="Start Date: {{ hol.startDate }} End Date: {{ hol.endDate }}"></span></td>
+                {% endif %}
+
+                {% endfor %}
             <br>
 </tr>
         {% endfor %}
@@ -283,9 +305,16 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
+
             <td>
             <button class="btn btn-primary btn-md" id="show{{ forloop.counter }}">Show</button>
             </td>
+              {% for hol in staff.holidays_set.all %}
+                {% if hol.holidayID in holidayID %}
+               <td> <span class="glyphicon glyphicon-plane" title="Start Date: {{ hol.startDate }} End Date: {{ hol.endDate }}"></span></td>
+                {% endif %}
+
+                {% endfor %}
             <tr class="skillsrow" id="skillrow{{ forloop.counter }}" hidden>
             {% for sskill in staff.staffwithskills_set.all %}
                 {% for pskill in project.projectswithskills_set.all %}
@@ -295,7 +324,9 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
                     {% endif %}
                     {% endfor %}
                 {% endfor %}
+
             </tr>
+
             </tr>
         {% endfor %}
       </tbody>
