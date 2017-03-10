@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ title }}'s Dashboard</title>
+    <title>{{ title }}</title>
 
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
- <script src="{% static "js/search.js" %}"></script>
+
      <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
 
 
@@ -31,13 +31,13 @@
      
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{% url 'projectManager:myprojects' %}">My Projects</a></li>
-        <li><a href="{% url 'projectManager:myrequests' %}">My Requests</a></li>
+      <li><a href="{% url 'projectManager:myprojects' %}">My Projects</a></li>
+        <li class="active"><a href="{% url 'projectManager:myrequests' %}">My Requests</a></li>
       <li><a href="{% url 'projectManager:projectlist' %}">Projects List</a></li>
-        <li><a href="{% url 'adminUser:projectlist' %}">Matchmaking</a></li>
+        <li><a href="{% url 'projectManager:projectlist' %}">Matchmaking</a></li>
     </ul>
   </div>
-            <div class="container-heading">
+          <div class="container-heading">
               {{ title }}
           </div>
 </nav>
@@ -62,54 +62,57 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
 
 
-          <div class="col-md-10">
- <div class="input-group pull-right">
-           <span class="input-group-addon">
-        <i class="glyphicon glyphicon-search"></i>
-    </span>
-    <input type="text" class="search form-control" placeholder="Search">
-</div>
-<span class="counter pull-right"></span>
-      <table class="table table-responsive table-bordered table-scrollx listTable results">
-        <thead>
-          <tr>
+          <div class="col-md-8">
 
-            <th>Project ID</th>
-            <th>Project Name</th>
-              <th>Project Manager</th>
-            <th>Description</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Location</th>
-              <th>Status</th>
+        {% for alert in alertList %}
+        <div class="container container-alert">
+           {% if alert.alertType == 'Project' %}
 
-          </tr>
-        <tr class="warning no-result">
-      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
-    </tr>
-        </thead>
-        <tbody>
-        {% for projects in list %}
-            <tr>
-                <td><a href="{% url 'projectManager:projectprofile' projects.projects_ID.projectID %}">{{ projects.projects_ID.projectID}}</a></td>
-            <td>{{ projects.projects_ID.projectName}}</td>
-                <td><a href="{% url 'projectManager:staffprofile' projects.projects_ID.projectManager.staffID %}">{{ projects.projects_ID.projectManager.user.first_name}} {{ projects.projects_ID.projectManager.user.last_name }}</a></td>
-            <td>{{ projects.projects_ID.description}}</td>
-            <td>{{ projects.projects_ID.startDate}}</td>
-            <td>{{ projects.projects_ID.endDate}}</td>
-            <td>{{ projects.projects_ID.location.country}}</td>
-            <td>{{ projects.projects_ID.status}}</td>
-
-            </tr>
+               {{ alert.info }}: <a target="_blank" href="{% url 'projectManager:projectprofile' alert.project.projectID %}"> {{ alert.project.projectName }}</a>
+               <br>
+               Alert Date: {{ alert.alertDate }}
+               <br>
+               Project Status: {{ alert.project.status }}
 
 
+            {% endif %}
+
+
+
+             {% if alert.alertType == 'Leave' %}
+
+
+
+                 Alert Date: {{ alert.alertDate }}
+               <br>
+                 Leave Start Date: {{ alert.holiday.startDate }}
+                 <br>
+                Leave End Date:   {{ alert.holiday.endDate }}
+                 <br>
+                 Status: {{ alert.holiday.status }}
+                  <br>
+              Type: {{ alert.holiday.type }}
+            <br>
+
+                    <br>
+
+            {% endif %}
+
+
+            </div>
+             <br>
         {% endfor %}
-        </tbody>
-      </table>
 
 
-      <br>
-      <br>
+
+<br>
+
+        <br>
+        <br>
+
+
+
+
       <grammarly>
         <div class="_9b5ef6-textarea_btn _9b5ef6-not_focused">
           <div class="_9b5ef6-transform_wrap">

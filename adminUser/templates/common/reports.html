@@ -111,7 +111,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
             <td>{{ staff.designation }}</td>
             <td>{{ staff.workStatus }}</td>
             <td>{{ staff.skillLevel }}</td>
-            <td> <a href="{% url 'adminUser:report' staff.staffID %}"><img src={% static 'img/pdf.png' %} alt="pdf"></a></td>
+            <td> <a href="{% url 'adminUser:staffReport' staff.staffID%}"><img src={% static 'img/pdf.png' %} alt="pdf"></a></td>
             </tr>
 
 

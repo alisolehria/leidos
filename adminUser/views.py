@@ -215,7 +215,7 @@ def projectprofile_View(request, project_id):
 
     info = projects.objects.get(projectID=project_id)
 
-
+    count = info.staffwithprojects_set.filter(status="Working").count()
     # this part takes skills and skill hours req. and puts them in a dict
     skillset = []
     skills = info.skills_set.all()
@@ -300,7 +300,7 @@ def projectprofile_View(request, project_id):
                                        )
             messages.success(request, "Staff Removed")
 
-    return render(request,'project/projectprofile.html',{"info":info,"skillwithhrs":skillwithhrs,"past":past,"current":current})
+    return render(request,'project/projectprofile.html',{"info":info,"skillwithhrs":skillwithhrs,"past":past,"current":current,"count":count})
 
 @login_required
 def table_View(request):
@@ -380,6 +380,12 @@ def addskill_View(request, staff_id):
     user = profile.objects.get(staffID=staff_id)
     title = user.user.first_name + " " + user.user.last_name
 
+    high = skills.objects.filter(priority="High").count();
+    mid = skills.objects.filter(priority="Mid").count();
+    low = skills.objects.filter(priority="Low").count();
+
+
+
     skillset = skills.objects.exclude(staffID=staff_id)
 
     if(request.POST and "submitskill" in request.POST):
@@ -397,6 +403,27 @@ def addskill_View(request, staff_id):
         alert = alerts.objects.create(fromStaff=query, alertType='Edit Staff', alertDate=datetime.date.today(),
                                       info="Skill added to your profile")
         staffAlerts.objects.create(alertID=alert, staffID=user, status="Unseen")
+
+        skillids = user.staffwithskills_set.values_list('skillID', flat=True)
+
+        skillids = list(set(skillids))
+        highpriority = 0
+        midpriority = 0
+        lowpriority = 0
+        for id in skillids:
+            sk = skills.objects.get(skillID=id)
+            if sk.priority == "High":
+                highpriority = highpriority + 1
+            elif sk.priority == "Mid":
+                midpriority = midpriority + 1
+            else:
+                lowpriority = lowpriority + 1
+        higPercentage = float(highpriority) / float(high) * 50
+        midPercentage = float(midpriority) / float(mid) * 30
+        lowPercentage = float(lowpriority) / float(low) * 20
+        sumSkills = higPercentage + midPercentage + lowPercentage
+        user.skillLevel=sumSkills
+        user.save()
         messages.success(request, "Skill added succesfully!")
         return staffprofile_View(request, staff_id)
 
@@ -489,6 +516,7 @@ def addpstaff_View(request, project_id):
         return HttpResponse(status=201)
 
     title = projects.objects.get(projectID=project_id)
+    count = title.staffwithprojects_set.filter(status="Working").count()
     # exclude project managers and admins also staff which have holidays during the project
     list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin").exclude(workStatus="Not Employeed")
 
@@ -563,7 +591,7 @@ def addpstaff_View(request, project_id):
         staffAlerts.objects.create(alertID=alert, staffID=title.projectManager, status="Unseen")
         return projectprofile_View(request,title.projectID)
 
-    return render(request, 'project/addstaff.html',{"title":title,"list":list,"number":number,"skill":skill})
+    return render(request, 'project/addstaff.html',{"title":title,"list":list,"number":number,"skill":skill,"count":count})
 
 @login_required
 def skill_View(request):
@@ -854,15 +882,13 @@ def report_View(request,project_id):
     p = canvas.Canvas(response)
     fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/img/leidos_logo_2013.jpg')
     p.drawImage(fn,0,782,width=600,height=60)
-    pdfmetrics.registerFont(TTFont('Georgia', 'Georgia.ttf'))
-    pdfmetrics.registerFont(TTFont('Calibri', 'Calibri.ttf'))
-    p.setFont('Georgia',32)
+
+
     p.drawString(210, 750, "Project Report")
     # p.showPage()
 
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.setFont('Calibri', 14)
+
+
     p.drawString(20, 710, "Project ID: "+str(query.projectID))
     p.drawString(20, 690, "Project Name: "+query.projectName+"    Status: "+query.status)
     p.drawString(20, 670, "Project Type: " + query.type)
@@ -881,20 +907,20 @@ def report_View(request,project_id):
         i = i + 1
     p.showPage()
     p.drawImage(fn, 0, 782, width=600, height=60)
-    p.setFont('Georgia', 32)
+
     p.drawString(140, 750, "Staff Working on Project")
-    p.setFont('Calibri', 14)
+
     x = 710
     for staff in query.staffID.all():
         p.drawString(20,x,"Staff ID: "+str(staff.staffID)+"     Name: "+staff.user.first_name+" "+" "+staff.user.last_name)
         x = x - 20
     p.showPage()
     p.drawImage(fn, 0, 782, width=600, height=60)
-    p.setFont('Georgia', 32)
+
     p.drawString(160, 750, "Skills for the Project")
     x = 710
     i = 1
-    p.setFont('Calibri', 14)
+
     for skill in query.skills_set.all():
         p.drawString(20,x,str(i)+") "+skill.skillName)
         x = x - 20
@@ -1017,3 +1043,67 @@ def matchmaking_View(request,project_id):
 
 
     return render(request,'project/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID})
+
+@login_required
+def staffreport_View(request,staff_id):
+
+    username = request.user
+    query = profile.objects.get(user=username)  # get username
+
+    if query.designation != "Admin":  # check if admin
+        return HttpResponse(status=201)
+    # Create the HttpResponse object with the appropriate PDF headers.
+    query = profile.objects.get(staffID=staff_id)
+    pdf = HttpResponse(content_type='application/pdf')
+    pdf['Content-Disposition'] = 'attachment; filename="Report.pdf"'
+
+
+    # Create the PDF ob ject, using the response object as its "file."
+    p = canvas.Canvas(pdf)
+    fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/img/leidos_logo_2013.jpg')
+    p.drawImage(fn,0,782,width=600,height=60)
+
+
+    p.drawString(210, 750, "Staff Report")
+    # p.showPage()
+
+
+
+    p.drawString(20, 710, "Staff ID: "+str(query.staffID))
+    p.drawString(20, 690, "First Name: " + query.user.first_name)
+    p.drawString(20, 670, "Last Type: " + query.user.last_name)
+    p.drawString(20, 650, "Email: " + query.user.email)
+    p.drawString(20, 600, "Nationality: " + query.nationality)
+    p.drawString(20,580,"Preferred Country: "+query.preferredLocation.country+"    Preferred City: "+query.preferredLocation.city )
+    p.drawString(200, 540, "Designation: "+query.designation)
+    p.drawString(20,520,"Skill Level: "+str(query.skillLevel))
+    p.drawString(20,500,"Date of Birth: "+str(query.dateOfBirth))
+    p.drawString(20,480,"Skills: ")
+    x = 460
+    i = 1
+
+    skillids = query.staffwithskills_set.values_list('skillID', flat=True)
+    skillNames = []
+    skillids = list(set(skillids))
+    for id in skillids:
+        skillNames.append(skills.objects.get(skillID=id))
+
+    for skill in skillNames:
+        p.drawString(140,x,str(i)+") "+skill.skillName)
+        x = x - 20
+        i = i + 1
+    p.showPage()
+    p.drawImage(fn, 0, 782, width=600, height=60)
+
+    p.drawString(140, 750, "Projects")
+
+    x = 710
+    for project in query.projects_set.all():
+        p.drawString(20,x,"Project ID: "+str(project.projectID)+"     Name: "+project.projectName)
+        x = x - 20
+
+
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+    return pdf

@@ -114,6 +114,12 @@ class skills(models.Model):
     staffID = models.ManyToManyField(profile,through='staffWithSkills')
     skillID = models.AutoField(primary_key=True)
     skillName = models.CharField(max_length=200)
+    PRIORITY = (
+        ('High', 'High'),
+        ('Mid', 'Mid'),
+        ('Low', 'Low'),
+    )
+    priority = models.CharField(max_length=30, choices=PRIORITY)
 
     def __str__(self):
         return str(self.skillName)

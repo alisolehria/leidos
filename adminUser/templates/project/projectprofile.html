@@ -264,12 +264,15 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
     </div>
 
             <br>
+
+    {% if count < info.numberOfStaff %}
      {% if info.status == "On Going" or info.status == "Approved" %}
      <div class="pull-right">
     <a href="{% url 'adminUser:addpstaff' info.projectID %}" class="btn btn-success btn-md">
           <span class="glyphicon glyphicon-plus"></span> Add staff
         </a>
      </div>
+    {% endif %}
     {% endif %}
         <br>
         <br>

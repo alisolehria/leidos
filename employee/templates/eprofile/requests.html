@@ -13,7 +13,7 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
- <script src="{% static "js/search.js" %}"></script>
+
      <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
 
 
@@ -24,33 +24,22 @@
           <div>
           <img src="{% static 'img/leidos_logo_2013.jpg' %}" alt="" width="100%" > </a>  </li>
         </h1>
-
+        
       <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-
+     
     </div>
     <ul class="nav navbar-nav">
       <li><a href="{% url 'employee:myprojects' %}">My Projects</a></li>
-         <li><a href="{% url 'employee:myrequests' %}">My Requests</a></li>
-      <li class="active"><a href="{% url 'employee:projectlist' %}">Projects List</a></li>
+         <li class="active"><a href="{% url 'employee:myrequests' %}">My Requests</a></li>
+      <li><a href="{% url 'employee:projectlist' %}">Projects List</a></li>
     </ul>
   </div>
           <div class="container-heading">
               {{ title }}
           </div>
 </nav>
-          </div>
-  {% if messages %}
-        <div class = "row">
-      <div class="col-sm-6 col-sm-offset-3">
-    {% for message in messages %}
-    <p{% if message.tags %} class="alert alert-success"{% endif %}>{{ message }}</p>
-    {% endfor %}
-</div>
-        </div>
-{% endif %}
-
 
 
    <div class="container-fluid">
@@ -72,73 +61,48 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
 
 
-          <div class="col-md-10">
- <div class="input-group pull-right">
-           <span class="input-group-addon">
-        <i class="glyphicon glyphicon-search"></i>
-    </span>
-    <input type="text" class="search form-control" placeholder="Search">
-</div>
-<span class="counter pull-right"></span>
-      <table class="table table-responsive table-bordered table-scrollx listTable results">
-        <thead>
-          <tr>
+          <div class="col-md-8">
+    {% for alert in alertList %}
+        <div class="container container-alert" id="{{ alert.alertID }}">
 
-            <th>Project ID</th>
-            <th>Project Name</th>
-              <th>Project Manager</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Location</th>
+             {% if alert.alertType == 'Leave' %}
 
 
+                <br>
+                 Alert Date: {{ alert.alertDate }}
+               <br>
+                 Leave Start Date: {{ alert.holiday.startDate }}
+                 <br>
+                Leave End Date:   {{ alert.holiday.endDate }}
+                 <br>
+                 Status: {{ alert.holiday.status }}
+                  <br>
 
-          </tr>
-        <tr class="warning no-result">
-      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
-    </tr>
-        </thead>
-        <tbody>
-        {% for projects in list %}
-            <tr>
-                <td><form action="{% url 'employee:projectlist' %}" method="post">
-                    {% csrf_token %}
-  <button type="submit" name="project"  value="{{ projects.projectID}}" class="btn-link">{{ projects.projectID}}</button>
-            </form></td>
-            <td>{{ projects.projectName}}</td>
-                <td><form action="{% url 'employee:projectlist' %}" method="post">
-                     {% csrf_token %}
-  <button type="submit" name="staff" value="{{ projects.projectManager.staffID}}" class="btn-link">{{ projects.projectManager.user.first_name}} {{ projects.projectManager.user.last_name }}</button>
-            </form></td>
-            <td>{{ projects.startDate}}</td>
-            <td>{{ projects.endDate}}</td>
-            <td>{{ projects.location.country}}</td>
-
-            </tr>
+                 <br>
+         {% endif %}
 
 
-        {% endfor %}
-        </tbody>
-      </table>
 
 
-      <br>
-      <br>
-      <grammarly>
-        <div class="_9b5ef6-textarea_btn _9b5ef6-not_focused">
-          <div class="_9b5ef6-transform_wrap">
-            <div class="_9b5ef6-status">
 
             </div>
-          </div>
-        </div>
+             <br>
+        {% endfor %}
+
+
+
+<br>
+
+        <br>
+        <br>
+
       </grammarly>
     </div>
   </div>
 </div>
 
     </div>
-  <div class="container-footer">
+    <div class="container-footer">
     <br><br>
     <div class="row">
         <div class="col-sm-2">

@@ -26,7 +26,7 @@ SECRET_KEY = 'dh!z_3ep7gotg@7_%n=tq_h$xxqm(h57!0^xi6kurr0@q^8$8p'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['alisolehria.pythonanywhere.com']
+#ALLOWED_HOSTS = ['syntaxrms.pythonanywhere.com']
 
 # Application definition
 
@@ -98,16 +98,15 @@ DATABASES = {
 # pythonanywhere db
 
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'alisolehria$default',
-#         'USER': 'alisolehria',
-#         'PASSWORD': 'leidos123',
-#         'HOST': 'alisolehria.mysql.pythonanywhere-services.com',  # Or an IP Address that your DB is hosted on
+#      'default': {
+#          'ENGINE': 'django.db.backends.mysql',
+#          'NAME': 'syntaxrms$leidos',
+#          'USER': 'syntaxrms',
+#          'PASSWORD': 'workingdb',
+#          'HOST': 'syntaxrms.mysql.pythonanywhere-services.com',  # Or an IP Address that your DB is hosted on
 #
-#     }
-# }
-
+#      }
+#  }
 
 
 # Password validation

@@ -199,10 +199,13 @@ class ProjectForm(forms.ModelForm):
 class SkillForm(forms.ModelForm):
 
     skillName = forms.CharField(label="Skill Name:")
+    priority = forms.ChoiceField(label="Skill Priority:", choices=skills.PRIORITY)
+
     class Meta:
         model = skills
         fields = [
-            'skillName'
+            'skillName',
+            'priority',
         ]
 
     helper = FormHelper()
@@ -211,8 +214,9 @@ class SkillForm(forms.ModelForm):
             'Add Skill to the system by typing in skill name and pressing the add skill button',
             'skillName',
             HTML("""
-                      <br><br><br>
-                  """),
+                          <br><br><br>
+                      """),
+            'skillPriority'
         ))
     helper.form_tag = False
     helper.form_class = 'form-horizontal'

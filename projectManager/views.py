@@ -117,6 +117,7 @@ def projectprofile_View(request, project_id):
         return HttpResponse(status=201)
 
     info = projects.objects.get(projectID=project_id)
+    count = info.staffwithprojects_set.filter(status="Working").count()
     # this part takes skills and skill hours req. and puts them in a dict
     skillset = []
     skills = info.skills_set.all()
@@ -179,7 +180,7 @@ def projectprofile_View(request, project_id):
                                    )
         messages.success(request, "Staff Removed")
 
-    return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current})
+    return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current,"count":count})
 
 @login_required()
 def myprojects_View(request):
@@ -353,6 +354,7 @@ def addpstaff_View(request, project_id):
 
 
     title = projects.objects.get(projectID=project_id)
+    count = title.staffwithprojects_set.filter(status="Working").count()
     if title.projectManager != query:
         return HttpResponse(status=201) #check if user is pm of that project
 
@@ -429,7 +431,7 @@ def addpstaff_View(request, project_id):
         return projectprofile_View(request,title.projectID)
 
 
-    return render(request, 'projects/addstaff.html',{"title":title,"list":list,"number":number,"skill":skill})
+    return render(request, 'projects/addstaff.html',{"title":title,"list":list,"number":number,"skill":skill,"count":count})
 
 @login_required
 def holiday_View(request):
@@ -455,3 +457,20 @@ def holiday_View(request):
         messages.success(request, "Leave Requested!")
 
     return render(request, 'profile/requestholiday.html', {"title":title, "form":form})
+
+@login_required
+def requests_View(request):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Project Manager":  # check if admin
+        return HttpResponse(status=201)
+
+    title = "My Requests"
+
+
+    alertList = alerts.objects.filter(staff=query.staffID).order_by('-alertID')
+    staff_id = str(query.staffID)
+
+    return render(request,'employee/requests.html',{"title":title,"alertList":alertList,"staff_id":staff_id})

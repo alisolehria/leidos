@@ -113,7 +113,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
      </div>
     <br><br>
            <div class="pull-right">
-
+    <a href="{% url 'adminUser:staffReport' info.staffID %}"><img src={% static 'img/pdf.png' %} alt="pdf"></a>
     <a href="{% url 'adminUser:editprofile' info.staffID %}" class="btn btn-info btn-md">
 
           <span class="glyphicon glyphicon-edit"></span> Edit Profile

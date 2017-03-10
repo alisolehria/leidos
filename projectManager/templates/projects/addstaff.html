@@ -32,6 +32,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="{% url 'projectManager:myprojects' %}">My Projects</a></li>
+        <li><a href="{% url 'projectManager:myrequests' %}">My Requests</a></li>
       <li><a href="{% url 'projectManager:projectlist' %}">Projects List</a></li>
         <li><a href="{% url 'adminUser:projectlist' %}">Matchmaking</a></li>
     </ul>
@@ -72,6 +73,11 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
 
           <div class="col-md-10">
+             {% if count >= title.numberOfStaff %}
+
+    <h4>Maximum Staff Limit Reached</h4>
+
+    {% else %}
           <h4>Please first select the time you want to add the staff member for in the project. Each skill corresponds to its start date to end date.</h4>
     <h4>If you dont select any time, the staff will be added for complete length of the project.</h4>
           <br>
@@ -149,6 +155,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
 
         </a>
+          {% endif %}
         <br>
         <br>
 

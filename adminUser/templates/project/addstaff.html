@@ -71,6 +71,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
     </div>
     <div class="col-md-10">
+
+    {% if count >= title.numberOfStaff %}
+
+    <h4>Maximum Staff Limit Reached</h4>
+
+    {% else %}
     <h4>Please first select the time you want to add the staff member for in the project. Each skill corresponds to its start date to end date.</h4>
     <h4>If you dont select any time, the staff will be added for complete length of the project.</h4>
      <br>
@@ -153,8 +159,10 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
 
 
         </a>
+    {% endif %}
         <br>
         <br>
+
 
       <grammarly>
         <div class="_9b5ef6-textarea_btn _9b5ef6-not_focused">

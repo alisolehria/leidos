@@ -255,3 +255,23 @@ def holiday_View(request):
 
     return render(request, 'eprofile/requestholiday.html', {"title":title, "form":form})
 
+
+@login_required
+def requests_View(request):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Employee":  # check if admin
+        return HttpResponse(status=201)
+
+    title = "My Requests"
+
+
+    alertList = alerts.objects.filter(Q(staff=query.staffID)&Q(alertType="Leave")).order_by('-alertID')
+    staff_id = str(query.staffID)
+
+
+
+    return render(request,'eprofile/requests.html',{"title":title,"alertList":alertList,"staff_id":staff_id})
+

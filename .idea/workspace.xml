@@ -2,27 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4814679b-cb3f-41cc-a32b-df750d31d594" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/employee/templates/eprofile/requests.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectManager/templates/employee/requests.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/alerts.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/alerts.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/location.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/location.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/admin.py" afterPath="$PROJECT_DIR$/accounts/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/models.py" afterPath="$PROJECT_DIR$/accounts/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/forms.py" afterPath="$PROJECT_DIR$/adminUser/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/reports.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/reports.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/requests.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/requests.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/skill.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/skill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addproject.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addproject.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addskill.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addskill.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/editproject.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/editproject.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/projectlist.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/projectlist.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/addskill.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/addskill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/addstaff.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/addstaff.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/editprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/editprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/projectlist.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/projectlist.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/stafflist.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/stafflist.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/urls.py" afterPath="$PROJECT_DIR$/adminUser/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/views.py" afterPath="$PROJECT_DIR$/adminUser/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprofile/profile.html" afterPath="$PROJECT_DIR$/employee/templates/eprofile/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html" afterPath="$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" afterPath="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/projectlist.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/projectlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" afterPath="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/urls.py" afterPath="$PROJECT_DIR$/employee/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/views.py" afterPath="$PROJECT_DIR$/employee/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leidos/settings.py" afterPath="$PROJECT_DIR$/leidos/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/alerts/alerts.html" afterPath="$PROJECT_DIR$/projectManager/templates/alerts/alerts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" afterPath="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/profile/profile.html" afterPath="$PROJECT_DIR$/projectManager/templates/profile/profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html" afterPath="$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/addstaff.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/addstaff.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/myprojects.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/myprojects.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/projectlist.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/projectlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/projectrequests.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/projectrequests.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/requestproject.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/requestproject.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/urls.py" afterPath="$PROJECT_DIR$/projectManager/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/views.py" afterPath="$PROJECT_DIR$/projectManager/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,34 +65,34 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="matchmaking.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminUser/templates/project/matchmaking.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="160" column="84" lean-forward="false" selection-start-line="160" selection-start-column="84" selection-end-line="160" selection-end-column="84" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adminUser/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="946" column="10" lean-forward="false" selection-start-line="946" selection-start-column="10" selection-end-line="946" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="17">
+              <caret line="424" column="33" lean-forward="false" selection-start-line="424" selection-start-column="33" selection-end-line="424" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addstaff.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adminUser/templates/project/addstaff.html">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/leidos/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="121" column="19" lean-forward="false" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="91" />
+            <state relative-caret-position="221">
+              <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adminUser/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3519">
+              <caret line="207" column="14" lean-forward="false" selection-start-line="207" selection-start-column="14" selection-end-line="207" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,8 +111,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jobcount</find>
-      <find>DATE_IN</find>
       <find>exc</find>
       <find>list</find>
       <find>table_</find>
@@ -127,6 +139,8 @@
       <find>projects</find>
       <find>skilldateform</find>
       <find>skillsrow</find>
+      <find>update</find>
+      <find>user.upda</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -150,57 +164,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/accounts/templates/registration/password_reset_subject.txt" />
-        <option value="$PROJECT_DIR$/accounts/templates/registration/password_reset_email.html" />
-        <option value="$PROJECT_DIR$/accounts/templates/registration/password_reset_done.html" />
-        <option value="$PROJECT_DIR$/accounts/templates/registration/password_reset_complete.html" />
-        <option value="$PROJECT_DIR$/accounts/urls.py" />
-        <option value="$PROJECT_DIR$/accounts/templates/registration/password_reset_form.html" />
-        <option value="$PROJECT_DIR$/accounts/templates/registration/password_reset_confirm.html" />
-        <option value="$PROJECT_DIR$/accounts/admin.py" />
-        <option value="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/profile/dashboard.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/common/alertTab.html" />
-        <option value="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" />
-        <option value="$PROJECT_DIR$/adminUser/forms.py" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/addstaff.html" />
-        <option value="$PROJECT_DIR$/adminUser/urls.py" />
-        <option value="$PROJECT_DIR$/accounts/models.py" />
-        <option value="$PROJECT_DIR$/employee/views.py" />
-        <option value="$PROJECT_DIR$/projectManager/views.py" />
-        <option value="$PROJECT_DIR$/leidos/settings.py" />
         <option value="$PROJECT_DIR$/leidos/urls.py" />
         <option value="$PROJECT_DIR$/adminUser/static/css/stylesheet.css" />
         <option value="$PROJECT_DIR$/accounts/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/myprojects.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/projectlist.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprofile/profile.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/profile/profile.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/common/alerts.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/common/location.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/common/reports.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/common/requests.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/common/skill.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/project/addproject.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/project/addskill.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/project/editproject.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/project/projectlist.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/addskill.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/addstaff.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/editprofile.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/projectlist.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/stafflist.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" />
+        <option value="$PROJECT_DIR$/projectManager/urls.py" />
+        <option value="$PROJECT_DIR$/projectManager/templates/profile/profile.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/myprojects.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/projectlist.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/projectrequests.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/requestproject.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/employee/requests.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/alerts/alerts.html" />
+        <option value="$PROJECT_DIR$/employee/urls.py" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/profile.html" />
+        <option value="$PROJECT_DIR$/employee/views.py" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/requests.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/projectlist.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" />
+        <option value="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/addstaff.html" />
+        <option value="$PROJECT_DIR$/projectManager/views.py" />
+        <option value="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" />
+        <option value="$PROJECT_DIR$/adminUser/urls.py" />
+        <option value="$PROJECT_DIR$/adminUser/templates/common/reports.html" />
+        <option value="$PROJECT_DIR$/accounts/admin.py" />
+        <option value="$PROJECT_DIR$/accounts/models.py" />
+        <option value="$PROJECT_DIR$/adminUser/forms.py" />
         <option value="$PROJECT_DIR$/adminUser/views.py" />
+        <option value="$PROJECT_DIR$/leidos/settings.py" />
       </list>
     </option>
   </component>
@@ -233,6 +247,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,53 +270,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="adminUser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adminUser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adminUser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,19 +292,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\project" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\employee\templates\eprofile" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\employee" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\common" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\staff" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\common" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static\img" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\profile" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\alerts" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\employee\templates\eprofile" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\employee" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\project" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\common" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\staff" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.leidos">
@@ -841,26 +815,26 @@
     <frame x="1358" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2289644" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24110033" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28150573" sideWeight="0.5060514" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22258593" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252595" sideWeight="0.49676377" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26528257" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2295271" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2687428" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="manage.py@leidos" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26182237" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -948,236 +922,15 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/adminUser/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="43" lean-forward="false" selection-start-line="59" selection-start-column="43" selection-end-line="59" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addskill.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3077">
-          <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addstaff.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="144" column="39" lean-forward="false" selection-start-line="144" selection-start-column="39" selection-end-line="144" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="64" lean-forward="true" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="101" lean-forward="false" selection-start-line="32" selection-start-column="101" selection-end-line="32" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="224" column="32" lean-forward="false" selection-start-line="224" selection-start-column="32" selection-end-line="224" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#28#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="49" column="45" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="40" column="2" lean-forward="true" selection-start-line="40" selection-start-column="2" selection-end-line="47" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leidos/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leidos/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/static/css/stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="5511" column="21" lean-forward="false" selection-start-line="5511" selection-start-column="21" selection-end-line="5511" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/templates/registration/password_reset_subject.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/templates/registration/password_reset_done.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="37" column="7" lean-forward="true" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/templates/registration/password_reset_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="27" column="72" lean-forward="true" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/templates/registration/password_reset_complete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="27" column="79" lean-forward="false" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/templates/registration/password_reset_confirm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="44" column="7" lean-forward="true" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/projectlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1683">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/myprojects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/myprojects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2227">
-          <caret line="131" column="13" lean-forward="false" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="110" column="13" lean-forward="false" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="136" column="13" lean-forward="false" selection-start-line="136" selection-start-column="13" selection-end-line="136" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="51" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="51" column="14" lean-forward="true" selection-start-line="51" selection-start-column="14" selection-end-line="51" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/profile/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projectManager/templates/alerts/alertTab.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="58" column="4" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1185,7 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1193,7 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
           <caret line="43" column="20" lean-forward="true" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,15 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="32" column="76" lean-forward="false" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/reports.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="33" column="76" lean-forward="false" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,7 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="33" column="77" lean-forward="false" selection-start-line="33" selection-start-column="77" selection-end-line="33" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +966,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="32" column="72" lean-forward="false" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="33" column="77" lean-forward="false" selection-start-line="33" selection-start-column="77" selection-end-line="33" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1241,7 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="38" column="69" lean-forward="false" selection-start-line="38" selection-start-column="69" selection-end-line="38" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1249,7 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="33" column="71" lean-forward="false" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1257,23 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
           <caret line="30" column="74" lean-forward="false" selection-start-line="30" selection-start-column="74" selection-end-line="30" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/projectprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="31" column="77" lean-forward="false" selection-start-line="31" selection-start-column="77" selection-end-line="31" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1281,7 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="31" column="73" lean-forward="false" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,7 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="30" column="71" lean-forward="false" selection-start-line="30" selection-start-column="71" selection-end-line="30" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1297,7 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="33" column="77" lean-forward="false" selection-start-line="33" selection-start-column="77" selection-end-line="33" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1305,7 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="33" column="69" lean-forward="false" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1313,15 +1029,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="33" column="76" lean-forward="false" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/addstaff.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="121" column="19" lean-forward="false" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="91" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1329,17 +1036,265 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="160" column="84" lean-forward="false" selection-start-line="160" selection-start-column="84" selection-end-line="160" selection-end-column="84" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="54" lean-forward="false" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="35" column="80" lean-forward="false" selection-start-line="35" selection-start-column="80" selection-end-line="35" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="34" column="6" lean-forward="true" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/myprojects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectrequests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/requestproject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="35" column="80" lean-forward="false" selection-start-line="35" selection-start-column="80" selection-end-line="35" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addskill.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="38" column="80" lean-forward="false" selection-start-line="38" selection-start-column="80" selection-end-line="38" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/alerts/alerts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="34" column="80" lean-forward="false" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/employee/requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="34" column="25" lean-forward="false" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="34" column="72" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="267" column="16" lean-forward="false" selection-start-line="267" selection-start-column="16" selection-end-line="267" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="36" column="75" lean-forward="false" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/myprojects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/projectlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/sideBar/alerts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="252" column="10" lean-forward="false" selection-start-line="252" selection-start-column="10" selection-end-line="252" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/addstaff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="78" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="175" column="0" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addstaff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="157" column="18" lean-forward="false" selection-start-line="157" selection-start-column="18" selection-end-line="157" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/projectprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="113" column="124" lean-forward="false" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="115" column="20" lean-forward="false" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/reports.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="113" column="62" lean-forward="false" selection-start-line="113" selection-start-column="62" selection-end-line="113" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="121" column="63" lean-forward="false" selection-start-line="121" selection-start-column="63" selection-end-line="121" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3519">
+          <caret line="207" column="14" lean-forward="false" selection-start-line="207" selection-start-column="14" selection-end-line="207" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="946" column="10" lean-forward="false" selection-start-line="946" selection-start-column="10" selection-end-line="946" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="424" column="33" lean-forward="false" selection-start-line="424" selection-start-column="33" selection-end-line="424" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leidos/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

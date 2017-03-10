@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'staff/$', views.staffprofile_View, name='staffprofile'),
     url(r'alerts/$', views.alert_View, name='alerts'),
     url(r'requestholiday/$', views.holiday_View, name='holidayrequest'),
+    url(r'myrequests/$', views.requests_View, name='myrequests'),
 
 
 ]

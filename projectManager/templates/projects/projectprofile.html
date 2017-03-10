@@ -32,6 +32,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="{% url 'projectManager:myprojects' %}">My Projects</a></li>
+        <li><a href="{% url 'projectManager:myrequests' %}">My Requests</a></li>
       <li><a href="{% url 'projectManager:projectlist' %}">Projects List</a></li>
         <li><a href="{% url 'adminUser:projectlist' %}">Matchmaking</a></li>
     </ul>
@@ -242,12 +243,13 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
             <br>
   <div class="pull-right">
                 {% if info.projectManager == user %}
-
+                {% if count < info.numberOfStaff %}
                         {% if info.status == "On Going" or info.status == "Approved"%}
 
                     <a href="{% url 'projectManager:addstaff' info.projectID %}"><input class="btn btn-success btn-md" type="submit" value="Add Staff" id="saveskill" name="continue"/></a>
           {% endif %}
 
+  {% endif %}
   {% endif %}
           </div>
 
