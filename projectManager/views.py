@@ -117,6 +117,7 @@ def projectprofile_View(request, project_id):
         return HttpResponse(status=201)
 
     info = projects.objects.get(projectID=project_id)
+    title = info.projectName
     count = info.staffwithprojects_set.filter(status="Working").count()
     # this part takes skills and skill hours req. and puts them in a dict
     skillset = []
@@ -195,7 +196,7 @@ def projectprofile_View(request, project_id):
         board = id.boardID
     except:
         None
-    return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current,"count":count,"board":board})
+    return render(request, 'projects/projectprofile.html', {"title":title,"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current,"count":count,"board":board})
 
 @login_required()
 def myprojects_View(request):
@@ -219,9 +220,9 @@ def staffprofile_View(request, staff_id):
     if query.designation != "Project Manager":  # check if admin
         return HttpResponse(status=201)
 
-    title = staff_id
-    info = profile.objects.get(staffID = staff_id)
 
+    info = profile.objects.get(staffID = staff_id)
+    title = info.user.first_name+" "+info.user.last_name
     time = datetime.date.today()
     ongoing = info.staffwithprojects_set.filter(Q(startDate__lte=time) & Q(endDate__gte=time)).count()
     upcoming = info.staffwithprojects_set.filter(startDate__gt=time).count()

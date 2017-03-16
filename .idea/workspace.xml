@@ -2,24 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4814679b-cb3f-41cc-a32b-df750d31d594" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/employee/templates/eprojects/comments.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/employee/templates/eprojects/message.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectManager/templates/projects/comments.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projectManager/templates/projects/message.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/adminUser/templates/base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/employee/templates/eprofile/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts/models.py" afterPath="$PROJECT_DIR$/accounts/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/static/css/stylesheet.css" afterPath="$PROJECT_DIR$/adminUser/static/css/stylesheet.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/alerts.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/alerts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/location.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/location.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/reports.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/reports.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/requests.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/requests.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/common/skill.html" afterPath="$PROJECT_DIR$/adminUser/templates/common/skill.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/profile/dashboard.html" afterPath="$PROJECT_DIR$/adminUser/templates/profile/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addproject.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addproject.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addskill.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addskill.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/editproject.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/editproject.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/projectlist.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/projectlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/addskill.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/addskill.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/addstaff.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/addstaff.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/editprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/editprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/projectlist.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/projectlist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/stafflist.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/stafflist.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" afterPath="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adminUser/views.py" afterPath="$PROJECT_DIR$/adminUser/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprofile/profile.html" afterPath="$PROJECT_DIR$/employee/templates/eprofile/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html" afterPath="$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprofile/requests.html" afterPath="$PROJECT_DIR$/employee/templates/eprofile/requests.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" afterPath="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/comments.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/comments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/message.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/message.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/projectlist.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/projectlist.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" afterPath="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/sideBar/alertTab.html" afterPath="$PROJECT_DIR$/employee/templates/sideBar/alertTab.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/urls.py" afterPath="$PROJECT_DIR$/employee/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/views.py" afterPath="$PROJECT_DIR$/employee/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/alerts/alertTab.html" afterPath="$PROJECT_DIR$/projectManager/templates/alerts/alertTab.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" afterPath="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/alerts/alerts.html" afterPath="$PROJECT_DIR$/projectManager/templates/alerts/alerts.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/employee/requests.html" afterPath="$PROJECT_DIR$/projectManager/templates/employee/requests.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" afterPath="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/profile/profile.html" afterPath="$PROJECT_DIR$/projectManager/templates/profile/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html" afterPath="$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/addstaff.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/addstaff.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/comments.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/comments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/matchmaking.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/matchmaking.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/message.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/message.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/myprojects.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/myprojects.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/projectlist.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/projectlist.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/urls.py" afterPath="$PROJECT_DIR$/projectManager/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/templates/projects/requestproject.html" afterPath="$PROJECT_DIR$/projectManager/templates/projects/requestproject.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectManager/views.py" afterPath="$PROJECT_DIR$/projectManager/views.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/projectManager/templates/projects/projectrequests.html" afterPath="$PROJECT_DIR$/projectManager/templates/profile/base.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,42 +79,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="projectprofile.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="116" column="32" lean-forward="true" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/employee/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="166" column="20" lean-forward="true" selection-start-line="166" selection-start-column="20" selection-end-line="166" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projectManager/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="175" column="0" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -115,7 +112,6 @@
       <find>skillsrow</find>
       <find>update</find>
       <find>user.upda</find>
-      <find>progress</find>
       <find>table</find>
       <find>profile-table</find>
       <find>Project Reques</find>
@@ -126,6 +122,7 @@
       <find>container-hea</find>
       <find>a:hover</find>
       <find>.container-me</find>
+      <find>progress</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,57 +146,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/adminUser/static/css/stylesheet.css" />
+        <option value="$PROJECT_DIR$/adminUser/templates/common/alertTab.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/profile/dashboard.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/common/alerts.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/common/location.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/common/reports.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/common/requests.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/common/skill.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/addproject.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/addskill.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/editproject.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/project/projectlist.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/addskill.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" />
+        <option value="$PROJECT_DIR$/adminUser/views.py" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/addstaff.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/editprofile.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/projectlist.html" />
         <option value="$PROJECT_DIR$/adminUser/templates/staff/stafflist.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprofile/requests.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprojects/projectlist.html" />
-        <option value="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/project/addstaff.html" />
-        <option value="$PROJECT_DIR$/adminUser/urls.py" />
-        <option value="$PROJECT_DIR$/adminUser/templates/common/reports.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" />
-        <option value="$PROJECT_DIR$/accounts/admin.py" />
-        <option value="$PROJECT_DIR$/leidos/settings.py" />
-        <option value="$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html" />
-        <option value="$PROJECT_DIR$/adminUser/forms.py" />
-        <option value="$PROJECT_DIR$/adminUser/templates/common/alertTab.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/profile/dashboard.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/project/matchmaking.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/project/projectprofile.html" />
-        <option value="$PROJECT_DIR$/adminUser/templates/project/addskill.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/matchmaking.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/alerts/alerts.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/base.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/profile/profile.html" />
         <option value="$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/alerts/alerts.html" />
         <option value="$PROJECT_DIR$/projectManager/templates/employee/requests.html" />
         <option value="$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html" />
         <option value="$PROJECT_DIR$/projectManager/templates/projects/addskill.html" />
         <option value="$PROJECT_DIR$/projectManager/templates/projects/addstaff.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/profile/base.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/comments.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/matchmaking.html" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/message.html" />
         <option value="$PROJECT_DIR$/projectManager/templates/projects/myprojects.html" />
         <option value="$PROJECT_DIR$/projectManager/templates/projects/projectlist.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/projectrequests.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/requestproject.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprofile/profile.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/profile/profile.html" />
-        <option value="$PROJECT_DIR$/accounts/models.py" />
-        <option value="$PROJECT_DIR$/projectManager/urls.py" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/message.html" />
-        <option value="$PROJECT_DIR$/adminUser/static/css/stylesheet.css" />
-        <option value="$PROJECT_DIR$/projectManager/templates/projects/comments.html" />
-        <option value="$PROJECT_DIR$/adminUser/views.py" />
-        <option value="$PROJECT_DIR$/employee/urls.py" />
-        <option value="$PROJECT_DIR$/employee/templates/eprojects/message.html" />
-        <option value="$PROJECT_DIR$/projectManager/templates/alerts/alertTab.html" />
-        <option value="$PROJECT_DIR$/employee/templates/sideBar/alertTab.html" />
-        <option value="$PROJECT_DIR$/employee/templates/eprojects/comments.html" />
-        <option value="$PROJECT_DIR$/employee/views.py" />
-        <option value="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" />
-        <option value="$PROJECT_DIR$/projectManager/views.py" />
         <option value="$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html" />
+        <option value="$PROJECT_DIR$/projectManager/views.py" />
+        <option value="$PROJECT_DIR$/projectManager/templates/projects/requestproject.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/base.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/requests.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/comments.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/message.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/myprojects.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/projectlist.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprofile/profile.html" />
+        <option value="$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html" />
+        <option value="$PROJECT_DIR$/employee/templates/sideBar/alerts.html" />
+        <option value="$PROJECT_DIR$/adminUser/templates/base.html" />
       </list>
     </option>
   </component>
@@ -231,6 +228,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -243,78 +242,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectManager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leidos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="employee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,19 +260,19 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\profile" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static\img" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\profile" />
+      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\common" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\employee\templates\eprojects" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\projects" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static\img" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\profile" />
       <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\employee\templates\eprofile" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\static\img" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\profile" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\adminUser\templates\common" />
-      <recent name="E:\Ali\University Ka Kaam\F29SO Software Engineering\WebApp\leidos\projectManager\templates\profile" />
     </key>
   </component>
   <component name="RunManager" selected="Django server.leidos">
@@ -854,17 +783,15 @@
     <frame x="1358" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21763754" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28150573" sideWeight="0.5060514" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22258593" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252595" sideWeight="0.49676377" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18915802" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22913256" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3114887" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="manage.py@leidos" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25951558" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2641292" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22913256" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -873,30 +800,10 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="manage.py@leidos" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25951558" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28150573" sideWeight="0.5060514" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2237601" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252595" sideWeight="0.49676377" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27912343" sideWeight="0.49394855" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2295271" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23300971" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="manage.py@leidos" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2618658" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928804" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -964,113 +871,17 @@
           <url>file://$PROJECT_DIR$/employee/views.py</url>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/projectManager/templates/profile/profile.html</url>
+          <line>1</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/requests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="36" column="75" lean-forward="false" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/myprojects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/projectlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/sideBar/alerts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="34" column="75" lean-forward="false" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/reports.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="113" column="62" lean-forward="false" selection-start-line="113" selection-start-column="62" selection-end-line="113" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/profile/1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leidos/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2550">
-          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="62" column="48" lean-forward="false" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/templates/common/alertTab.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1079,286 +890,234 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/addstaff.html">
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/reports.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="52" column="0" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="450">
+          <caret line="118" column="20" lean-forward="false" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/skill.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/addproject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/templates/project/addskill.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="161" column="63" lean-forward="false" selection-start-line="161" selection-start-column="63" selection-end-line="161" selection-end-column="63" />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/addstaff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/editproject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/templates/project/matchmaking.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="380" column="0" lean-forward="true" selection-start-line="76" selection-start-column="3" selection-end-line="380" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/matchmaking.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="117" column="24" lean-forward="false" selection-start-line="117" selection-start-column="24" selection-end-line="117" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="37" column="81" lean-forward="false" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/alerts/alerts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="36" column="78" lean-forward="false" selection-start-line="36" selection-start-column="78" selection-end-line="36" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/employee/requests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="36" column="74" lean-forward="false" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="36" column="79" lean-forward="false" selection-start-line="36" selection-start-column="79" selection-end-line="36" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addskill.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="40" column="79" lean-forward="false" selection-start-line="40" selection-start-column="79" selection-end-line="40" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addstaff.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="75" lean-forward="false" selection-start-line="36" selection-start-column="75" selection-end-line="36" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/myprojects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="36" column="74" lean-forward="false" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectrequests.html">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="36" column="74" lean-forward="false" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/requestproject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="37" column="76" lean-forward="false" selection-start-line="37" selection-start-column="76" selection-end-line="37" selection-end-column="76" />
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/templates/project/projectprofile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="270" column="7" lean-forward="false" selection-start-line="270" selection-start-column="7" selection-end-line="272" selection-end-column="12" />
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/profile.html">
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/project/projectlist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="83" column="9" lean-forward="false" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/profile.html">
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/addskill.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="81" column="8" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/profile/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-816">
-          <caret line="36" column="74" lean-forward="false" selection-start-line="36" selection-start-column="74" selection-end-line="36" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/static/css/stylesheet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="6007" column="28" lean-forward="false" selection-start-line="6007" selection-start-column="28" selection-end-line="6007" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/addstaff.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="79" column="19" lean-forward="false" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="76" column="6" lean-forward="true" selection-start-line="76" selection-start-column="6" selection-end-line="76" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="228" column="20" lean-forward="true" selection-start-line="228" selection-start-column="20" selection-end-line="228" selection-end-column="20" />
+        <state relative-caret-position="-1232">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adminUser/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="765" column="68" lean-forward="false" selection-start-line="765" selection-start-column="68" selection-end-line="765" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="251">
+          <caret line="111" column="56" lean-forward="false" selection-start-line="111" selection-start-column="56" selection-end-line="111" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/staffprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/addstaff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="20" lean-forward="false" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/projectlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/editprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/staff/stafflist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/profile/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/alerts/alerts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="174" column="12" lean-forward="true" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/employee/requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/employee/staffprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="151" column="20" lean-forward="false" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addskill.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="137" column="24" lean-forward="false" selection-start-line="137" selection-start-column="24" selection-end-line="137" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/addstaff.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="94" column="20" lean-forward="false" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/comments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="105" selection-end-column="11" />
+        <state relative-caret-position="451">
+          <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/matchmaking.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="313" column="21" lean-forward="false" selection-start-line="313" selection-start-column="21" selection-end-line="313" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/myprojects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="55" column="24" lean-forward="false" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/message.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="89" column="0" lean-forward="true" selection-start-line="80" selection-start-column="10" selection-end-line="89" selection-end-column="0" />
+        <state relative-caret-position="357">
+          <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/employee/urls.py">
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/alerts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/message.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="66" column="44" lean-forward="false" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/sideBar/alertTab.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="57" column="4" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/comments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="78" column="26" lean-forward="true" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="104" column="10" lean-forward="true" selection-start-line="104" selection-start-column="10" selection-end-line="109" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projectManager/templates/alerts/alertTab.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/projectManager/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="175" column="0" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/employee/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="166" column="20" lean-forward="true" selection-start-line="166" selection-start-column="20" selection-end-line="166" selection-end-column="20" />
+        <state relative-caret-position="357">
+          <caret line="198" column="74" lean-forward="false" selection-start-line="198" selection-start-column="74" selection-end-line="198" selection-end-column="74" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
@@ -1367,8 +1126,165 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectprofile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="116" column="32" lean-forward="true" selection-start-line="116" selection-start-column="32" selection-end-line="116" selection-end-column="32" />
+        <state relative-caret-position="482">
+          <caret line="258" column="24" lean-forward="false" selection-start-line="258" selection-start-column="24" selection-end-line="258" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/requestproject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/projects/projectlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/common/location.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jason_MJP5ec7.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1131">
+          <caret line="140" column="7" lean-forward="true" selection-start-line="140" selection-start-column="7" selection-end-line="140" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="122" column="7" lean-forward="false" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projectManager/templates/profile/requestholiday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="33" lean-forward="false" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1597">
+          <caret line="166" column="20" lean-forward="false" selection-start-line="166" selection-start-column="20" selection-end-line="166" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/staffprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="90" column="18" lean-forward="false" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/comments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/myprojects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/projectprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="47" column="83" lean-forward="false" selection-start-line="47" selection-start-column="83" selection-end-line="47" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprojects/projectlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/sideBar/alerts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="169" column="22" lean-forward="false" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/requestholiday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/employee/templates/eprofile/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminUser/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="72" column="7" lean-forward="false" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
           <folding />
         </state>
       </provider>

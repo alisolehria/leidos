@@ -107,9 +107,9 @@ def staffprofile_View(request, staff_id):
     if query.designation != "Admin":  # check if admin
         return HttpResponse(status=201)
 
-    title = staff_id
-    info = profile.objects.get(staffID = staff_id)
 
+    info = profile.objects.get(staffID = staff_id)
+    title = info.user.first_name+" "+info.user.last_name
     time = datetime.date.today()
 
     ongoing = info.staffwithprojects_set.filter(Q(startDate__lte=time) & Q(endDate__gte=time) & Q(status="Working")).count()
@@ -214,7 +214,7 @@ def projectprofile_View(request, project_id):
         return HttpResponse(status=201)
 
     info = projects.objects.get(projectID=project_id)
-
+    title = info.projectName
     count = info.staffwithprojects_set.filter(status="Working").count()
     # this part takes skills and skill hours req. and puts them in a dict
     skillset = []
@@ -300,7 +300,7 @@ def projectprofile_View(request, project_id):
                                        )
             messages.success(request, "Staff Removed")
 
-    return render(request,'project/projectprofile.html',{"info":info,"skillwithhrs":skillwithhrs,"past":past,"current":current,"count":count})
+    return render(request,'project/projectprofile.html',{"title":title,"info":info,"skillwithhrs":skillwithhrs,"past":past,"current":current,"count":count})
 
 @login_required
 def table_View(request):

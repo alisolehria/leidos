@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load countries %}
 <!DOCTYPE html>
 <html lang="en" xmlns:border-radius="http://www.w3.org/1999/xhtml">
   <head>
@@ -12,9 +11,12 @@
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static "js/search.js" %}"></script>
      <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
+        {{ form.media }}
 
 
   </head>
@@ -24,26 +26,37 @@
           <div>
           <img src="{% static 'img/leidos_logo_2013.jpg' %}" alt="" width="100%" > </a>  </li>
         </h1>
-        
+
       <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-     
+
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="{% url 'projectManager:myprojects' %}">My Projects</a></li>
-        <li><a href="{% url 'projectManager:myrequests' %}">My Requests</a></li>
-      <li><a href="{% url 'projectManager:projectlist' %}">Projects List</a></li>
- <li><a href="{% url 'projectManager:matchmaking' %}">Matchmaking</a></li>
+      <li class="#"><a href="{% url 'adminUser:addstaff' %}">Add Staff</a></li>
+      <li><a href="{% url 'adminUser:stafflist' %}">Staff List</a> </li>
+      <li><a href="{% url 'adminUser:addproject' %}">Add Project</a></li>
+      <li><a href="{% url 'adminUser:projectlist' %}">Projects List</a></li>
+        <li><a href="{% url 'adminUser:matchmaking' %}">Match-Making</a></li>
     </ul>
   </div>
-             <div class="container-heading">
+          <div class="container-heading">
               {{ title }}
           </div>
 </nav>
 
 
 
+    {% if messages %}
+        <div class = "row">
+      <div class="col-sm-6 col-sm-offset-3">
+    {% for message in messages %}
+    <p{% if message.tags %} class="alert alert-success"{% endif %}>{{ message }}</p>
+        </div>
+      </div>
+    {% endfor %}
+
+{% endif %}
 
    <div class="container-fluid">
    <div class="pull-right"><a href = {% url 'accounts:logoutUser' %} class="btn btn-danger btn-md"> <span class="glyphicon glyphicon-log-out"></span>Sign out</a></div>
@@ -52,63 +65,24 @@
     <div class="col-md-2">
 
 <div id="alert">
-<script> jQuery(document).ready(function (){jQuery("#alert").load('{% url "projectManager:alertTab" %}');})
+
+<script> jQuery(document).ready(function (){jQuery("#alert").load('{% url "adminUser:alertTab" %}');})
          </script>
               <script>
-jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('{% url "projectManager:alertTab" %}');
+jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('{% url "adminUser:alertTab" %}');
    },10000)
        });</script>
         </div>
            </div>
 
 
+           {% block content %}
+           {% endblock %}
 
 
-          <div class="col-md-8">
-
-        {% for alert in alertList %}
-        <div class="container container-alert" id="{{ alert.alertID }}">
-
-
-
-               Your Project Request:  <a target="_blank" href="{% url 'projectManager:projectprofile' alert.project.projectID %}">Project Name: {{ alert.project.projectName }}</a> Status Changed
-               <br>
-               Alert Date: {{ alert.alertDate }}
-               <br>
-               Project Status: {{ alert.project.status }}
-
-                <br>
-               <div class="pull-right">
-               {% for alertStatus in alert.staffalerts_set.all %}
-                   {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
-                       <form action="{% url 'projectManager:alerts' %}" method="post">
-                       {% csrf_token %}
-                     <button class="btn btn-success btn-md" value="{{ alert.alertID }}" name="unseen">Mark as Seen</button>
-                       </form>
-                        <br>
-                       {% endif %}
-            {% endfor %}
-
-               </div>
-
- <br>
-
-
-
-            </div>
-             <br>
-        {% endfor %}
-
-
-
-<br>
-
-        <br>
-        <br>
-
-
-
-
+       </div>
+      <br>
+      <br>
       <grammarly>
         <div class="_9b5ef6-textarea_btn _9b5ef6-not_focused">
           <div class="_9b5ef6-transform_wrap">
@@ -122,8 +96,10 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
   </div>
 </div>
 
+
+
     </div>
-  <div class="container-footer">
+    <div class="container-footer">
     <br><br>
     <div class="row">
         <div class="col-sm-2">
@@ -142,12 +118,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
               </div>
 
 
-  <div class="col-sm-2 pull-right">
-
-    <img src={% static 'img/Logo.jpg' %} alt="syntaxLogo" class="img-rounded img-responsive img-footer-syntax">
-
-</div>
-         <div class="col-sm-2 pull-right">
+         <div class="col-sm-2">
 
     <h8>Developed By Syntax Inc.©
         <br>
@@ -157,6 +128,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 </h8>
               </div>
 
+  <div class="col-sm-2">
+
+    <img src={% static 'img/Logo.jpg' %} alt="syntaxLogo" class="img-rounded img-responsive img-footer-syntax">
+
+</div>
+
         </div>
 
              <br><br>
@@ -165,5 +142,6 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
 </div>
     </div>
+
 </body>
 </html>
