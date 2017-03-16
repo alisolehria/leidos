@@ -4614,7 +4614,10 @@ a.thumbnail.active {
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
 }
 
-
+.profile-table{
+    background: rgba(19, 133, 255, 0.18);
+    border:none !important;
+}
 .progress-bar {
     float: left;
     width: 0;
@@ -5965,6 +5968,8 @@ h7{
     color:black;
     font-family: Calibri;
     font-size: 20px;
+    border:none !important;
+    padding: 0;
 }
 .container.container-rounded {
  border-radius: 10px;

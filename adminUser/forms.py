@@ -60,6 +60,7 @@ class UserProfileForm(forms.ModelForm):
     phone_regex = RegexValidator(regex=r'^\d{12,12}$',
                                  message="Phone number must be entered in the format: '971501234567'. Only 12 digits allowed.")
     contact = forms.CharField(validators=[phone_regex],label="Phone Number: ")
+    picture = forms.ImageField(label="Picture: ")
     gender = forms.ChoiceField(label="Gender:",choices=profile.GENDER)
     designation = forms.ChoiceField(label="Designation:",choices=profile.DESIGNATIONS)
 
@@ -70,8 +71,10 @@ class UserProfileForm(forms.ModelForm):
             'nationality',
             'gender',
             'contact',
+            'picture',
             'preferredLocation',
             'designation'
+
         ]
 
     helper = FormHelper()
@@ -85,7 +88,9 @@ class UserProfileForm(forms.ModelForm):
             """),
                 Div(
             'gender',
-                'contact'))
+                'contact',  HTML("""
+                <br><br><br>
+            """),'picture',))
         ),
         Fieldset(
             'Work Information:',

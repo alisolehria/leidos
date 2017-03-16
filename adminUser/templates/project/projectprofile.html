@@ -268,6 +268,9 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#refresh").load
     {% if count < info.numberOfStaff %}
      {% if info.status == "On Going" or info.status == "Approved" %}
      <div class="pull-right">
+        <a href="{% url 'adminUser:matchmakingProject' info.projectID %}" class="btn btn-primary btn-md">
+          <span class="glyphicon glyphicon-star"></span> Match-Making
+        </a>
     <a href="{% url 'adminUser:addpstaff' info.projectID %}" class="btn btn-success btn-md">
           <span class="glyphicon glyphicon-plus"></span> Add staff
         </a>

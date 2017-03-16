@@ -110,10 +110,21 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
         </div>
 <br>
           <div class="pull-right">
+          {% if user not in info.staffID.all and info.numberOfStaff > info.staffID.count and user != info.projectManager%}
+
+            <form action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
+                {% csrf_token %}
+                <input type="number" name="projectNum" value="{{ info.projectID }}" hidden />
+             <button class="btn btn-success btn-md" name="staffNum" value="{{ user.staffID }}">
+          <span class="glyphicon glyphicon-plus-sign"></span> Apply
+        </button>
+</form>
+
+          {% endif %}
   <form  class = "form-inline" action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
   {% csrf_token %}
                         <div class="form-group">
-{% if info.status == "On Going" %}
+{% if info.status == "On Going" and info.projectManager == user %}
      <button class="btn btn-success btn-md" value="{{ info.projectID }}" name="complete"> <span class="glyphicon glyphicon-thumbs-up"></span> Complete</button>
                             {% endif %}
                         </div>

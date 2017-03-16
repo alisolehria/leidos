@@ -180,6 +180,15 @@ def projectprofile_View(request, project_id):
                                    )
         messages.success(request, "Staff Removed")
 
+    elif 'staffNum' in request.POST:
+        staff = request.POST.getlist('staffNum')
+        project = request.POST.getlist('projectNum')
+        proj = projects.objects.get(projectID=project[0])
+        alert = alerts.objects.create(fromStaff=query, alertType='Project Request', alertDate=datetime.date.today(),project=proj)
+        staffAlerts.objects.create(alertID=alert, staffID=proj.projectManager, status="Unseen")
+        messages.success(request,"Project Request Successfull!")
+        return projectlist_View(request)
+
     return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current,"count":count})
 
 @login_required()
@@ -246,13 +255,15 @@ def alert_View(request):
             staffID = request.POST.getlist("accept")
             alertID = request.POST.getlist('seen')
             alertObj = staffAlerts.objects.filter(Q(alertID=alertID[0]) & Q(staffID=query.staffID))
-            alertObj.update(status="Seen")
+
             project = request.POST.getlist("projectNum")
+            staff = profile.objects.get(staffID=staffID[0])
             proj = projects.objects.get(projectID=project[0])
             alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
                                           project=proj)
-            proj.staffID.add(staffID[0])
-            staff = profile.objects.get(staffID=staffID[0])
+            staffWithProjects.objects.create(projects_ID=proj, profile_ID=staff,
+                                             status="Working", startDate=proj.startDate, endDate=proj.endDate)
+            alertObj.update(status="Seen")
             staffAlerts.objects.create(alertID=alert, staffID=staff, status="Unseen")
             messages.success(request,staff.user.first_name+" "+staff.user.last_name+" Added Succesfully to "+alert.project.projectName )
             return projectprofile_View(request,project[0])
@@ -474,3 +485,162 @@ def requests_View(request):
     staff_id = str(query.staffID)
 
     return render(request,'employee/requests.html',{"title":title,"alertList":alertList,"staff_id":staff_id})
+
+@login_required
+def matchmakingSelect_View(request):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Project Manager":  # check if pm
+        return HttpResponse(status=201)
+
+    title = "Matchmaking"
+    allProjects = projects.objects.filter(projectManager=query)
+
+    return render(request, 'projects/matchmaking.html', {"title": title,"allProjects":allProjects})
+
+
+@login_required
+def matchmaking_View(request,project_id):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Project Manager":  # check if pm
+        return HttpResponse(status=201)
+
+    title = "Matchmaking"
+    allProjects = projects.objects.all()
+    project = projects.objects.get(projectID=project_id)
+    # exlude PMS and Admins
+    staffList = profile.objects.filter(Q(designation="Employee") | Q(designation="Contractor")| Q(designation="Project Manager"))
+    # exclude already in project
+    staffList = staffList.exclude(workStatus="Not Employeed")
+    staffList = staffList.exclude(projects__projectID__exact=project.projectID)
+    # holidays during the project
+    months = project.endDate.month - project.startDate.month
+    if(months<0):
+        months = months + 12
+    if months == 0:
+        months =1
+    full = []
+    fsome = []
+    partial = []
+    some = []
+    #match skills
+    fullCount = 0
+    count = 0
+    all = 0
+    somem = 0
+    continueFor = False
+    holidayID = []
+    for staff in staffList:
+        totalSkills = project.projectswithskills_set.count()
+        for projSkill in project.projectswithskills_set.all():
+                sMonth = projSkill.startDate.month
+                eMonth = projSkill.endDate.month
+                sDate = projSkill.startDate
+                eDate = projSkill.endDate
+                if sMonth == eMonth:
+                    try:
+                        hrs = staff.staffwithskills_set.get(Q(skillID=projSkill.skillID)&Q(month=sMonth))
+                        if hrs.hoursLeft > projSkill.hoursRequired:
+                            fullCount = fullCount +1
+                            count = count +1
+                        else:
+                            count = count + 1
+                    except ObjectDoesNotExist:
+                        None
+                else:
+                    required = projSkill.hoursRequired
+                    for month in range(sMonth,eMonth+1):
+                        try:
+                            hrs = staff.staffwithskills_set.get(Q(skillID=projSkill.skillID) & Q(month=month))
+                            try:
+                                hol = staff.holidays_set.filter(Q(startDate__gte=sDate)&Q(endDate__lte=eDate))
+                                for holiday in hol:
+                                    for mon in range(holiday.startDate.month,holiday.endDate.month+1):
+                                        if mon is month:
+                                            continueFor = True
+                                            holidayID.append(holiday.holidayID)
+                            except ObjectDoesNotExist:
+                                None
+
+                            if continueFor is True:
+                                continueFor = False
+                                continue
+                            if hrs.hoursLeft >= required:
+                                all = 1
+                                somem = 0
+                                break
+                            elif hrs.hoursLeft < required and hrs.hoursLeft is not 0:
+                                required = required - hrs.hoursLeft
+                                somem = 1
+                        except ObjectDoesNotExist:
+                                somem = 0
+                                all = 0
+                    if all is 1:
+                        fullCount =fullCount+1
+                        count = count + 1
+                    elif somem is 1:
+                        count = count +1
+        if totalSkills is not 0 and count is not 0:
+            if fullCount is totalSkills:
+                full.append(staff)
+            elif count is totalSkills and fullCount is not totalSkills and fullCount is not 0:
+                fsome.append(staff)
+            elif count is totalSkills and fullCount is 0:
+                partial.append(staff)
+            elif count is not 0:
+                some.append(staff)
+        count = 0
+        fullCount = 0
+     #adding staff
+
+    startDate = []
+    endDate = []
+    dates = project.projectswithskills_set.all()
+    if request.POST:
+        staffID = request.POST.getlist("selectStaff")
+        staff = profile.objects.get(staffID=staffID[0])
+        for sk in dates:
+            for sSkill in staff.staffwithskills_set.all():
+                if sk.skillID_id == sSkill.skillID_id:
+                    startDate.append(sk.startDate)
+                    endDate.append(sk.endDate)
+            sMonth = sk.startDate.month
+            eMonth = sk.endDate.month
+            stSkill = staff.staffwithskills_set.filter(skillID=sk.skillID)
+            try:
+                for month in range(sMonth,eMonth+1):
+                    if sk.hoursRequired > 0:
+                        hrs = stSkill.get(month=month)
+                        initial = hrs.hoursLeft
+                        if hrs.hoursLeft >=sk.hoursRequired:
+                            hrs.hoursLeft = hrs.hoursLeft - sk.hoursRequired
+                            sk.hoursRequired = 0
+                        else:
+                            sk.hoursRequired = sk.hoursRequired - hrs.hoursLeft
+                            hrs.hoursLeft = 0
+                        final = initial - hrs.hoursLeft
+                        # staffProjectSkill.objects.create(projectID=project, staffID=staff,
+                        #                                  skillID=skills.objects.get(skillID=sk.skillID_id),
+                        #                                  hours=final, month=month)
+                        hrs.save()
+                        sk.save()
+            except:
+                None
+
+        start = min(startDate)
+        end = max(endDate)
+        staffWithProjects.objects.create(projects_ID=project, profile_ID=staff,
+                                         status="Working", startDate=start, endDate=end)
+
+        alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
+                                      project=project, info="added to")
+        staffAlerts.objects.create(alertID=alert, staffID=staff, status="Unseen")
+        messages.success(request, "Staff added succesfully!")
+        return matchmakingSelect_View(request)
+
+    return render(request,'projects/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID})

@@ -502,6 +502,8 @@ def addpskill_View(request, project_id):
             return addpstaff_View(request, project_id)
         elif 'save' in request.POST:
             return projectprofile_View(request, project_id)
+        elif 'match' in request.POST:
+            return matchmakingSelect_View(request,project_id)
 
     return render(request, 'project/addskill.html',{"title":title,"skillset":skillset,"startDate":startDate,"endDate":endDate})
 
@@ -518,7 +520,7 @@ def addpstaff_View(request, project_id):
     title = projects.objects.get(projectID=project_id)
     count = title.staffwithprojects_set.filter(status="Working").count()
     # exclude project managers and admins also staff which have holidays during the project
-    list = profile.objects.exclude(projects=project_id).exclude(designation="Project Manager").exclude(designation="Admin").exclude(workStatus="Not Employeed")
+    list = profile.objects.exclude(projects=project_id).exclude(designation="Admin").exclude(workStatus="Not Employeed")
 
     number = title.numberOfStaff - profile.objects.filter(projects=project_id).count()
     skill = title.projectswithskills_set.all()
@@ -576,7 +578,7 @@ def addpstaff_View(request, project_id):
                                     dates.save()
 
                 except ObjectDoesNotExist:
-                    messages.success(request, "Added but the staff member doesnt have one or many skills selected!")
+                    None
 
             startDate = min(sDate)
             endDate = max(eDate)
@@ -959,8 +961,9 @@ def matchmaking_View(request,project_id):
     allProjects = projects.objects.all()
     project = projects.objects.get(projectID=project_id)
     # exlude PMS and Admins
-    staffList = profile.objects.filter(Q(designation="Employee") | Q(designation="Contractor"))
+    staffList = profile.objects.filter(Q(designation="Employee") | Q(designation="Contractor")| Q(designation="Project Manager"))
     # exclude already in project
+    staffList = staffList.exclude(workStatus="Not Employeed")
     staffList = staffList.exclude(projects__projectID__exact=project.projectID)
     # holidays during the project
     months = project.endDate.month - project.startDate.month
@@ -1040,7 +1043,55 @@ def matchmaking_View(request,project_id):
                 some.append(staff)
         count = 0
         fullCount = 0
+     #adding staff
 
+    startDate = []
+    endDate = []
+    dates = project.projectswithskills_set.all()
+    if request.POST:
+        staffID = request.POST.getlist("selectStaff")
+        staff = profile.objects.get(staffID=staffID[0])
+        for sk in dates:
+            for sSkill in staff.staffwithskills_set.all():
+                if sk.skillID_id == sSkill.skillID_id:
+                    startDate.append(sk.startDate)
+                    endDate.append(sk.endDate)
+            sMonth = sk.startDate.month
+            eMonth = sk.endDate.month
+            stSkill = staff.staffwithskills_set.filter(skillID=sk.skillID)
+            try:
+                for month in range(sMonth,eMonth+1):
+                    if sk.hoursRequired > 0:
+                        hrs = stSkill.get(month=month)
+                        initial = hrs.hoursLeft
+                        if hrs.hoursLeft >=sk.hoursRequired:
+                            hrs.hoursLeft = hrs.hoursLeft - sk.hoursRequired
+                            sk.hoursRequired = 0
+                        else:
+                            sk.hoursRequired = sk.hoursRequired - hrs.hoursLeft
+                            hrs.hoursLeft = 0
+                        final = initial - hrs.hoursLeft
+                        # staffProjectSkill.objects.create(projectID=project, staffID=staff,
+                        #                                  skillID=skills.objects.get(skillID=sk.skillID_id),
+                        #                                  hours=final, month=month)
+                        hrs.save()
+                        sk.save()
+            except:
+                None
+
+        start = min(startDate)
+        end = max(endDate)
+        staffWithProjects.objects.create(projects_ID=project, profile_ID=staff,
+                                         status="Working", startDate=start, endDate=end)
+
+        alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
+                                      project=project, info="added to")
+        staffAlerts.objects.create(alertID=alert, staffID=staff, status="Unseen")
+        messages.success(request, "Staff added succesfully!")
+        alert = alerts.objects.create(fromStaff=query, alertType='Edit Project', alertDate=datetime.date.today(),
+                                      project=project, info="Added Staff to Project")
+        staffAlerts.objects.create(alertID=alert, staffID=project.projectManager, status="Unseen")
+        return matchmakingSelect_View(request)
 
     return render(request,'project/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID})
 

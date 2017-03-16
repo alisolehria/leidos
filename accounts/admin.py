@@ -3,7 +3,7 @@ from . import models
 
 
 class profileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'staffID', 'dateOfBirth', 'nationality', 'preferredLocation' , 'gender','contact', 'designation', 'workStatus', 'skillLevel','salary')
+    list_display = ('staffID','picture','user','dateOfBirth', 'nationality', 'preferredLocation' , 'gender','contact', 'designation', 'workStatus', 'skillLevel','salary')
 
 class workplaceView(admin.ModelAdmin):
     list_display = ('companyName', 'staffID', 'companyRating')

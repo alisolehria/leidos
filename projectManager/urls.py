@@ -19,4 +19,6 @@ urlpatterns = [
     url(r'addStaff/(?P<project_id>[0-9]+)/$', views.addpstaff_View, name='addstaff'),
     url(r'requestholiday/$', views.holiday_View, name='holidayrequest'),
     url(r'myrequests/$', views.requests_View, name='myrequests'),
+    url(r'matchmaking/$', views.matchmakingSelect_View, name='matchmaking'),
+    url(r'matchmaking/(?P<project_id>[0-9]+)/$', views.matchmaking_View, name='matchmakingProject'),
 ]

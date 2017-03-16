@@ -159,6 +159,7 @@ dateFormat: "yy-mm-dd",
                                document.getElementById("datepicker1"+i).required = true;
                                 document.getElementById("submitskill").disabled = false;
                                 document.getElementById("saveskill").disabled = false;
+                                 document.getElementById("match").disabled = false;
                                 document.getElementById("inputhours"+i).disabled = false;
                                   document.getElementById("datepicker"+i).disabled = false;
                                document.getElementById("datepicker1"+i).disabled = false;
@@ -186,6 +187,7 @@ dateFormat: "yy-mm-dd",
                         if (textinputs.length == empty.length) {
                                             document.getElementById("submitskill").disabled = true;
                                             document.getElementById("saveskill").disabled = true;
+                                             document.getElementById("match").disabled = true;
 }
 }
 
@@ -199,6 +201,7 @@ dateFormat: "yy-mm-dd",
     <div class="pull-right">
                         <input class="btn btn-success btn-md" type="submit" value="Save and Add Staff" id="saveskill" name="continue" disabled/>
                         <input class="btn btn-success btn-md" type="submit" value="Save" id="submitskill" name="save" disabled/>
+        <input class="btn btn-success btn-md" type="submit" value="Match-Making" id="match" name="match" disabled/>
                             </div>
 <br>
         <br><br>
