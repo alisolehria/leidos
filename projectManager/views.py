@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills,staffProjectSkill, holidays, alerts, staffAlerts,staffWithProjects
+from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills,staffProjectSkill, holidays, alerts, staffAlerts,staffWithProjects, messageBoard, boardComments
 from adminUser.models import location
 from django.http import HttpResponse
 from django.db.models import Q
@@ -189,7 +189,13 @@ def projectprofile_View(request, project_id):
         messages.success(request,"Project Request Successfull!")
         return projectlist_View(request)
 
-    return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current,"count":count})
+    board = 0
+    try:
+        id = messageBoard.objects.get(projectID=info)
+        board = id.boardID
+    except:
+        None
+    return render(request, 'projects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"past":past,"current":current,"count":count,"board":board})
 
 @login_required()
 def myprojects_View(request):
@@ -511,7 +517,7 @@ def matchmaking_View(request,project_id):
         return HttpResponse(status=201)
 
     title = "Matchmaking"
-    allProjects = projects.objects.all()
+    allProjects =  projects.objects.filter(projectManager=query)
     project = projects.objects.get(projectID=project_id)
     # exlude PMS and Admins
     staffList = profile.objects.filter(Q(designation="Employee") | Q(designation="Contractor")| Q(designation="Project Manager"))
@@ -641,6 +647,47 @@ def matchmaking_View(request,project_id):
                                       project=project, info="added to")
         staffAlerts.objects.create(alertID=alert, staffID=staff, status="Unseen")
         messages.success(request, "Staff added succesfully!")
-        return matchmakingSelect_View(request)
 
     return render(request,'projects/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID})
+
+
+@login_required
+def messageBoard_View(request):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Project Manager":  # check if pm
+        return HttpResponse(status=201)
+
+    title = "Message Board"
+    allProjects = projects.objects.filter(staffID=query.staffID)
+    allBoards = []
+    for proj in allProjects:
+        try:
+            board = messageBoard.objects.get(projectID=proj.projectID)
+            allBoards.append(board)
+        except:
+            None
+
+    return render(request, 'projects/message.html', {"title": title,"allBoards":allBoards})
+
+@login_required
+def comments_View(request,board_id):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Project Manager":  # check if pm
+        return HttpResponse(status=201)
+
+    board = messageBoard.objects.get(boardID=board_id)
+    comments = boardComments.objects.filter(board_id=board_id)
+    title = board.projectID.projectName+"'s Message Board"
+
+    if request.POST:
+        comment = request.POST.getlist("comment")
+        boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.date.today())
+        messages.success(request, "Comment Posted Succesfully")
+
+    return render(request, 'projects/comments.html', {"title": title,"comments":comments,"board":board})

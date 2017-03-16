@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts, staffWithProjects, staffProjectSkill
+from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts, staffWithProjects, staffProjectSkill, messageBoard, boardComments
 from .models import location
 from django.http import HttpResponse
 import datetime
@@ -458,6 +458,8 @@ def addproject_View(request):
         alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
                                       project=project)
         staffAlerts.objects.create(alertID=alert, staffID=pm, status="Unseen")
+        msg = messageBoard.objects.create(projectID=project)
+        boardComments.objects.create(board=msg,staff=query,comment="Welcome to the Message Board!",time=datetime.date.today())
         messages.success(request, "Project added succesfully!")
         return addpskill_View(request,max(newID))
 
@@ -759,6 +761,9 @@ def alert_View(request):
             alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID) & Q(alertType='Project'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
+            msg = messageBoard.objects.create(projectID=project)
+            boardComments.objects.create(board=msg, staff=query, comment="Welcome to the Message Board!",
+                                         time=datetime.date.today())
             messages.success(request, "Project Status Changed")
             return projectlist_View(request)
         elif "seen" in request.POST:
@@ -835,6 +840,9 @@ def requests_View(request):
             alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID)&Q(alertType='Project'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
+            msg = messageBoard.objects.create(projectID=project)
+            boardComments.objects.create(board=msg, staff=query, comment="Welcome to the Message Board!",
+                                         time=datetime.date.today())
             messages.success(request, "Project Status Changed")
             return projectlist_View(request)
         elif "rejectLeave" in request.POST:

@@ -101,8 +101,15 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
   </table>
         </div>
 <br>
+          <div class="pull-right">
+          {% if user in info.staffID.all %}
+        <a href="{% url 'employee:comments' board %}" class="btn btn-primary btn-lg btn-new">
+          <span class="glyphicon glyphicon-comment"></span><h7> Message Board</h7>
+        </a>
+
+          {% endif %}
 {% if user not in info.staffID.all and info.numberOfStaff > info.staffID.count %}
-            <div class="pull-right">
+
             <form action="{% url 'employee:projectprofile' %}" method="post">
                 {% csrf_token %}
                 <input type="number" name="projectNum" value="{{ info.projectID }}" hidden />

@@ -16,6 +16,9 @@ urlpatterns = [
     url(r'alerts/$', views.alert_View, name='alerts'),
     url(r'requestholiday/$', views.holiday_View, name='holidayrequest'),
     url(r'myrequests/$', views.requests_View, name='myrequests'),
+    url(r'messageBoard/$', views.messageBoard_View, name='message'),
+    url(r'comments/(?P<board_id>[0-9]+)/$', views.comments_View, name='comments'),
+
 
 
 ]

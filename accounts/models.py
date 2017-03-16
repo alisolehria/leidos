@@ -230,3 +230,21 @@ class staffProjectSkill(models.Model):
     skillID = models.ForeignKey(skills)
     hours = models.IntegerField()
     month = models.IntegerField()
+
+class messageBoard(models.Model):
+    class Meta:
+        db_table = "messageBoard"
+
+    boardID =  models.AutoField(primary_key=True)
+    projectID = models.ForeignKey(projects)
+    comments = models.ManyToManyField(profile,through="boardComments")
+
+
+class boardComments(models.Model):
+    class Meta:
+        db_table = "boardComments"
+
+    board = models.ForeignKey(messageBoard)
+    staff = models.ForeignKey(profile)
+    comment = models.TextField()
+    time =  models.DateField()

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts
+from accounts.models import profile, projects, skills, staffWithSkills, projectsWithSkills, holidays, alerts, staffAlerts, messageBoard, boardComments
 from adminUser.models import location
 from django.http import HttpResponse
 from django.db.models import Q
@@ -168,8 +168,14 @@ def projectprofile_View(request, project_id=None):
         messages.success(request,"Project Request Successfull!")
         return projectlist_View(request)
 
+    board = 0
+    try:
+        id = messageBoard.objects.get(projectID=info)
+        board = id.boardID
+    except:
+        None
 
-    return render(request, 'eprojects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"title":title})
+    return render(request, 'eprojects/projectprofile.html', {"info":info, "skillwithhrs":skillwithhrs,'user':query,"title":title,"board":board})
 
 @login_required()
 def staffprofile_View(request, staff_id):
@@ -275,3 +281,43 @@ def requests_View(request):
 
     return render(request,'eprofile/requests.html',{"title":title,"alertList":alertList,"staff_id":staff_id})
 
+@login_required
+def messageBoard_View(request):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Employee":  # check if pm
+        return HttpResponse(status=201)
+
+    title = "Message Board"
+    allProjects = projects.objects.filter(staffID=query.staffID)
+    allBoards = []
+    for proj in allProjects:
+        try:
+            board = messageBoard.objects.get(projectID=proj.projectID)
+            allBoards.append(board)
+        except:
+            None
+
+    return render(request, 'eprojects/message.html', {"title": title,"allBoards":allBoards})
+
+@login_required
+def comments_View(request,board_id):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Employee":  # check if pm
+        return HttpResponse(status=201)
+
+    board = messageBoard.objects.get(boardID=board_id)
+    comments = boardComments.objects.filter(board_id=board_id)
+    title = board.projectID.projectName+"'s Message Board"
+
+    if request.POST:
+        comment = request.POST.getlist("comment")
+        boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.date.today())
+        messages.success(request, "Comment Posted Succesfully")
+
+    return render(request, 'eprojects/comments.html', {"title": title,"comments":comments,"board":board})

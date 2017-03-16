@@ -110,6 +110,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
         </div>
 <br>
           <div class="pull-right">
+
           {% if user not in info.staffID.all and info.numberOfStaff > info.staffID.count and user != info.projectManager%}
 
             <form action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
@@ -124,6 +125,12 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
   <form  class = "form-inline" action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
   {% csrf_token %}
                         <div class="form-group">
+                            {% if user in info.staffID.all %}
+        <a href="{% url 'projectManager:comments' board %}" class="btn btn-primary btn-sm">
+          <span class="glyphicon glyphicon-comment"></span><h7> Message Board</h7>
+        </a>
+
+          {% endif %}
 {% if info.status == "On Going" and info.projectManager == user %}
      <button class="btn btn-success btn-md" value="{{ info.projectID }}" name="complete"> <span class="glyphicon glyphicon-thumbs-up"></span> Complete</button>
                             {% endif %}
@@ -256,7 +263,9 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
                 {% if info.projectManager == user %}
                 {% if count < info.numberOfStaff %}
                         {% if info.status == "On Going" or info.status == "Approved"%}
-
+ <a href="{% url 'projectManager:matchmakingProject' info.projectID %}" class="btn btn-primary btn-md">
+          <span class="glyphicon glyphicon-star"></span> Match-Making
+        </a>
                     <a href="{% url 'projectManager:addstaff' info.projectID %}"><input class="btn btn-success btn-md" type="submit" value="Add Staff" id="saveskill" name="continue"/></a>
           {% endif %}
 

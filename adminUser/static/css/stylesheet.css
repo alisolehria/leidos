@@ -5988,6 +5988,27 @@ h7{
     text-align: center;
 }
 
+
+
+
+.container-message{
+   background-color: rgb(14, 75, 78);
+
+    box-shadow: 0 0 5px rgba(1, 1, 1, 0.7);
+    color: white;
+    font-family: "Roboto";
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.container-comment{
+
+    box-shadow: 0 0 5px rgba(1, 1, 1, 0.7);
+    background-color: white;
+
+}
+
 h8{
     font-family: Cambria;
     color: white;

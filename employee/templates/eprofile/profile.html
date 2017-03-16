@@ -62,24 +62,24 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('
 
 
           <div class="col-md-8">
- <table class="table table-responsive table-hover">
+ <table class="table table-responsive profile-table">
     <tbody>
-     <tr class="success">
+     <tr>
         <td colspan="2" class="dash">Staff ID: {{ info.staffID }}</td>
       </tr>
-      <tr class="info">
+      <tr>
         <td colspan="2" class="dash">First Name: {{ title.first_name }}</td>
           <td colspan="2" class="dash">Last Name: {{ title.last_name }}</td>
       </tr>
-      <tr class="success">
+      <tr>
           <td colspan="2" class="dash">Nationality: {% get_country info.nationality as country %} {{ country.name }} </td>
         <td colspan="2" class="dash">Status: {{ info.workStatus }}</td>
       </tr>
-     <tr class="active">
+     <tr>
           <td colspan="2" class="dash">Date Of Birth: {{ info.dateOfBirth }}</td>
         <td colspan="2" class="dash">Location: {{ info.preferredLocation.country }}</td>
       </tr>
-     <tr class="info">
+     <tr>
           <td colspan="2" class="dash">Skill Level: {{ info.skillLevel }}</td>
       </tr>
     {% for holiday in info.holidays_set.all %}
