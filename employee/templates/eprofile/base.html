@@ -19,6 +19,10 @@
 
   </head>
   <body>
+      <div id="top-nav">
+  <script> jQuery(document).ready(function (){jQuery("#top-nav").load('{% url "employee:alertTab" %}');})
+         </script>
+  </div>
     <div class="col-sm-1"></div>     <div class="col-sm-10"><div class="container-fluid" style="background-color:#dbdbdb;">
   <div class="row">
           <div>
@@ -43,18 +47,34 @@
 
 
    <div class="container-fluid">
-   <div class="pull-right"><a href = {% url 'accounts:logoutUser' %} class="btn btn-danger btn-md"> <span class="glyphicon glyphicon-log-out"></span>Sign out</a></div>
   <br><br>
        <div class="row">
     <div class="col-md-2">
 
 <div id="alert">
-<script> jQuery(document).ready(function (){jQuery("#alert").load('{% url "employee:alertTab" %}');})
-         </script>
-              <script>
-jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('{% url "employee:alertTab" %}');
-   },10000)
-       });</script>
+ <a href="{% url 'employee:profile' %}" class="btn btn-primary btn-lg btn-new">
+          <span class="glyphicon glyphicon-dashboard"></span> <h7>Profile</h7>
+        </a>
+      </button>
+
+<br>
+<br>
+
+        <div>
+
+<a href="{% url 'employee:holidayrequest' %}" class="btn btn-primary btn-lg btn-new">
+    <span class="glyphicon glyphicon-plane"></span><h7> Request Leave</h7>
+        </a>
+        </div>
+<br>
+ <div>
+<a href="{% url 'employee:message' %}" class="btn btn-primary btn-lg btn-new">
+          <span class="glyphicon glyphicon-comment"></span><h7> Message Board</h7>
+        </a>
+
+
+            <br><br>
+ </div>
         </div>
            </div>
       {% block content %}

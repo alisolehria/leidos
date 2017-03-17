@@ -1,69 +1,41 @@
- <a href="{% url 'projectManager:profile' %}" class="btn btn-primary btn-lg btn-new">
-          <span class="glyphicon glyphicon-dashboard"></span> <h7>Profile</h7>
-        </a>
+<nav class="navbar navbar-default navbar-fixed-top nav-top">
+<div class="navbar-header navbar-right">
+      <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
-
-<br>
-<br>
-  <div>
-        <div class="panel panel-info" >
-        {% if alertList.count != 0 %}
-        <div class="btn btn-primary btn-lg btn-new" id="alerts">
-              <span class="glyphicon glyphicon-bell"> <a class="panel-title" data-toggle="collapse" data-parent="#panel-731859" href="#panel-element-748460">Alerts ({{ alertList.count }}) </a></span>
-          </div>
-        {% endif %}
-
-        {% if alertList.count == 0 %}
- <div class="btn btn-primary btn-lg btn-new" id="alertsNone">
-              <span class="glyphicon glyphicon-bell"> <a class="panel-title" data-toggle="collapse" data-parent="#panel-731859" href="#panel-element-748460">Alerts ({{ alertList.count }}) </a></span>
-          </div>
-
-        {% endif %}
-          <div id="panel-element-748460" class="panel-collapse collapse">
-            <div class="panel-body">
-            <div class="tabbable" id="tabs-243166">
-            <ul class="nav nav-tabs">
-
-
-
-            <div class="tab-content">
-              <div class="tab-pane active" id="panel-330081">
-               <div class="alert alert-info"><a href="{% url 'projectManager:alerts' %}">See All</a>
+<div id="alertRefresh">
 
 </div>
-                {% if alertList.count != 0 %}
-                    {% for alert in alertList %}
-                    <div class="alert alert-info"><a href="{% url 'projectManager:alerts' %}#{{ alert.alertID }}">
-  <strong>New Alert from {{ alert.fromStaff.user.last_name }}</strong></a>
+   <script> jQuery(document).ready(function (){jQuery("#alertRefresh").load('{% url "projectManager:refresh" %}');})
+         </script>
+              <script>
+jQuery(document).ready(function(){setInterval(function(){jQuery("#alertRefresh").load('{% url "projectManager:refresh" %}');
+   },10000)
+       });</script>
+    </div>
+<div class="collapse navbar-collapse" id="myNavbar">
+    <div class="navbar-left marquee">
+
+<marquee>Ongoing Projects: {% for project in projectListOn %}
+            <a target="_blank"  href="{% url 'projectManager:projectprofile' project.projects_ID.projectID %}">{{ project.projects_ID.projectName }}</a>,
+
+    {% endfor %}
+ Upcoming Projects: {% for project in projectListUp %}
+            <a target="_blank"  href="{% url 'projectManager:projectprofile' project.projects_ID.projectID %}">{{ project.projects_ID.projectName }}</a>,
+
+    {% endfor %}
+
+
+
+</marquee>
+        </div>
+
+ <p class="navbar-text navbar-right top-text"><a href = "{% url 'accounts:logoutUser' %}"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></p>
+
+
+<p class="navbar-text navbar-right top-text">Logged in as {{ user.first_name }} {{ user.last_name }}&nbsp;</p>
 
 </div>
-            {% endfor %}
-                  {% endif %}
-
-              </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
- <div>
-<a href="{% url 'projectManager:requestproject' %}" class="btn btn-primary btn-lg btn-new">
-          <span class="glyphicon glyphicon-cog"></span><h7>Request Project</h7>
-        </a>
- </div>
-        <div>
-            <br>
-<a href="{% url 'projectManager:holidayrequest' %}" class="btn btn-primary btn-lg btn-new">
-    <span class="glyphicon glyphicon-plane"></span><h7> Request Leave</h7>
-        </a>
-        </div>
-<br>
- <div>
-<a href="{% url 'projectManager:message' %}" class="btn btn-primary btn-lg btn-new">
-          <span class="glyphicon glyphicon-comment"></span><h7> Message Board</h7>
-        </a>
-
-
-            <br><br>
+</nav>

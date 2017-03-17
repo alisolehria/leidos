@@ -4454,6 +4454,13 @@ a.list-group-item.active>.badge,
 .nav-pills>li>a>.badge {
     margin-left: 3px
 }
+
+.nav-top{
+    text-align: right;
+    background-color: #00274e;
+    color: white;
+    font-size:12px;
+}
 .jumbotron {
     padding: 30px;
     margin-bottom: 30px;
@@ -6227,4 +6234,29 @@ textarea {
     box-sizing: border-box;
 
     width: 100%;
+}
+
+.top-text{
+    font-size: 14px !important;
+    color: white !important;
+}
+
+body { padding-top: 50px; }
+
+.marquee{
+    padding-top: 1%;
+    width: 50%;
+     font-size: 14px !important;
+    color: white !important;
+}
+
+
+.alert-topG{
+    font-size: 14px !important;
+    color:green !important;
+}
+.alert-topR{
+font-size: 14px !important;
+    color:red !important;
+
 }

@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'matchmaking/(?P<project_id>[0-9]+)/$', views.matchmaking_View, name='matchmakingProject'),
     url(r'messageBoard/$', views.messageBoard_View, name='message'),
     url(r'comments/(?P<board_id>[0-9]+)/$', views.comments_View, name='comments'),
+    url(r'refresh/$', views.refresh_View, name='refresh'),
+
 ]

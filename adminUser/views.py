@@ -716,10 +716,26 @@ def alerttab_View(request):
         return HttpResponse(status=201)
 
     title = "Alerts"
+    projectListUp = query.staffwithprojects_set.filter(Q(status="Working") & Q(projects_ID__status="Approved"))
+    projectListOn = query.staffwithprojects_set.filter(Q(status="Working")&Q(projects_ID__status="On Going"))
+    alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by(
+        '-alertID')
+    return render(request,'common/alertTab.html',{"title":title,"alertList":alertList,"projectListOn":projectListOn,"projectListUp":projectListUp})
+
+@login_required
+def refresh_View(request):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Admin":  # check if admin
+        return HttpResponse(status=201)
+
+
 
     alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by(
         '-alertID')
-    return render(request,'common/alertTab.html',{"title":title,"alertList":alertList})
+    return render(request,'common/refresh.html',{"alertList":alertList})
 
 @login_required
 def alert_View(request):

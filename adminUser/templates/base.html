@@ -21,8 +21,13 @@
 
   </head>
   <body>
+  <div id="top-nav">
+  <script> jQuery(document).ready(function (){jQuery("#top-nav").load('{% url "adminUser:alertTab" %}');})
+         </script>
+  </div>
     <div class="col-sm-1"></div>     <div class="col-sm-10"><div class="container-fluid" style="background-color:#dbdbdb;">
   <div class="row">
+
           <div>
           <img src="{% static 'img/leidos_logo_2013.jpg' %}" alt="" width="100%" > </a>  </li>
         </h1>
@@ -59,21 +64,50 @@
 {% endif %}
 
    <div class="container-fluid">
-   <div class="pull-right"><a href = {% url 'accounts:logoutUser' %} class="btn btn-danger btn-md"> <span class="glyphicon glyphicon-log-out"></span>Sign out</a></div>
-  <br><br>
+
+  <br>
        <div class="row">
     <div class="col-md-2">
 
 <div id="alert">
 
-<script> jQuery(document).ready(function (){jQuery("#alert").load('{% url "adminUser:alertTab" %}');})
-         </script>
-              <script>
-jQuery(document).ready(function(){setInterval(function(){jQuery("#alert").load('{% url "adminUser:alertTab" %}');
-   },10000)
-       });</script>
+
+<a href="{% url 'adminUser:dashboard' %}" class="btn btn-primary btn-lg btn-new">
+          <span class="glyphicon glyphicon-dashboard"></span> <h7>Dashboard</h7>
+        </a>
+      </button>
+
+<br>
+    <br>
+ <div>
+<a href="{% url 'adminUser:requests' %}" class="btn btn-primary btn-lg btn-new">
+          <span class="glyphicon glyphicon-open"></span><h7> Requests</h7>
+        </a>
+           </div>
+        <div>
+            <br>
+
+<a href="{% url 'adminUser:allreports' %}" class="btn btn-primary btn-lg btn-new">
+    <span class="glyphicon glyphicon-tasks"></span><h7> Reports</h7>
+        </a>
+           </div>
+        <div>
+            <br>
+
+<a href="{% url 'adminUser:skill' %}" class="btn btn-primary btn-lg btn-new">
+          <span class="glyphicon glyphicon-wrench"></span><h7> Add Skill</h7>
+        </a>
+           </div>
+        <div>
+            <br>
+<a href="{% url 'adminUser:location' %}" class="btn btn-primary btn-lg btn-new">
+          <span class="glyphicon glyphicon-flag"></span><h7> Add Location</h7>
+        </a>
+            <br>
+            <br>
         </div>
            </div>
+    </div>
 
 
            {% block content %}
