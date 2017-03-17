@@ -20,6 +20,9 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{% static "js/search.js" %}"></script>
      <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         {{ form.media }}
 
 
@@ -36,7 +39,7 @@
           <img src="{% static 'img/leidos_logo_2013.jpg' %}" alt="" width="100%" > </a>  </li>
         </h1>
 
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default affixed-element"  data-spy="affix" data-offset-top="100">
   <div class="container-fluid">
     <div class="navbar-header">
 
@@ -45,13 +48,27 @@
       <li><a href="{% url 'projectManager:myprojects' %}">My Projects</a></li>
       <li><a href="{% url 'projectManager:myrequests' %}">My Requests</a></li>
       <li><a href="{% url 'projectManager:projectlist' %}">Projects List</a></li>
-        <li><a href="{% url 'projectManager:matchmaking' %}">Matchmaking</a></li>
+        <li><a href="{% url 'projectManager:matchmaking' %}">Match Making</a></li>
     </ul>
   </div>
             <div class="container-heading">
               {{ title }}
           </div>
 </nav>
+          <script>
+    function affixWidth() {
+    // ensure the affix element maintains it width
+    var affix = $('.affixed-element');
+    var width = affix.width();
+    affix.width(width);
+}
+
+$(document).ready(function () {
+
+    affixWidth();
+
+});
+</script>
 
  {% if messages %}
         <div class = "row">

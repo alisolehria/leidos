@@ -6241,7 +6241,9 @@ textarea {
     color: white !important;
 }
 
-body { padding-top: 50px; }
+body { padding-top: 50px;
+    padding-bottom:55px;
+}
 
 .marquee{
     padding-top: 1%;
@@ -6260,3 +6262,16 @@ font-size: 14px !important;
     color:red !important;
 
 }
+.affix {
+      bottom:-55px;
+      width: 100%;
+        z-index:9999;
+         position: fixed;
+  }
+
+.affix + .container-fluid {
+
+
+
+
+  }
