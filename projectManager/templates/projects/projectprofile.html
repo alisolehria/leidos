@@ -124,7 +124,7 @@
              <td>
                  {{ staff.endDate }}
              </td>
-{% if staff.profile_ID.staffID != user.staffID and info.status != "Completed" and info.status != "Discontinued"%}
+{% if staff.profile_ID.staffID != user.staffID and info.status != "Completed" and info.status != "Discontinued" and info.projectManager == user %}
  <form action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
     {% csrf_token %}
      <td><button class="btn btn-danger btn-sm" value="{{ staff.profile_ID.staffID }}" name="remove"> <span class="glyphicon glyphicon-remove-sign"></span> Remove</button></td>

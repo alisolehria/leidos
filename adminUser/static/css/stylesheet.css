@@ -4622,7 +4622,7 @@ a.thumbnail.active {
 }
 
 .profile-table{
-    background: rgba(19, 133, 255, 0.18);
+  background-image: url("../img/back.jpg");
     border:none !important;
 }
 .progress-bar {
@@ -5852,18 +5852,7 @@ button.close {
     text-align: left;
 }
 
-.table-scroll{
-    overflow-y:scroll;
-    height:300px;
-    display: block;
-}
 
-.table-scrollx {
-    overflow-x: scroll;
-    height:auto;
-    display: block;
-
-}
 
 .footer{
     background-color: #1b6d85;
@@ -6241,8 +6230,9 @@ textarea {
     color: white !important;
 }
 
-body { padding-top: 50px;
-    padding-bottom:55px;
+body {
+padding: 50px 0 0 0;
+
 }
 
 .marquee{
@@ -6263,7 +6253,7 @@ font-size: 14px !important;
 
 }
 .affix {
-      bottom:-55px;
+      bottom: -55px;
       width: 100%;
         z-index:9999;
          position: fixed;
@@ -6279,6 +6269,40 @@ font-size: 14px !important;
 
 #fixedbutton {
     position: fixed;
-    top: 500px;
+    top: 200px;
     left: 0px;
+}
+
+.table-scroll{
+    overflow-y:scroll;
+    height:300px;
+    display: block;
+
+
+}
+
+.table-scrollx {
+    overflow-x: scroll;
+    height:auto;
+    display: block;
+     background-image: url("../img/back.jpg");
+
+
+}
+
+.table-scrollxadmin {
+    overflow-x: scroll;
+    height:auto;
+    display: block;
+
+
+
+}
+
+.table-admin{
+   overflow-y:scroll;
+    height:300px;
+    display: block;
+      overflow-x: scroll;
+       background-image: url("../img/back.jpg");
 }

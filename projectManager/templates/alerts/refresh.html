@@ -3,7 +3,7 @@
                         <li><a href="{% url 'projectManager:alerts' %}">See All</a></li>
                         {% if alertList.count != 0 %}
                     {% for alert in alertList %}
-                  <li><a href="{% url 'projectManager:alerts' %}#{{ alert.alertID }}">
+                  <li><a href="{% url 'projectManager:alerts' %}">
   <strong>New Alert from {{ alert.fromStaff.user.last_name }}</strong></a>
 </li>
 

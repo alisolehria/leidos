@@ -59,6 +59,16 @@ $(document).ready(function () {
 });
 </script>
 
+           {% if messages %}
+        <div class = "row">
+      <div class="col-sm-6 col-sm-offset-3">
+    {% for message in messages %}
+    <p{% if message.tags %} class="alert alert-success"{% endif %}>{{ message }}</p>
+    {% endfor %}
+</div>
+        </div>
+{% endif %}
+
    <div class="container-fluid">
   <br><br>
        <div class="row">
@@ -106,7 +116,7 @@ $(document).ready(function () {
   </div>
 </div>
 
-
+<br><br><br><br><br><br>
 
     </div>
     <div class="container-footer">
