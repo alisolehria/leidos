@@ -732,10 +732,13 @@ def refresh_View(request):
         return HttpResponse(status=201)
 
 
-
+    alertIDs =[]
     alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by(
         '-alertID')
-    return render(request,'common/refresh.html',{"alertList":alertList})
+    for alert in alertList:
+        alertIDs.append((alert.alertID-1))
+
+    return render(request,'common/refresh.html',{"alertList":alertList,"alertIDs":alertIDs})
 
 @login_required
 def alert_View(request):

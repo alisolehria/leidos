@@ -5979,7 +5979,7 @@ h7{
      border-radius: 10px;
  box-shadow: 0 0 5px rgba(1, 1, 1, 0.7);
     color: white;
-    font-family: "Leelawadee UI";
+    font-family: "Roboto";
     font-size: 24px;
     text-align: center;
 }
@@ -6230,10 +6230,6 @@ textarea {
     color: white !important;
 }
 
-body {
-padding: 50px 0 0 0;
-
-}
 
 .marquee{
     padding-top: 1%;
@@ -6285,7 +6281,7 @@ font-size: 14px !important;
     overflow-x: scroll;
     height:auto;
     display: block;
-     background-image: url("../img/back.jpg");
+     background-color:#ccd7db;
 
 
 }
@@ -6294,7 +6290,7 @@ font-size: 14px !important;
     overflow-x: scroll;
     height:auto;
     display: block;
-
+    background-color: #ccd7db;
 
 
 }
@@ -6304,5 +6300,12 @@ font-size: 14px !important;
     height:300px;
     display: block;
       overflow-x: scroll;
-       background-image: url("../img/back.jpg");
+     background-color: #ccd7db;
+}
+
+
+body {
+padding: 50px 0 0 0;
+
+
 }
