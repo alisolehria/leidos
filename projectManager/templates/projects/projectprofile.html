@@ -41,6 +41,10 @@
     </tbody>
   </table>
         </div>
+              <div class="pull-left">
+
+                    <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#charts"> <span class="glyphicon glyphicon-th-list"></span> Statistics</button>
+    </div>
 <br>
           <div class="pull-right">
 
@@ -256,4 +260,121 @@
 </div>
       <br>
       <br>
+ <div class="modal fade" id="charts" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#Chart">Staff On Project Skill Levels</a></li>
+  <li><a data-toggle="tab" href="#pieChart">Staff Designations</a></li>
+</ul>
+        </div>
+        <div class="modal-body">
+
+
+
+       <div class="tab-content">
+        <div id="Chart" class="tab-pane fade in active">
+        <br>
+        </div>
+              <div id="pieChart" class="tab-pane fade in">
+
+              </div>
+          <br><br>
+       </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawPie);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Skill Level');
+
+        data.addRows([
+            {% for staff in info.staffwithprojects_set.all %}
+                ['{{ staff.profile_ID.user.last_name }}',{{ staff.profile_ID.skillLevel}}],
+            {% endfor %}
+
+        ]);
+
+        // Set chart options
+        var options = {'title':'Skill Level of Employees working on this Project',
+                       'width':550,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('Chart'));
+
+
+        chart.draw(data, options);
+
+      }
+
+      function drawPie() {
+          var pieChart = new google.visualization.DataTable();
+        pieChart.addColumn('string', 'Name');
+        pieChart.addColumn('number', 'Designation');
+
+        var pm =0;
+        var emp=0;
+        var cont=0;
+
+        {% for staff in info.staffwithprojects_set.all %}
+            {% if staff.profile_ID.designation == "Project Manager" %}
+                pm++;
+            {% else %}
+            {% if staff.profile_ID.designation == "Employee"  %}
+                emp++;
+
+                {% else %}
+                    cont++;
+            {% endif %}
+
+            {% endif %}
+            {% endfor %}
+
+        pm = pm/{{ count }} * 100;
+        emp = emp/{{ count }} * 100;
+        cont = cont/{{ count }} * 100;
+
+        pieChart.addRows([
+                ['Project Manager',pm],
+                ['Employee',emp],
+                ['Contractor',cont]
+
+
+        ]);
+
+        // Set chart options
+        var pieOptions = {'title':'Designations',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var piechart = new google.visualization.PieChart(document.getElementById('pieChart'));
+          piechart.draw(pieChart, pieOptions);
+      }
+    </script>
           {% endblock %}

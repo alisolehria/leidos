@@ -9,13 +9,14 @@
     <title>{{ title }}</title>
 
 
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{% static "js/search.js" %}"></script>
      <link href="{% static "css/stylesheet.css" %}" rel="stylesheet">
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
         {{ form.media }}
 
@@ -133,6 +134,7 @@ $(document).ready(function () {
           <br>
           <br>
           <br>
+
 
 </body>
 </html>

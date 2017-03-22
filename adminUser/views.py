@@ -236,6 +236,8 @@ def projectprofile_View(request, project_id):
         skillwithhrs.update({skillset[i]: skillhrset[i]})
         i = i + 1
 
+
+
     if request.POST:
         if "decline" in request.POST:
             id = request.POST.getlist("decline")
