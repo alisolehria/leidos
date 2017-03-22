@@ -38,7 +38,14 @@ def refresh_View(request):
 
     alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by(
         '-alertID')
-    return render(request,'alerts/refresh.html',{"alertList":alertList})
+    alertids = {}
+
+    for i, alert in enumerate(alertList):
+        if i > 0:
+            alertids.update({(alertList[i - 1].alertID): alert})
+        else:
+            alertids.update({'abc': alert})
+    return render(request,'alerts/refresh.html',{"alertList":alertList,"alertids":alertids})
 
 @login_required
 def profile_View(request):
@@ -478,18 +485,21 @@ def holiday_View(request):
 
     title = "Request Leave"
 
-    form = HolidaysForm(request.POST or None)
-    admin = profile.objects.get(staffID=1)
-    if form.is_valid() and request.POST:
-        hol = form.save(commit=False)
-        hol.status="Pending Approval"
-        hol.staffID_id = query.staffID
-        hol.save()
-        alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
-                                      holiday=hol, info="Your Project Request")
-        staffAlerts.objects.create(alertID=alert, staffID=admin, status="Unseen")
-        messages.success(request, "Leave Requested!")
 
+    admin = profile.objects.get(staffID=1)
+    if request.method == "POST":
+        form = HolidaysForm(request.POST, user=request.user)
+        if form.is_valid():
+            hol = form.save(commit=False)
+            hol.status="Pending Approval"
+            hol.staffID_id = query.staffID
+            hol.save()
+            alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
+                                          holiday=hol, info="Your Project Request")
+            staffAlerts.objects.create(alertID=alert, staffID=admin, status="Unseen")
+            messages.success(request, "Leave Requested!")
+    else:
+        form = HolidaysForm(user=request.user)
     return render(request, 'profile/requestholiday.html', {"title":title, "form":form})
 
 @login_required
@@ -556,6 +566,7 @@ def matchmaking_View(request,project_id):
     count = 0
     all = 0
     somem = 0
+    dict = {}
     continueFor = False
     holidayID = []
     for staff in staffList:
@@ -616,6 +627,7 @@ def matchmaking_View(request,project_id):
             elif count is totalSkills and fullCount is 0:
                 partial.append(staff)
             elif count is not 0:
+                dict.update({staff.staffID: projSkill.skillID.skillName})
                 some.append(staff)
         count = 0
         fullCount = 0
@@ -665,7 +677,7 @@ def matchmaking_View(request,project_id):
         staffAlerts.objects.create(alertID=alert, staffID=staff, status="Unseen")
         messages.success(request, "Staff added succesfully!")
 
-    return render(request,'projects/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID})
+    return render(request,'projects/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID,"dict":dict})
 
 
 @login_required

@@ -329,41 +329,45 @@ def addstaff_View(request):
         return HttpResponse(status=201)
 
     title = "Add Staff"
-    form = UserForm(request.POST or None)
-    form2 = UserProfileForm(request.POST or None)
+
 
     #this is adding to tables
-    if form.is_valid() and form2.is_valid():
-        firstname = form.cleaned_data.get('first_name')
-        lastname = form.cleaned_data.get('last_name')
-        user_query = profile.objects.values_list('staffID',flat=True)
-        firstletter = str(firstname[0])
-        secondletter = str(lastname[0])
-        new_password = "leidos123"
-        new_username = str.lower(firstletter) + str.lower(secondletter) + (str(max(user_query)+1)) #take first letters of fname and lname along with staff id to generate username
-        emailToSend = [form.cleaned_data.get('email')]
-        #send_mail('Welcome To Leidos','Your account has been created. Following are your account credentials.\n\n Username= '+new_username+'\n Password: leidos123\n\n\nThank You.','leidos.syntax@gmail.com',emailToSend,fail_silently=False,)
-        user= form.save(commit=False)
-        user.username = new_username
-        user.set_password(new_password)
-        user.save()
+    if request.method=="POST":
+        form = UserForm(request.POST)
+        form2 = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid() and form2.is_valid():
+            firstname = form.cleaned_data.get('first_name')
+            lastname = form.cleaned_data.get('last_name')
+            user_query = profile.objects.values_list('staffID',flat=True)
+            firstletter = str(firstname[0])
+            secondletter = str(lastname[0])
+            new_password = "leidos123"
+            new_username = str.lower(firstletter) + str.lower(secondletter) + (str(max(user_query)+1)) #take first letters of fname and lname along with staff id to generate username
+            emailToSend = [form.cleaned_data.get('email')]
+            #send_mail('Welcome To Leidos','Your account has been created. Following are your account credentials.\n\n Username= '+new_username+'\n Password: leidos123\n\n\nThank You.','leidos.syntax@gmail.com',emailToSend,fail_silently=False,)
+            user= form.save(commit=False)
+            user.username = new_username
+            user.set_password(new_password)
+            user.save()
+            userprofile = form2.save(commit=False)
+            userprofile.user= user;
+            userprofile.workStatus="Working"
+            userprofile.skillLevel="0"
+            if userprofile.designation == "Admin":
+                userprofile.salary=15000
+            elif userprofile.designation == "Project Manager":
+                userprofile.salary = 10000
+            elif userprofile.designation == "Contractor":
+                userprofile.salary = 5000
+            else:
+                userprofile.salary = 8000
 
-        userprofile = form2.save(commit=False)
-        userprofile.user= user;
-        userprofile.workStatus="Working"
-        userprofile.skillLevel="0"
-        if userprofile.designation == "Admin":
-            userprofile.salary=15000
-        elif userprofile.designation == "Project Manager":
-            userprofile.salary = 10000
-        elif userprofile.designation == "Contractor":
-            userprofile.salary = 5000
-        else:
-            userprofile.salary = 8000
-
-        userprofile.save()
-        messages.success(request, firstname+" "+lastname+"'s account created successfully!")
-        return addskill_View(request,max(user_query)+1)
+            userprofile.save()
+            messages.success(request, firstname+" "+lastname+"'s account created successfully!")
+            return addskill_View(request,max(user_query)+1)
+    else:
+        form = UserForm()
+        form2 = UserProfileForm()
 
     return render(request,'staff/addstaff.html',{"title":title,"form":form,"form2":form2})
 
@@ -665,20 +669,25 @@ def editprofile_View(request,staff_id):
     info = profile.objects.get(staffID=staff_id)
     user = User.objects.get(username=info.user.username)
     title = "Edit Profile of User: " + info.user.first_name + " " + info.user.last_name
-    form = UserUpdateForm(request.POST or None,instance=user)
-    form2 = UserProfileForm(request.POST or None, instance=info)
 
-    if form.is_valid() and form2.is_valid():
-        form.save()
-        form2.save()
-        alert = alerts.objects.create(fromStaff=query, alertType='Edit Staff', alertDate=datetime.date.today(),
-                                      info="Profile Edited")
-        staffAlerts.objects.create(alertID=alert, staffID=info, status="Unseen")
 
-        messages.success(request, info.user.first_name + " " + info.user.last_name + "'s account edited successfully!")
-        return staffprofile_View(request,staff_id)
+    if request.method=="POST":
+        form = UserUpdateForm(request.POST or None, instance=user)
+        form2 = UserProfileForm(request.POST, request.FILES or None, instance=info)
+        if form.is_valid() and form2.is_valid():
+            form.save()
+            form2.save()
+            alert = alerts.objects.create(fromStaff=query, alertType='Edit Staff', alertDate=datetime.date.today(),
+                                          info="Profile Edited")
+            staffAlerts.objects.create(alertID=alert, staffID=info, status="Unseen")
 
-    return render(request, 'staff/editprofile.html',{"title":title,"form":form,"form2":form2})
+            messages.success(request, info.user.first_name + " " + info.user.last_name + "'s account edited successfully!")
+            return staffprofile_View(request,staff_id)
+    else:
+        form = UserUpdateForm(instance=user)
+        form2 = UserProfileForm(instance=info)
+
+    return render(request, 'staff/editprofile.html',{"title":title,"form":form,"form2":form2,"info":info})
 
 @login_required
 def editproject_View(request,project_id):
@@ -732,13 +741,17 @@ def refresh_View(request):
         return HttpResponse(status=201)
 
 
-    alertIDs =[]
+
     alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by(
         '-alertID')
-    for alert in alertList:
-        alertIDs.append((alert.alertID-1))
+    alertids = {}
 
-    return render(request,'common/refresh.html',{"alertList":alertList,"alertIDs":alertIDs})
+    for i,alert in enumerate(alertList):
+            if i > 0:
+                alertids.update({(alertList[i-1].alertID): alert})
+            else:
+                alertids.update({'abc': alert})
+    return render(request,'common/refresh.html',{"alertList":alertList,"alertids":alertids})
 
 @login_required
 def alert_View(request):
@@ -754,7 +767,9 @@ def alert_View(request):
 
     alertList = alerts.objects.filter(staff=query.staffID).order_by('-alertID')
     staff_id = str(query.staffID)
-
+    alertids={}
+    for alert in alertList:
+        alertids.update({(alert.alertID-1):alert})
     if request.POST:
         if "rejectProj" in request.POST:
             id = request.POST.getlist("rejectProj")
@@ -768,7 +783,6 @@ def alert_View(request):
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Project Status Changed")
-            return projectlist_View(request)
         elif "acceptProj" in request.POST:
             id = request.POST.getlist("acceptProj")
             project = projects.objects.filter(projectID=id[0])
@@ -784,7 +798,6 @@ def alert_View(request):
             boardComments.objects.create(board=msg, staff=query, comment="Welcome to the Message Board!",
                                          time=datetime.date.today())
             messages.success(request, "Project Status Changed")
-            return projectlist_View(request)
         elif "seen" in request.POST:
             alertID = request.POST.getlist('seen')
             alertObj = staffAlerts.objects.filter(Q(alertID=alertID[0]) & Q(staffID=query.staffID))
@@ -801,7 +814,6 @@ def alert_View(request):
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Leave Status Changed")
-            return projectlist_View(request)
         elif "acceptLeave" in request.POST:
             id = request.POST.getlist("acceptLeave")
             holiday = holidays.objects.filter(holidayID=id[0])
@@ -814,7 +826,6 @@ def alert_View(request):
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
             messages.success(request, "Leave Status Changed")
-            return projectlist_View(request)
 
     return render(request,'common/alerts.html',{"title":title,"alertList":alertList,"staff_id":staff_id})
 
@@ -1009,6 +1020,7 @@ def matchmaking_View(request,project_id):
     somem = 0
     continueFor = False
     holidayID = []
+    dict = {}
     for staff in staffList:
         totalSkills = project.projectswithskills_set.count()
         for projSkill in project.projectswithskills_set.all():
@@ -1067,6 +1079,7 @@ def matchmaking_View(request,project_id):
             elif count is totalSkills and fullCount is 0:
                 partial.append(staff)
             elif count is not 0:
+                dict.update({staff.staffID:projSkill.skillID.skillName})
                 some.append(staff)
         count = 0
         fullCount = 0
@@ -1120,7 +1133,7 @@ def matchmaking_View(request,project_id):
         staffAlerts.objects.create(alertID=alert, staffID=project.projectManager, status="Unseen")
         return matchmakingSelect_View(request)
 
-    return render(request,'project/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID})
+    return render(request,'project/matchmaking.html',{"title":title,"allProjects":allProjects,"full":full,"fsome":fsome,"partial":partial,"some":some,"project":project,"holidayID":holidayID,"dict":dict})
 
 @login_required
 def staffreport_View(request,staff_id):

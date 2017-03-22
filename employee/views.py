@@ -36,7 +36,15 @@ def refresh_View(request):
 
     alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by(
         '-alertID')
-    return render(request,'sideBar/refresh.html',{"alertList":alertList})
+
+    alertids = {}
+
+    for i, alert in enumerate(alertList):
+        if i > 0:
+            alertids.update({(alertList[i - 1].alertID): alert})
+        else:
+            alertids.update({'abc': alert})
+    return render(request,'sideBar/refresh.html',{"alertList":alertList,"alertids":alertids})
 
 @login_required
 def profile_View(request):
@@ -263,18 +271,20 @@ def holiday_View(request):
 
     title = "Request Leave"
 
-    form = HolidaysForm(request.POST or None)
     admin = profile.objects.get(staffID=1)
-    if form.is_valid() and request.POST:
-        hol = form.save(commit=False)
-        hol.status="Pending Approval"
-        hol.staffID_id = query.staffID
-        hol.save()
-        alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
-                                      holiday=hol, info="Your Project Request")
-        staffAlerts.objects.create(alertID=alert, staffID=admin, status="Unseen")
-        messages.success(request, "Leave Requested!")
-
+    if request.method == "POST":
+        form = HolidaysForm(request.POST,user=request.user)
+        if form.is_valid():
+            hol = form.save(commit=False)
+            hol.status="Pending Approval"
+            hol.staffID_id = query.staffID
+            hol.save()
+            alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
+                                          holiday=hol, info="Your Project Request")
+            staffAlerts.objects.create(alertID=alert, staffID=admin, status="Unseen")
+            messages.success(request, "Leave Requested!")
+    else:
+        form = HolidaysForm(user=request.user)
     return render(request, 'eprofile/requestholiday.html', {"title":title, "form":form})
 
 

@@ -60,7 +60,7 @@ class UserProfileForm(forms.ModelForm):
     phone_regex = RegexValidator(regex=r'^\d{12,12}$',
                                  message="Phone number must be entered in the format: '971501234567'. Only 12 digits allowed.")
     contact = forms.CharField(validators=[phone_regex],label="Phone Number: ")
-    picture = forms.ImageField(label="Picture: ")
+    picture = forms.ImageField(label="Picture: ",required=False)
     gender = forms.ChoiceField(label="Gender:",choices=profile.GENDER)
     designation = forms.ChoiceField(label="Designation:",choices=profile.DESIGNATIONS)
 
@@ -350,6 +350,9 @@ class HolidaysForm(forms.ModelForm):
 
     )
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(HolidaysForm, self).__init__(*args, **kwargs)
 
     def clean(self, *args, **kwargs):
         #username = User
@@ -357,14 +360,14 @@ class HolidaysForm(forms.ModelForm):
         # holiday = query.holidays_set.all()
         startDate = self.cleaned_data.get('startDate')
         endDate = self.cleaned_data.get('endDate')
-
+        holiday = holidays.objects.filter(staffID=self.user.profile.staffID)
         if startDate > endDate:
             raise forms.ValidationError('Start Date Cannot Precede End Date')
         if startDate < datetime.date.today():
             raise forms.ValidationError('Cannot Start Holiday From Date Earlier Than Today')
-        # for hol in holiday:
-        #         if startDate >= hol.startDate and startDate <= hol.endDate or endDate >= hol.startDate and endDate <= hol.endDate:
-        #             raise forms.ValidationError('You Have Already Requested a Leave in Given Dates')
+        for hol in holiday:
+                if startDate >= hol.startDate and startDate <= hol.endDate or endDate >= hol.startDate and endDate <= hol.endDate:
+                   raise forms.ValidationError('You Have Already Requested a Leave in Given Dates')
         return super(HolidaysForm, self).clean(*args, **kwargs)
 
     helper.form_tag = False

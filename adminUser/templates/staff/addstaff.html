@@ -6,7 +6,7 @@
     <div class="col-md-10">
 
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{% url 'adminUser:addstaff' %}" enctype='multipart/form-data'>
                     {% csrf_token %}
 
                       {% crispy form %}

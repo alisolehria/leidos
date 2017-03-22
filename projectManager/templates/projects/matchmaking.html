@@ -275,14 +275,12 @@
        <td><input class="btn btn-success btn-md" type="submit" value="Add Staff"  name="addFull"/></td>
                 </form>
             <tr class="skillsrow" id="skillrow{{ forloop.counter }}" hidden>
-            {% for sskill in staff.staffwithskills_set.all %}
-                {% for pskill in project.projectswithskills_set.all %}
-                    {% if sskill.skillID == pskill.skillID %}
-                            <td>{{ sskill.skillID.skillName }}</td>
-
-                    {% endif %}
-                    {% endfor %}
+               {% for key, value in dict.items %}
+                {% if key == staff.staffID %}
+                            <td>{{ value }}</td>
+                {% endif %}
                 {% endfor %}
+
 
 
             </tr>

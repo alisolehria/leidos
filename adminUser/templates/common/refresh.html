@@ -2,9 +2,9 @@
                     <ul role="menu" class="dropdown-menu pull-right">
                         <li><a href="{% url 'adminUser:alerts' %}">See All</a></li>
                         {% if alertList.count != 0 %}
-                    {% for alert in alertList %}
+                    {% for alertid, alert in alertids.items%}
 
-                  <li><a href="{% url 'adminUser:alerts' %}">
+                  <li><a href="{% url 'adminUser:alerts' %}#{{ alertid }}">
   <strong>New Alert from {{ alert.fromStaff.user.last_name }}</strong></a>
 </li>
 
