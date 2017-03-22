@@ -41,11 +41,9 @@
     </tbody>
   </table>
         </div>
-              <div class="pull-left">
+          <br>
 
-                    <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#charts"> <span class="glyphicon glyphicon-th-list"></span> Statistics</button>
-    </div>
-<br>
+
           <div class="pull-right">
 
           {% if user not in info.staffID.all and info.numberOfStaff > info.staffID.count and user != info.projectManager%}
@@ -62,8 +60,14 @@
   <form  class = "form-inline" action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
   {% csrf_token %}
                         <div class="form-group">
+                          {% if info.projectManager == user %}
+
+
+                    <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#charts"> <span class="glyphicon glyphicon-th-list"></span> Statistics</button>
+
+          {% endif %}
                             {% if user in info.staffID.all %}
-        <a href="{% url 'projectManager:comments' board %}" class="btn btn-primary btn-sm">
+        <a href="{% url 'projectManager:comments' board %}" class="btn btn-primary btn-s">
           <span class="glyphicon glyphicon-comment"></span><h7> Message Board</h7>
         </a>
 
@@ -369,7 +373,7 @@
 
         // Set chart options
         var pieOptions = {'title':'Designations',
-                       'width':400,
+                       'width':300,
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
