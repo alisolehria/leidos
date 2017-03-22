@@ -15,7 +15,7 @@ def alerttab_View(request):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if project Manager
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
     title = "Alerts"
     alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by('-alertID')
     projectListUp = query.staffwithprojects_set.filter(Q(status="Working") & Q(projects_ID__status="Approved"))
@@ -30,7 +30,7 @@ def refresh_View(request):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
 
 
@@ -53,7 +53,7 @@ def profile_View(request):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if project Manager
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     info = profile.objects.get(user=username)
 
@@ -82,7 +82,7 @@ def myprojects_View(request):
     username = request.user
     query = profile.objects.get(user=username)  # get username
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
     #completed projects of specific user
     info = profile.objects.get(staffID=query.staffID)
     title = "My Projects"
@@ -102,7 +102,7 @@ def projectlist_View(request):
     username = request.user
     query = profile.objects.get(user=username)  # get username
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     title = "Projects List"
     list = projects.objects.filter(status="Approved")#get all the objects from profile table which have been approved
@@ -122,7 +122,7 @@ def upcomingprojectsget_View(request):
     username = request.user
     query = profile.objects.get(user=username)  # get username
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
     #upcoming projects of specific user
     time = datetime.date.today()
     title = "Upcoming Projects of " + query.user.first_name + " " + query.user.last_name
@@ -136,7 +136,7 @@ def currentprojectsget_View(request):
     username = request.user
     query = profile.objects.get(user=username)  # get username
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
     #get ongoing project of specific user
     time = datetime.date.today()
     title = "On Going Projects of " + query.user.first_name + " " + query.user.last_name
@@ -149,7 +149,7 @@ def completedprojectsget_View(request):
     username = request.user
     query = profile.objects.get(user=username)  # get username
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
     #completed projects of specific user
     time = datetime.date.today()
     title = "Completed Projects of " + query.user.first_name + " " + query.user.last_name
@@ -162,7 +162,7 @@ def projectprofile_View(request, project_id=None):
     username = request.user
     query = profile.objects.get(user=username)  # get username
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     if project_id is not None:
         info = projects.objects.get(projectID=project_id)
@@ -207,7 +207,7 @@ def staffprofile_View(request, staff_id):
     username = request.user
     query = profile.objects.get(user=username)  # get username
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     title = staff_id
     info = profile.objects.get(staffID = staff_id)
@@ -241,7 +241,7 @@ def alert_View(request):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     title = "Alerts"
 
@@ -267,7 +267,7 @@ def holiday_View(request):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if employee
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     title = "Request Leave"
 
@@ -295,7 +295,7 @@ def requests_View(request):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if admin
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     title = "My Requests"
 
@@ -314,7 +314,7 @@ def messageBoard_View(request):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if pm
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     title = "Message Board"
     allProjects = projects.objects.filter(staffID=query.staffID)
@@ -335,12 +335,18 @@ def comments_View(request,board_id):
     query = profile.objects.get(user = username) #get username
 
     if query.designation != "Employee":  # check if pm
-        return HttpResponse(status=201)
+        return render(request,'errorpermission.html')
 
     board = messageBoard.objects.get(boardID=board_id)
     comments = boardComments.objects.filter(board_id=board_id)
     title = board.projectID.projectName+"'s Message Board"
-
+    found = False
+    project = projects.objects.get(projectID=board.projectID.projectID)
+    for staff in project.staffwithprojects_set.all():
+        if query.staffID == staff.profile_ID.staffID:
+            found = True
+    if found is False:
+        return render(request, 'errorpermission.html')
     if request.POST:
         comment = request.POST.getlist("comment")
         boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.date.today())
