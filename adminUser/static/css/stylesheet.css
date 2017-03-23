@@ -5977,8 +5977,8 @@ h7{
 
 .container-heading{
    background-color: #00274e;
-     border-radius: 10px;
- box-shadow: 0 0 5px rgba(1, 1, 1, 0.7);
+
+
     color: white;
     font-family: "Roboto";
     font-size: 24px;
@@ -6256,7 +6256,13 @@ font-size: 14px !important;
       width: 100%;
         z-index:9999;
          position: fixed;
+        background-color: #00274e;
   }
+
+.affix a{
+    color: white !important;
+}
+
 
 @media (min-width: 768px)
 {

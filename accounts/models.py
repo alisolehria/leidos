@@ -26,13 +26,13 @@ class profile(models.Model):
         ('Admin','Admin'),
         ('Project Manager','Project Manager'),
         ('Employee','Employee'),
+        ('Contractor','Contractor')
     )
     designation = models.CharField(max_length=15, choices=DESIGNATIONS)
     WORKSTATUS = (
         ('Working', 'Working'),
         ('On Leave ', 'On Leave'),
         ('Not Employeed', 'Not Employeed'),
-        ('Contractor','Contractor')
     )
     workStatus = models.CharField(max_length=15, choices=WORKSTATUS)
     skillLevel = models.IntegerField()

@@ -287,23 +287,30 @@
 
 
 
-            The graphs below show the variation of skill Levels of the employees working on this project and the percentage of different employee types working on this project.
+
 
        <div class="tab-content">
         <div id="Chart" class="tab-pane fade in active">
-        <br>
+              <div class="pull-right">
+                <button class="btn btn-primary" onclick="printDiv('barChart')"><span class="glyphicon glyphicon-print"></span> Print</button>
 
+            </div>
+            <div>The graph below shows the variation of skill levels of the employees working on this project.</div>
+            <br>
+            <div id="barChart"></div>
         </div>
               <div id="pieChart" class="tab-pane fade in">
+                    <div class="pull-right">
+                <button class="btn btn-primary" onclick="printDiv('piechart')"><span class="glyphicon glyphicon-print"></span> Print</button>
 
+            </div>
+            <div>The graph below shows the percentage of different designations of the employees working on this project.</div>
+                  <div id="piechart"></div>
               </div>
           <br><br>
        </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+
 
     </div>
   </div>
@@ -339,7 +346,7 @@
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.BarChart(document.getElementById('Chart'));
+        var chart = new google.visualization.BarChart(document.getElementById('barChart'));
 
 
         chart.draw(data, options);
@@ -387,7 +394,7 @@
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
-        var piechart = new google.visualization.PieChart(document.getElementById('pieChart'));
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart'));
           piechart.draw(pieChart, pieOptions);
       }
     </script>
