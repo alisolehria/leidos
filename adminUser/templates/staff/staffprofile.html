@@ -10,7 +10,8 @@
         <button class="btn btn-info btn-md" id="pic"><span class="glyphicon glyphicon-user"></span> Show Picture</button>
         <br><br>
     <div class="col-md-offset-5" id="picShow" hidden>
-    <img src="{% static info.picture.url %}" width="150" height="150">
+
+    <img src="{{ info.picture.url }}" width="150" height="150">
 
     <br><br>
     </div>

@@ -9,7 +9,7 @@ class profile(models.Model):
     class Meta:
         db_table = 'profile'
 
-    picture = models.ImageField(blank=True,null=True)
+    picture = models.ImageField(upload_to='profilepic/',blank=True,null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     staffID = models.AutoField(primary_key=True)
     #profilePicture = models.ImageField(upload_to='\images')
