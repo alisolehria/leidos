@@ -6,10 +6,15 @@ from django.contrib.auth import (
     logout,
 )
 from .forms import LoginForm
-from django.contrib.auth.decorators import login_required
 from .models import profile
 
 def login_user(request):
+
+    if request.user.is_authenticated():
+        user = profile.objects.get(user=request.user)
+
+
+
     form = LoginForm(request.POST or None)
     title = "Log In"
     if form.is_valid():

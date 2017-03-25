@@ -397,5 +397,19 @@
         var piechart = new google.visualization.PieChart(document.getElementById('piechart'));
           piechart.draw(pieChart, pieOptions);
       }
+
+      function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+     location.reload(true);
+
+}
+
     </script>
       {% endblock %}

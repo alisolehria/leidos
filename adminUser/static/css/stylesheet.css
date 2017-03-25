@@ -4625,6 +4625,7 @@ a.thumbnail.active {
   background-image: url("../img/back.jpg");
     border:none !important;
 
+
 }
 .progress-bar {
     float: left;
@@ -5963,7 +5964,7 @@ h7{
 
 .dash{
     color:black;
-     font-family: Roboto;
+     font-family: "Roboto Slab";
     font-size: 20px;
     border:none !important;
     padding: 0;
@@ -6070,6 +6071,7 @@ small-column{
     color: white;
 
 }
+
 
 #progress {
  width: 100%;
@@ -6264,11 +6266,13 @@ font-size: 14px !important;
 }
 
 
-@media (min-width: 768px)
+@media only screen and (min-width: 1024px)
 {
     #alert
     {
         display: block;
+        position: fixed;
+
     }
 }
 
