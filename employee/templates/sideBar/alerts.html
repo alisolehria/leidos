@@ -46,7 +46,11 @@
 
             <form class="form-inline" action="{% url 'employee:alerts' %}" method="post">
              <div class="form-group">
+                {% if alert.info == "declined" %}
+                     You Request to joing the project is declined.
+                     {% else %}
                  You have been {{ alert.info }} Project:
+                     {% endif %}
                     {% csrf_token %}
   <button type="submit" name="project"  value="{{ alert.project.projectID}}" class="btn-link">{{ alert.project.projectName }}</button>
             </form>

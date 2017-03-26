@@ -290,7 +290,7 @@ def alert_View(request):
             staff = profile.objects.get(staffID=staffID[0])
             proj = projects.objects.get(projectID=project[0])
             alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
-                                          project=proj)
+                                          project=proj,info="added to")
             staffWithProjects.objects.create(projects_ID=proj, profile_ID=staff,
                                              status="Working", startDate=proj.startDate, endDate=proj.endDate)
             alertObj.update(status="Seen")
@@ -304,8 +304,8 @@ def alert_View(request):
             alertObj.update(status="Seen")
             project = request.POST.getlist("projectNum")
             proj = projects.objects.get(projectID=project[0])
-            alert = alerts.objects.create(fromStaff=query, alertType='Project Request', alertDate=datetime.date.today(),
-                                         project=proj )
+            alert = alerts.objects.create(fromStaff=query, alertType='Staff', alertDate=datetime.date.today(),
+                                         project=proj,info="declined" )
             staff = profile.objects.get(staffID=staffID[0])
             staffAlerts.objects.create(alertID=alert, staffID=staff, status="Unseen")
             messages.success(request,

@@ -79,12 +79,13 @@ height="331px" viewBox="0 0 762 331" enable-background="new 0 0 762 331" xml:spa
                       {{ form|crispy }}
                               <button type="submit" class="btn" style="background-color:#461267;"><span class="glyphicon glyphicon-log-in"></span>  Sign In</button>
                               <br><br>
-                               <a href="{% url 'password_reset' %}"><button class="btn btn-link-1" href="{% url 'password_reset' %}" style="background-color:#340068;">
-                             <i class="glyphicon glyphicon-question-sign"></i> Reset/Forgot Password
-                           </button></a>
+
                           </form>
-
-
+<center>
+  <a href="{% url 'password_reset' %}"><button class="btn btn-lg" style="background-color:#340068;">
+                             <i class="glyphicon glyphicon-question-sign"></i> Reset/Forgot Your Password?
+                           </button></a>
+</center>
                         </div>
 
                         </div>

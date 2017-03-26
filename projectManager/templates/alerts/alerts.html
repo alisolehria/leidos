@@ -34,10 +34,20 @@
 
  <br>
             {% endif %}
+  {% if alert.alertType == 'Staff' %}
 
-             {% if alert.alertType == 'Staff' %}
 
-                You have been added to the Project: <a target="_blank" href="{% url 'projectManager:projectprofile' alert.project.projectID %}">Project Name: {{ alert.project.projectName }}</a>
+             <div class="form-group">
+                 {% if alert.info == "declined" %}
+                     You Request to joing the project is declined.
+                     {% else %}
+                 You have been {{ alert.info }} Project:
+                     {% endif %}
+
+
+
+                  </div>
+      <a href="{% url 'projectManager:projectprofile' alert.project.projectID%}">Project Name: {{ alert.project.projectName }}</a>
                 <br>
                  Alert Date: {{ alert.alertDate }}
                <br>
