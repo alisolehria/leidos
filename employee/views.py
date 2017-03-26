@@ -183,14 +183,19 @@ def projectprofile_View(request, project_id=None):
             i = i + 1
         title = info.projectName
 
-    if request.POST and 'staffNum' in request.POST:
-        staff = request.POST.getlist('staffNum')
-        project = request.POST.getlist('projectNum')
-        proj = projects.objects.get(projectID=project[0])
-        alert = alerts.objects.create(fromStaff=query, alertType='Project Request', alertDate=datetime.date.today(),project=proj)
-        staffAlerts.objects.create(alertID=alert, staffID=proj.projectManager, status="Unseen")
-        messages.success(request,"Project Request Successfull!")
-        return projectlist_View(request)
+    if request.POST:
+        if 'staffNum' in request.POST:
+            staff = request.POST.getlist('staffNum')
+            project = request.POST.getlist('projectNum')
+            proj = projects.objects.get(projectID=project[0])
+            alert = alerts.objects.create(fromStaff=query, alertType='Project Request', alertDate=datetime.date.today(),project=proj)
+            staffAlerts.objects.create(alertID=alert, staffID=proj.projectManager, status="Unseen")
+            messages.success(request,"Project Request Successfull!")
+            return projectlist_View(request)
+        elif 'staff' in request.POST:
+            print("here")
+            staff = request.POST.getlist('staff')
+            return staffprofile_View(request, staff[0])
 
     board = 0
     try:

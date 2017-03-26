@@ -91,8 +91,9 @@
         <tbody>
         {% for staff in info.staffID.all %}
             <tr>
-             <td><form action="{% url 'employee:profile' %}" method="post">
+             <td><form action="{% url 'employee:projectprofile' %}" method="post">
                      {% csrf_token %}
+
   <button type="submit" name="staff" value="{{ staff.staffID }}" class="btn-link">{{ staff.staffID }}</button>
             </form></td>
 
