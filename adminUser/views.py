@@ -796,7 +796,7 @@ def alert_View(request):
             alertobj = alerts.objects.get(Q(project=info) & Q(fromStaff=info.projectManager.staffID) & Q(alertType='Project'))
             staffalert = staffAlerts.objects.filter(alertID=alertobj.alertID)
             staffalert.update(status="Seen")
-            msg = messageBoard.objects.create(projectID=project)
+            msg = messageBoard.objects.create(projectID=info)
             boardComments.objects.create(board=msg, staff=query, comment="Welcome to the Message Board!",
                                          time=datetime.date.today())
             messages.success(request, "Project Status Changed")
