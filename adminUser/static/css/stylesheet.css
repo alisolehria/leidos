@@ -6255,7 +6255,7 @@ font-size: 14px !important;
 }
 .affix {
       bottom: -55px;
-      width: 100%;
+    left:0%;
         z-index:9999;
          position: fixed;
         background-color: #00274e;
