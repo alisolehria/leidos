@@ -155,7 +155,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
-SESSION_COOKIE_AGE = 10 * 60
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

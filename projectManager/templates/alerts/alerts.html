@@ -154,21 +154,48 @@
 
 
 
-               <div class="pull-right">
+
                 {% for alertStatus in alert.staffalerts_set.all %}
                    {% if alertStatus.staffID|stringformat:"s" == staff_id and alertStatus.status == 'Unseen'%}
+                                             <div class="pull-left">
+                       Please chose the skill if you want to add this employee. Each Skill corresponds to its start time and end time. If no skill is selected, the employee will be added for complete lenght of project.
+
+                       </div>
+
                         <form action="{% url 'projectManager:alerts' %}" method="post">
                          {% csrf_token %}
                       <input type="number" value="{{ alert.project.projectID }}" name = "projectNum" hidden>
                             <input type="number" value="{{ alert.alertID }}" name = "seen" hidden>
+
+
+                        <div class="pull-left">
                              <button class="btn btn-danger btn-md" value="{{ alert.fromStaff.staffID}}" name="reject"> <span class="glyphicon glyphicon-thumbs-down"></span> Decline</button>
-              <button class="btn btn-success btn-md" value="{{ alert.fromStaff.staffID}}" name="accept"> <span class="glyphicon glyphicon-thumbs-up"></span> Approve</button>
+                        </div>
+
+                        <div class="pull-right">
+                            <table class="table-alert-scrollx">
+<theard>
+     <tr class="skillsrow" id="skillrow">
+
+                   <input type="text" value="{{ staff.staffID}}" name="selectStaff" hidden>
+                {% for sk in alert.project.projectswithskills_set.all %}
+                    <td><input type="checkbox" name ="selectDate" value="{{ sk.skillID.skillID }}"> {{ sk.skillID.skillName }}</td>
+
+                    {% endfor %}
+
+                    <td>    <button class="btn btn-success btn-md" value="{{ alert.fromStaff.staffID}}" name="accept"> <span class="glyphicon glyphicon-thumbs-up"></span> Approve</button></td>
+
+                </tr>
+</theard>
+</table>
+
                         </form>
                         <br>
+                           </div>
                        {% endif %}
             {% endfor %}
 
-               </div>
+
             <br>
 
             {% endif %}
@@ -183,7 +210,6 @@
 </div>
         <br>
         <br>
-
 
 
       {% endblock %}

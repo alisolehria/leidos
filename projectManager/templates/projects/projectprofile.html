@@ -61,7 +61,7 @@
   {% csrf_token %}
                         <div class="form-group">
                           {% if info.projectManager == user %}
-
+   <a href="{% url 'projectManager:report' info.projectID %}"><img src={% static 'img/pdf.png' %} alt="pdf"></a>
 
                     <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#charts"> <span class="glyphicon glyphicon-th-list"></span> Statistics</button>
 
@@ -133,6 +133,7 @@
                  {{ staff.endDate }}
              </td>
 {% if staff.profile_ID.staffID != user.staffID and info.status != "Completed" and info.status != "Discontinued" and info.projectManager == user %}
+
  <form action="{% url 'projectManager:projectprofile' info.projectID %}" method="post">
     {% csrf_token %}
      <td><button class="btn btn-danger btn-sm" value="{{ staff.profile_ID.staffID }}" name="remove"> <span class="glyphicon glyphicon-remove-sign"></span> Remove</button></td>
@@ -260,7 +261,11 @@
           {% endif %}
           {% endif %}
           </div>
-
+     <br>
+      <br>
+    <br><br><br> <br>
+      <br>
+    <br><br><br>
 </div>
       <br>
       <br>
@@ -403,4 +408,5 @@
 
 }
     </script>
+
           {% endblock %}

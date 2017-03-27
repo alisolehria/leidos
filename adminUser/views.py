@@ -10,10 +10,12 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.db.models import Q
 from reportlab.pdfgen import canvas
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
 import os.path
 from django.core.exceptions import ObjectDoesNotExist
+from reportlab.lib.colors import PCMYKColor
+from reportlab.graphics.shapes import Drawing
+from reportlab.graphics.charts.barcharts import VerticalBarChart
+from reportlab.graphics.charts.piecharts import Pie
 
 
 
@@ -538,6 +540,50 @@ def addpstaff_View(request, project_id):
         date = request.POST.getlist('selectDate')
         st = profile.objects.get(staffID=staff[0])
         if date == []:
+            projSkills = title.projectswithskills_set.all()
+            for sk in projSkills:
+                dates = title.projectswithskills_set.get(skillID=sk.skillID_id)
+                sMonth = dates.startDate.month
+                eMonth = dates.endDate.month
+                try:
+                    if dates.hoursRequired > 0:
+                        stSkill = st.staffwithskills_set.filter(skillID=sk.skillID)
+                        if sMonth is eMonth:
+                            hrs = stSkill.get(month=sMonth)
+                            initial = hrs.hoursLeft
+                            if hrs.hoursLeft >= dates.hoursRequired:
+                                hrs.hoursLeft = hrs.hoursLeft - dates.hoursRequired
+                                dates.hoursRequired = 0
+                            else:
+                                dates.hoursRequired = dates.hoursRequired - hrs.hoursLeft
+                                hrs.hoursLeft = 0
+                            final = initial - hrs.hoursLeft
+                            staffProjectSkill.objects.create(projectID=title, staffID=st,
+                                                             skillID=skills.objects.get(skillID=sk.skillID_id), hours=final,
+                                                             month=sMonth)
+                            hrs.save()
+                            dates.save()
+                        else:
+                            for month in range(sMonth, eMonth + 1):
+                                if dates.hoursRequired > 0:
+                                    hrs = stSkill.get(month=month)
+                                    initial = hrs.hoursLeft
+                                    if hrs.hoursLeft >= dates.hoursRequired:
+                                        hrs.hoursLeft = hrs.hoursLeft - dates.hoursRequired
+                                        dates.hoursRequired = 0
+                                    else:
+                                        dates.hoursRequired = dates.hoursRequired - hrs.hoursLeft
+                                        hrs.hoursLeft = 0
+                                    final = initial - hrs.hoursLeft
+                                    staffProjectSkill.objects.create(projectID=title, staffID=st,
+                                                                     skillID=skills.objects.get(skillID=sk.skillID_id),
+                                                                     hours=final, month=month)
+                                    hrs.save()
+                                    dates.save()
+
+                except ObjectDoesNotExist:
+                    None
+
             staffWithProjects.objects.create(projects_ID=title, profile_ID=profile.objects.get(staffID=staff[0]),
                                              status="Working",startDate=title.startDate,endDate=title.endDate)
         else:
@@ -906,6 +952,10 @@ def requests_View(request):
 
     return render(request,'common/requests.html',{"title":title,"alertList":alertList,"staff_id":staff_id})
 
+
+
+
+
 @login_required
 def report_View(request,project_id):
 
@@ -943,14 +993,72 @@ def report_View(request,project_id):
     p.drawString(20,480,"Project Manager Skills: ")
     x = 460
     i = 1
-    for skill in query.projectManager.skills_set.all():
+
+    skillids = query.projectManager.staffwithskills_set.values_list('skillID', flat=True)
+    skillNames = []
+    skillids = list(set(skillids))
+    for id in skillids:
+        skillNames.append(skills.objects.get(skillID=id))
+
+    for skill in skillNames:
         p.drawString(140,x,str(i)+") "+skill.skillName)
         x = x - 20
         i = i + 1
     p.showPage()
+    d = Drawing(300, 300)
+    bar = VerticalBarChart()
+    bar.x = 100
+    bar.y = 85
+    skillLevel = []
+    staffList = query.staffwithprojects_set.filter(status="Working")
+    for staff in staffList:
+
+        skillLevel.append(staff.profile_ID.skillLevel)
+    data = [skillLevel
+            ]
+    bar.data = data
+    bar.categoryAxis.categoryNames = []
+
+    for staff in staffList:
+        bar.categoryAxis.categoryNames.append(staff.profile_ID.user.last_name)
+
+
+    bar.bars[0].fillColor = PCMYKColor(0, 100, 100, 40, alpha=85)
+    bar.bars[1].fillColor = PCMYKColor(23, 51, 0, 4, alpha=85)
+    bar.bars.fillColor = PCMYKColor(100, 0, 90, 50, alpha=85)
+
+    d.add(bar, '')
+    p.drawImage(fn, 0, 782, width=600, height=60)
+    p.drawString(210, 750, "Statistics")
+    p.drawString(10, 730, "This graph shows different skill levels of the employees working on this project.")
+    d.drawOn(p,10,500)
+
+    d = Drawing()
+    pie = Pie()
+    pie.x = 200
+    pie.y = 65
+    pm = staffList.filter(profile_ID__designation="Project Manager").count()
+    emp = staffList.filter(profile_ID__designation="Employee").count()
+    cont = staffList.filter(profile_ID__designation="Contractor").count()
+
+    total = staffList.count()
+
+    pm = float(pm)/float(total) * 100
+    emp = float(emp)/float(total) * 100
+    cont = float(cont)/float(total) * 100
+
+    pie.data = [pm, emp, cont]
+    pie.labels = ["Project Manager " + str(round(pm, 2)) + "%", "Employee " + str(round(emp, 2)) + "%",
+                  "Contractor: " + str(round(cont, 2)) + "%", ]
+    pie.slices.strokeWidth = 0.5
+    p.drawString(10, 530, "This graph shows different percantage of employee types working on this project")
+    d.add(pie)
+    d.drawOn(p, 10, 300)
+
+    p.showPage()
     p.drawImage(fn, 0, 782, width=600, height=60)
 
-    p.drawString(140, 750, "Staff Working on Project")
+
 
     x = 710
     for staff in query.staffID.all():

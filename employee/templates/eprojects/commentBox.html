@@ -1,0 +1,17 @@
+{% load staticfiles %}
+{% for comment in comments %}
+
+                <div class="col-sm-2"> <img src="{% static comment.staff.picture %}" width="80" height="80" alt="Profile Picture"> </div>
+                <h4>{{ comment.staff.user.first_name }} {{ comment.staff.user.last_name }} at {{ comment.time }}:</h4>
+                <p>{{ comment.comment }}</p>
+
+
+                <br>
+              {% endfor %}
+
+
+<script>
+
+             var objDiv = document.getElementById("box");
+objDiv.scrollTop = objDiv.scrollHeight;
+              </script>

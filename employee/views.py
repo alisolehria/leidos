@@ -349,12 +349,35 @@ def comments_View(request,board_id):
     project = projects.objects.get(projectID=board.projectID.projectID)
     for staff in project.staffwithprojects_set.all():
         if query.staffID == staff.profile_ID.staffID:
-            found = True
+            found=True
     if found is False:
         return render(request, 'errorpermission.html')
+
     if request.POST:
         comment = request.POST.getlist("comment")
         boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.date.today())
         messages.success(request, "Comment Posted Succesfully")
 
     return render(request, 'eprojects/comments.html', {"title": title,"comments":comments,"board":board})
+
+@login_required
+def comments_Box(request,board_id):
+
+    username = request.user
+    query = profile.objects.get(user = username) #get username
+
+    if query.designation != "Employee":  # check if pm
+        return render(request,'errorpermission.html')
+
+    board = messageBoard.objects.get(boardID=board_id)
+    comments = boardComments.objects.filter(board_id=board_id)
+    title = board.projectID.projectName + "'s Message Board"
+    found = False
+    project = projects.objects.get(projectID=board.projectID.projectID)
+    for staff in project.staffwithprojects_set.all():
+        if query.staffID == staff.profile_ID.staffID:
+            found = True
+    if found is False:
+        return render(request, 'errorpermission.html')
+
+    return render(request, 'eprojects/commentBox.html', {"comments":comments,"board":board})
