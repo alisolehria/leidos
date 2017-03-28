@@ -14,7 +14,7 @@ def alerttab_View(request):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if project Manager
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if project Manager
         return render(request,'errorpermission.html')
     title = "Alerts"
     alertList = alerts.objects.filter(Q(staffalerts__staffID=query.staffID) & Q(staffalerts__status='Unseen')).order_by('-alertID')
@@ -29,7 +29,7 @@ def refresh_View(request):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
 
 
@@ -52,7 +52,7 @@ def profile_View(request):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if project Manager
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if project Manager
         return render(request,'errorpermission.html')
 
     info = profile.objects.get(user=username)
@@ -81,7 +81,7 @@ def myprojects_View(request):
 
     username = request.user
     query = profile.objects.get(user=username)  # get username
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
     #completed projects of specific user
     info = profile.objects.get(staffID=query.staffID)
@@ -101,7 +101,7 @@ def projectlist_View(request):
 
     username = request.user
     query = profile.objects.get(user=username)  # get username
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
 
     title = "Projects List"
@@ -121,7 +121,7 @@ def upcomingprojectsget_View(request):
 
     username = request.user
     query = profile.objects.get(user=username)  # get username
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
     #upcoming projects of specific user
     time = datetime.date.today()
@@ -135,7 +135,7 @@ def currentprojectsget_View(request):
 
     username = request.user
     query = profile.objects.get(user=username)  # get username
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
     #get ongoing project of specific user
     time = datetime.date.today()
@@ -148,7 +148,7 @@ def completedprojectsget_View(request):
 
     username = request.user
     query = profile.objects.get(user=username)  # get username
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
     #completed projects of specific user
     time = datetime.date.today()
@@ -161,7 +161,7 @@ def projectprofile_View(request, project_id=None):
 
     username = request.user
     query = profile.objects.get(user=username)  # get username
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
 
     if project_id is not None:
@@ -211,7 +211,7 @@ def staffprofile_View(request, staff_id):
 
     username = request.user
     query = profile.objects.get(user=username)  # get username
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
 
     title = staff_id
@@ -245,7 +245,7 @@ def alert_View(request):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
 
     title = "Alerts"
@@ -271,7 +271,7 @@ def holiday_View(request):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if employee
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if employee
         return render(request,'errorpermission.html')
 
     title = "Request Leave"
@@ -299,7 +299,7 @@ def requests_View(request):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if admin
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if admin
         return render(request,'errorpermission.html')
 
     title = "My Requests"
@@ -318,7 +318,7 @@ def messageBoard_View(request):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if pm
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if pm
         return render(request,'errorpermission.html')
 
     title = "Message Board"
@@ -339,7 +339,7 @@ def comments_View(request,board_id):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if pm
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if pm
         return render(request,'errorpermission.html')
 
     board = messageBoard.objects.get(boardID=board_id)
@@ -366,7 +366,7 @@ def comments_Box(request,board_id):
     username = request.user
     query = profile.objects.get(user = username) #get username
 
-    if query.designation != "Employee" or query.designation != "Contractor":  # check if pm
+    if query.designation != "Employee" and query.designation != "Contractor":  # check if pm
         return render(request,'errorpermission.html')
 
     board = messageBoard.objects.get(boardID=board_id)

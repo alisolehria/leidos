@@ -855,6 +855,8 @@ def alert_View(request):
             holiday = holidays.objects.filter(holidayID=id[0])
             info = holidays.objects.get(holidayID=id[0])
             holiday.update(status="Declined")
+            print datetime.date.today()
+            print info.startDate
             alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
                                           holiday=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.staffID, status="Unseen")
@@ -866,7 +868,12 @@ def alert_View(request):
             id = request.POST.getlist("acceptLeave")
             holiday = holidays.objects.filter(holidayID=id[0])
             info = holidays.objects.get(holidayID=id[0])
+            time = datetime.date.today()
+            staff = profile.objects.get(staffID=info.staffID_id)
             holiday.update(status="Approved")
+            if info.startDate == time:
+                staff.workStatus = "On Leave"
+                staff.save()
             alert = alerts.objects.create(fromStaff=query, alertType='Leave', alertDate=datetime.date.today(),
                                           holiday=info)
             staffAlerts.objects.create(alertID=alert, staffID=info.staffID, status="Unseen")

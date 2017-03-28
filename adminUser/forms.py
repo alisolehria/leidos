@@ -361,13 +361,17 @@ class HolidaysForm(forms.ModelForm):
         startDate = self.cleaned_data.get('startDate')
         endDate = self.cleaned_data.get('endDate')
         holiday = holidays.objects.filter(staffID=self.user.profile.staffID)
+        holiday = holiday.filter(status="Approved")
+
         if startDate > endDate:
             raise forms.ValidationError('Start Date Cannot Precede End Date')
         if startDate < datetime.date.today():
             raise forms.ValidationError('Cannot Start Holiday From Date Earlier Than Today')
-        for hol in holiday:
-                if startDate >= hol.startDate and startDate <= hol.endDate or endDate >= hol.startDate and endDate <= hol.endDate:
-                   raise forms.ValidationError('You Have Already Requested a Leave in Given Dates')
+
+        if holiday.count() is not 0:
+            for hol in holiday:
+                    if startDate >= hol.startDate and startDate <= hol.endDate or endDate >= hol.startDate and endDate <= hol.endDate:
+                            raise forms.ValidationError('You Have Already Requested a Leave in Given Dates')
         return super(HolidaysForm, self).clean(*args, **kwargs)
 
     helper.form_tag = False
