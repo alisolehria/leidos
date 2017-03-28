@@ -28,8 +28,8 @@
         <thead>
           <tr>
             
-            <th>Skill ID</th>
-            <th>Skill Name</th>
+            <th class="success">Skill ID</th>
+            <th class="success">Skill Name</th>
           </tr>
         <tr class="warning no-result">
       <td colspan="4"><i class="fa fa-warning"></i> No result</td>
@@ -38,8 +38,8 @@
         <tbody>
         {% for skill in list %}
             <tr>
-            <td>{{ skill.skillID }}</td>
-            <td>{{ skill.skillName }}</td>
+            <td class="danger">{{ skill.skillID }}</td>
+            <td class="danger">{{ skill.skillName }}</td>
 
             </tr>
 

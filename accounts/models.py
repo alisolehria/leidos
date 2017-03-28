@@ -247,4 +247,4 @@ class boardComments(models.Model):
     board = models.ForeignKey(messageBoard)
     staff = models.ForeignKey(profile)
     comment = models.TextField()
-    time =  models.DateField()
+    time =  models.CharField(max_length=100)

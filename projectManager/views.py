@@ -731,6 +731,7 @@ def matchmaking_View(request,project_id):
     for staff in staffList:
         totalSkills = project.projectswithskills_set.count()
         for projSkill in project.projectswithskills_set.all():
+            if projSkill.hoursRequired > 0:
                 sMonth = projSkill.startDate.month
                 eMonth = projSkill.endDate.month
                 sDate = projSkill.startDate
@@ -786,8 +787,18 @@ def matchmaking_View(request,project_id):
             elif count is totalSkills and fullCount is 0:
                 partial.append(staff)
             elif count is not 0:
-                dict.update({staff.staffID: projSkill.skillID.skillName})
                 some.append(staff)
+        skillids = staff.staffwithskills_set.values_list('skillID', flat=True)
+        skillNames = []
+        skillids = list(set(skillids))
+        for id in skillids:
+            skillnamepresent =skills.objects.get(skillID=id)
+            skillNames.append(skillnamepresent.skillName)
+        finalSkills = []
+        for name in project.projectswithskills_set.all():
+            if name.skillID.skillName in skillNames and name.hoursRequired > 0:
+                finalSkills.append(name.skillID.skillName)
+        dict.update({staff.staffID: finalSkills})
         count = 0
         fullCount = 0
      #adding staff
@@ -880,7 +891,7 @@ def comments_View(request,board_id):
 
     if request.POST:
         comment = request.POST.getlist("comment")
-        boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.date.today())
+        boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.datetime.now().strftime("%b %d %Y %H:%M:%S"))
         messages.success(request, "Comment Posted Succesfully")
 
     return render(request, 'projects/comments.html', {"title": title,"comments":comments,"board":board})

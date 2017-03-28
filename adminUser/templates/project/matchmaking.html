@@ -296,7 +296,9 @@
             <tr class="skillsrow" id="skillrow{{ forloop.counter }}" hidden>
             {% for key, value in dict.items %}
                 {% if key == staff.staffID %}
-                            <td>{{ value }}</td>
+                            {% for items in value %}
+                              <td>{{ items }}</td>
+                        {% endfor %}
                 {% endif %}
                 {% endfor %}
 

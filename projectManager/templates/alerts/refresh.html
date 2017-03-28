@@ -1,12 +1,12 @@
  <a data-toggle="dropdown" class="dropdown-toggle navbar-brand {% if alertList.count is 0 %} alert-topG {% else %} alert-topR {% endif %}" href="#"><span class="glyphicon glyphicon-bell"></span> Alerts ({{ alertList.count }})<b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu pull-right">
                         <li><a href="{% url 'projectManager:alerts' %}">See All</a></li>
-                        {% if alertList.count != 0 %}
-     {% for alertid, alert in alertids.items%}
-                  <li><a href="{% url 'projectManager:alerts' %}#{{ alertid }}">
+
+                    {% for alert in alertList%}
+                  <li><a href="{% url 'projectManager:alerts' %}#{{ alert.alertID }}">
   <strong>New Alert from {{ alert.fromStaff.user.last_name }}</strong></a>
 </li>
 
             {% endfor %}
-                  {% endif %}
+
                     </ul>

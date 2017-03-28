@@ -19,6 +19,7 @@ from reportlab.graphics.charts.piecharts import Pie
 
 
 
+
 @login_required
 def dashboard_View(request):
     username = request.user
@@ -467,7 +468,7 @@ def addproject_View(request):
                                       project=project)
         staffAlerts.objects.create(alertID=alert, staffID=pm, status="Unseen")
         msg = messageBoard.objects.create(projectID=project)
-        boardComments.objects.create(board=msg,staff=query,comment="Welcome to the Message Board!",time=datetime.date.today())
+        boardComments.objects.create(board=msg,staff=query,comment="Welcome to the Message Board!",time=datetime.datetime.now().strftime("%b %d %Y %H:%M:%S"))
         messages.success(request, "Project added succesfully!")
         return addpskill_View(request,max(newID))
 
@@ -844,7 +845,7 @@ def alert_View(request):
             staffalert.update(status="Seen")
             msg = messageBoard.objects.create(projectID=info)
             boardComments.objects.create(board=msg, staff=query, comment="Welcome to the Message Board!",
-                                         time=datetime.date.today())
+                                         time=datetime.datetime.now().strftime("%b %d %Y %H:%M:%S"))
             messages.success(request, "Project Status Changed")
         elif "seen" in request.POST:
             alertID = request.POST.getlist('seen')
@@ -927,7 +928,7 @@ def requests_View(request):
             staffalert.update(status="Seen")
             msg = messageBoard.objects.create(projectID=project)
             boardComments.objects.create(board=msg, staff=query, comment="Welcome to the Message Board!",
-                                         time=datetime.date.today())
+                                         time=datetime.datetime.now().strftime("%b %d %Y %H:%M:%S"))
             messages.success(request, "Project Status Changed")
             return projectlist_View(request)
         elif "rejectLeave" in request.POST:
@@ -1141,6 +1142,7 @@ def matchmaking_View(request,project_id):
     for staff in staffList:
         totalSkills = project.projectswithskills_set.count()
         for projSkill in project.projectswithskills_set.all():
+            if projSkill.hoursRequired > 0:
                 sMonth = projSkill.startDate.month
                 eMonth = projSkill.endDate.month
                 sDate = projSkill.startDate
@@ -1196,8 +1198,18 @@ def matchmaking_View(request,project_id):
             elif count is totalSkills and fullCount is 0:
                 partial.append(staff)
             elif count is not 0:
-                dict.update({staff.staffID:projSkill.skillID.skillName})
                 some.append(staff)
+        skillids = staff.staffwithskills_set.values_list('skillID', flat=True)
+        skillNames = []
+        skillids = list(set(skillids))
+        for id in skillids:
+            skillnamepresent =skills.objects.get(skillID=id)
+            skillNames.append(skillnamepresent.skillName)
+        finalSkills = []
+        for name in project.projectswithskills_set.all():
+            if name.skillID.skillName in skillNames and name.hoursRequired > 0:
+                finalSkills.append(name.skillID.skillName)
+        dict.update({staff.staffID: finalSkills})
         count = 0
         fullCount = 0
      #adding staff

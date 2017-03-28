@@ -21,7 +21,7 @@ $('#box').on('scroll', function() {
 });
 jQuery(document).ready(function(){setInterval(function(){jQuery("#box").load('{% url "employee:commentsBox" board.boardID %}',function () {
    $(this).scrollTop(lastScrollPos);});
-   },5000)
+   },1000)
        });</script>
   </div>
           <br>

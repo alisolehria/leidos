@@ -355,7 +355,7 @@ def comments_View(request,board_id):
 
     if request.POST:
         comment = request.POST.getlist("comment")
-        boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.date.today())
+        boardComments.objects.create(board=board,staff=query,comment=comment[0],time=datetime.datetime.now().strftime("%b %d %Y %H:%M:%S"))
         messages.success(request, "Comment Posted Succesfully")
 
     return render(request, 'eprojects/comments.html', {"title": title,"comments":comments,"board":board})
