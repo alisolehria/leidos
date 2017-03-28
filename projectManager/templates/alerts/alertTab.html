@@ -18,7 +18,7 @@ jQuery(document).ready(function(){setInterval(function(){jQuery("#alertRefresh")
 <div class="collapse navbar-collapse" id="myNavbar">
     <div class="navbar-left marquee">
 
-<marquee>Ongoing Projects: {% for project in projectListOn %}
+<marquee scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();">Ongoing Projects: {% for project in projectListOn %}
             <a target="_blank"  href="{% url 'projectManager:projectprofile' project.projects_ID.projectID %}">{{ project.projects_ID.projectName }}</a>,
 
     {% endfor %}

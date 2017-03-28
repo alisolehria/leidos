@@ -85,7 +85,11 @@
      <tbody>
 
         {% for staff in full %}
-            <tr>
+              {% if staff.preferredLocation.country == project.location.country and staff.preferredLocation.city == project.location.city %}
+                <tr class="danger">
+                  {% else %}
+                  <tr>
+            {% endif %}
              <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>
@@ -140,8 +144,14 @@
 
      <tbody>
         {% for staff in fsome %}
-    <tr>
+              {% if staff.preferredLocation.country == project.location.country and staff.preferredLocation.city == project.location.city %}
+                <tr class="danger">
+                  {% else %}
+                  <tr>
+            {% endif %}
+
                <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
+
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>
             <td>{{ staff.dateOfBirth }}</td>
@@ -195,7 +205,11 @@
      <tbody>
       <br>
         {% for staff in partial %}
-    <tr>
+    {% if staff.preferredLocation.country == project.location.country and staff.preferredLocation.city == project.location.city %}
+                <tr class="danger">
+                  {% else %}
+                  <tr>
+            {% endif %}
                <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>
@@ -251,7 +265,11 @@
      <tbody>
 
         {% for staff in some %}
-    <tr>
+     {% if staff.preferredLocation.country == project.location.country and staff.preferredLocation.city == project.location.city %}
+                <tr class="danger">
+                  {% else %}
+                  <tr>
+            {% endif %}
               <td><a href="{% url 'adminUser:staffprofile' staff.staffID %}">{{ staff.staffID }}</a></td>
             <td>{{ staff.user.first_name }}</td>
             <td>{{ staff.user.last_name }}</td>

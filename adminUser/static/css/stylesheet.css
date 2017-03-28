@@ -5830,6 +5830,8 @@ button.close {
 
 .listTable, .listTable td, .listTable th{
    border-color: #317a70 !important;
+    font-family: Georgia !important;
+
 }
 .navbar .navbar-inner {
     padding: 0;
@@ -5964,7 +5966,7 @@ h7{
 
 .dash{
     color:black;
-     font-family: "Roboto Slab";
+         font-family: "Georgia";
     font-size: 20px;
     border:none !important;
     padding: 0;
@@ -5974,6 +5976,7 @@ h7{
  box-shadow: 0 0 5px rgba(1, 1, 1, 0.7);
  background-color: #38537e;
  width: auto;
+    font-family: "Georgia" !important;
 }
 
 .container-heading{
@@ -5981,7 +5984,7 @@ h7{
 
 
     color: white;
-    font-family: "Roboto";
+    font-family: "Georgia";
     font-size: 24px;
     text-align: center;
 }
@@ -6286,6 +6289,7 @@ font-size: 14px !important;
     overflow-y:scroll;
     height:300px;
     display: block;
+    font-family: "Georgia" !important;
 
 
 }
@@ -6295,12 +6299,14 @@ font-size: 14px !important;
     height:auto;
     display: block;
      background-color:#ccd7db;
+    font-family: "Georgia" !important;
 }
 
 .table-alert-scrollx {
     overflow-x: scroll;
     height:auto;
     display: block;
+    font-family: "Georgia" !important;
 
 }
 .table-scrollxadmin {
@@ -6308,7 +6314,7 @@ font-size: 14px !important;
     height:auto;
     display: block;
     background-color: #ccd7db;
-
+    font-family: "Georgia" !important;
 
 }
 
@@ -6318,6 +6324,7 @@ font-size: 14px !important;
     display: block;
       overflow-x: scroll;
      background-color: #ccd7db;
+    font-family: "Georgia" !important;
 }
 
 
@@ -6329,4 +6336,8 @@ padding: 50px 0 0 0;
 .navli{
 
     font-size: 12px;
+}
+
+#skilltable{
+    font-family: "Georgia" !important;
 }
